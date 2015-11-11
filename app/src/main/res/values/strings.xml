@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Snorechat</string>
+    <string name="about_us_text">About Us</string>
+    <string name="about_names_textview"> Michalis Tsimettas \n Katerina Kokai\n
+    Chaliasos Konstantinos\n Themis Prellios \n Nikos Touloumis</string>
 </resources>
