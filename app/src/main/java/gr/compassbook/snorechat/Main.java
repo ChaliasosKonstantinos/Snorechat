@@ -19,6 +19,7 @@ public class Main extends AppCompatActivity {
         startActivity(intent);
     }
 
+    //Show About Activity
     public void showAbout(View view) {
         Intent aboutIntent  = new Intent(this,About.class);
         startActivity(aboutIntent);

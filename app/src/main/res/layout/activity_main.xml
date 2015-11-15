@@ -43,7 +43,8 @@
             android:textAlignment="center"
             android:textStyle="bold"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:onClick="showRegister" />
 
         <Button
             android:layout_width="115dp"
