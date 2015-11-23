@@ -29,4 +29,8 @@ public class Main extends AppCompatActivity {
         Intent intentRegister = new Intent(this, Register.class);
         startActivity(intentRegister);
     }
+
+
+
+
 }

@@ -61,4 +61,8 @@ public class UserLocalStore {
         spEditor.clear();
         spEditor.commit();
     }
+
+    public String getStoredUserEmail() {
+        return userLocalDatabase.getString("Email", "");
+    }
 }
