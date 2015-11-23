@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_gravity="center_horizontal" />
+
 
     <Button
         android:layout_width="250dp"
-        android:layout_height="100dp"
-        android:text="SEND MESSAGE"
+        android:layout_height="75dp"
+        android:text="Send Message"
         android:id="@+id/bSendMessage"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="4dp"
@@ -20,7 +18,7 @@
 
     <Button
         android:layout_width="250dp"
-        android:layout_height="100dp"
+        android:layout_height="75dp"
         android:text="CAMERA"
         android:id="@+id/bCamera"
         android:layout_gravity="center_horizontal"
@@ -30,7 +28,7 @@
 
     <Button
         android:layout_width="250dp"
-        android:layout_height="100dp"
+        android:layout_height="75dp"
         android:text="CONTACTS"
         android:id="@+id/bContacts"
         android:layout_gravity="center_horizontal"
@@ -40,7 +38,7 @@
 
     <Button
         android:layout_width="250dp"
-        android:layout_height="100dp"
+        android:layout_height="75dp"
         android:text="PLACES"
         android:id="@+id/bPlaces"
         android:layout_gravity="center_horizontal"
@@ -50,7 +48,7 @@
 
     <Button
         android:layout_width="250dp"
-        android:layout_height="100dp"
+        android:layout_height="75dp"
         android:text="HISTORY"
         android:id="@+id/bHistory"
         android:layout_gravity="center_horizontal"
@@ -60,11 +58,12 @@
 
     <Button
         android:layout_width="250dp"
-        android:layout_height="100dp"
+        android:layout_height="75dp"
         android:text="SIGN OUT"
         android:id="@+id/bSignOut"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="4dp"
         android:layout_marginBottom="4dp"
         android:textSize="25dp" />
+
 </LinearLayout>
