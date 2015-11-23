@@ -57,7 +57,7 @@
         android:text="Country" />
 
     <EditText
-        android:id="@+id/etCountry"
+        android:id="@+id/etRegCountry"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
@@ -68,7 +68,7 @@
         android:text="City" />
 
     <EditText
-        android:id="@+id/etCity"
+        android:id="@+id/etRegCity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
@@ -79,5 +79,6 @@
         android:textStyle="bold"
         android:background="#3F51B5"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"  />
+        android:layout_height="wrap_content"
+        android:onClick="registerUser" />
 </LinearLayout>
