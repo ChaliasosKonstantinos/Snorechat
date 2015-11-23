@@ -2,16 +2,15 @@ package gr.compassbook.snorechat;
 
 import android.app.AlertDialog;
 import android.content.Intent;
-import android.content.pm.LabeledIntent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class Login extends AppCompatActivity {
 
     EditText etUsername, etPassword;
-    View view;
 
 
     @Override
@@ -45,10 +44,11 @@ public class Login extends AppCompatActivity {
         });
     }
 
-    public void logUserIn(User returnedUser) {
+    private void logUserIn(User returnedUser) {
         UserLocalStore userDatabase = new UserLocalStore(this);
         userDatabase.storeUserData(returnedUser);
         userDatabase.setUserLoggedIn(true);
+        Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_LONG).show();
         startActivity(new Intent(this, UserMenu.class));
 
     }
