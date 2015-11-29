@@ -11,6 +11,7 @@ import android.widget.Toast;
 public class Login extends AppCompatActivity {
 
     EditText etUsername, etPassword;
+    UserLocalStore userDatabase;
 
 
     @Override
@@ -22,6 +23,7 @@ public class Login extends AppCompatActivity {
         etPassword = (EditText) findViewById(R.id.etPassword);
     }
 
+    //Login User
     public void logIn(View view) {
         String username = etUsername.getText().toString();
         String password = etPassword.getText().toString();
@@ -45,7 +47,7 @@ public class Login extends AppCompatActivity {
     }
 
     private void logUserIn(User returnedUser) {
-        UserLocalStore userDatabase = new UserLocalStore(this);
+        userDatabase = new UserLocalStore(this);
         userDatabase.storeUserData(returnedUser);
         userDatabase.setUserLoggedIn(true);
         Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_LONG).show();
