@@ -24,7 +24,7 @@ public class UserLocalStore {
         spEditor.putString("email", user.email);
         spEditor.putString("country", user.country);
         spEditor.putString("city", user.city);
-        spEditor.commit();
+        spEditor.apply();
     }
 
     //Gets logged in user's details
@@ -43,7 +43,7 @@ public class UserLocalStore {
     public void setUserLoggedIn(boolean loggedIn) {
         SharedPreferences.Editor spEditor = userLocalDatabase.edit();
         spEditor.putBoolean("loggedIn", loggedIn);
-        spEditor.commit();
+        spEditor.apply();
     }
 
     //Check if the user is logged in
@@ -59,10 +59,7 @@ public class UserLocalStore {
     public void clearUserData() {
         SharedPreferences.Editor spEditor = userLocalDatabase.edit();
         spEditor.clear();
-        spEditor.commit();
+        spEditor.apply();
     }
 
-    public String getStoredUserEmail() {
-        return userLocalDatabase.getString("Email", "");
-    }
 }
