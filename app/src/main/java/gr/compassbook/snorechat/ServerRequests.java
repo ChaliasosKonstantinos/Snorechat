@@ -3,18 +3,14 @@ package gr.compassbook.snorechat;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -22,7 +18,6 @@ import java.net.ProtocolException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -67,20 +62,21 @@ public class ServerRequests {
         @Override
         protected User doInBackground(Void... params) {
             User returnedUser = null;
+            HashMap<String,String> dataToSend = new HashMap<>();
+            dataToSend.put("username", user.username);
+            dataToSend.put("password", user.password);
+
             try {
 
-                URL url = new URL(SERVER_ADDRESS + "fetchUserData.php");
+                URL url = new URL(SERVER_ADDRESS + "fetchUserData.php" + getQueryData(dataToSend));
                 urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.setReadTimeout(10000);
                 urlConnection.setConnectTimeout(15000);
                 urlConnection.setRequestMethod("GET");
                 urlConnection.setDoInput(true);
-                urlConnection.setDoOutput(true);
-                urlConnection.connect();
+                //urlConnection.setDoOutput(true);
 
-                HashMap<String,String> dataToSend = new HashMap<>();
-                dataToSend.put("username", user.username);
-                dataToSend.put("password", user.password);
+                urlConnection.connect();
 
                 InputStream is = urlConnection.getInputStream();
                 reader = new BufferedReader(new InputStreamReader(is));
@@ -126,10 +122,6 @@ public class ServerRequests {
                     e.printStackTrace();
                 }
             }
-
-
-
-
             return returnedUser;
         }
 
@@ -162,33 +154,24 @@ public class ServerRequests {
 
         @Override
         protected Void doInBackground(User... params) {
+
+            HashMap<String,String> dataToSend = new HashMap<>();
+            dataToSend.put("username", user.username);
+            dataToSend.put("password", user.password);
+            dataToSend.put("email", user.email);
+            dataToSend.put("country", user.country);
+            dataToSend.put("city", user.city);
+
             try{
-                URL url = new URL(SERVER_ADDRESS + "register.php");
+                URL url = new URL(SERVER_ADDRESS + "register.php" + getQueryData(dataToSend));
                 urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.setReadTimeout(10000);
                 urlConnection.setConnectTimeout(15000);
                 urlConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
                 urlConnection.setRequestMethod("GET");
-                //urlConnection.setDoInput(true);
                 urlConnection.setDoOutput(true);
-
-
-                HashMap<String,String> dataToSend = new HashMap<>();
-                dataToSend.put("username", user.username);
-                dataToSend.put("password", user.password);
-                dataToSend.put("email", user.email);
-                dataToSend.put("country", user.country);
-                dataToSend.put("city", user.city);
-
-                OutputStream os = urlConnection.getOutputStream();
-                BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os,"UTF-8"));
-                writer.write(getQueryData(dataToSend));
-                writer.flush();
-                writer.close();
-                os.close();
-
                 urlConnection.connect();
-
+                InputStream errors = (urlConnection.getErrorStream());
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             } catch (ProtocolException e) {
@@ -196,9 +179,6 @@ public class ServerRequests {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-
-
 
             return null;
         }
@@ -221,6 +201,10 @@ public class ServerRequests {
 
         for(Map.Entry<String,String> entry:data.entrySet()) {
             if (first) {
+                result.append("?");
+                result.append(URLEncoder.encode(entry.getKey(), "UTF-8"));
+                result.append("=");
+                result.append(URLEncoder.encode(entry.getValue(), "UTF-8"));
                 first = false;
             } else {
                 result.append("&");
