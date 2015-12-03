@@ -54,8 +54,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="4dp"
         android:layout_marginBottom="4dp"
-        android:textSize="25dp"
-        android:onClick="showDetails" />
+        android:textSize="25dp" />
 
     <Button
         android:layout_width="250dp"
