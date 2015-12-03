@@ -3,6 +3,7 @@ package gr.compassbook.snorechat;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -21,6 +22,7 @@ import java.net.ProtocolException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -165,8 +167,9 @@ public class ServerRequests {
                 urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.setReadTimeout(10000);
                 urlConnection.setConnectTimeout(15000);
-                urlConnection.setRequestMethod("POST");
-                urlConnection.setDoInput(true);
+                urlConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+                urlConnection.setRequestMethod("GET");
+                //urlConnection.setDoInput(true);
                 urlConnection.setDoOutput(true);
 
 
@@ -194,8 +197,13 @@ public class ServerRequests {
                 e.printStackTrace();
             }
 
+
+
+
             return null;
         }
+
+
 
         @Override
         protected void onPostExecute(Void aVoid) {
@@ -206,9 +214,10 @@ public class ServerRequests {
     }
 
     //Resolve dataToSend
-    public static String getQueryData(HashMap<String,String> data) throws UnsupportedEncodingException {
+    public  String getQueryData(HashMap<String,String> data) throws UnsupportedEncodingException {
         StringBuilder result = new StringBuilder();
         boolean first = true;
+
 
         for(Map.Entry<String,String> entry:data.entrySet()) {
             if (first) {
