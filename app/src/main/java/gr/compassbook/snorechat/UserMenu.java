@@ -8,8 +8,7 @@ import android.widget.Button;
 
 public class UserMenu extends AppCompatActivity {
 
-    Button bCamera;
-    //SharedPreferences userData = getSharedPreferences("userDetails", 0);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,8 +18,6 @@ public class UserMenu extends AppCompatActivity {
     }
 
     public void showDetails(View view) {
-        bCamera = (Button) findViewById(R.id.bCamera);
-        //bCamera.setText(userData.getString("email", ""));
-        bCamera.setText("ok");
+
     }
 }
