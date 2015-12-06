@@ -14,7 +14,7 @@
         android:id="@+id/textView"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:singleLine="true" />
 
     <EditText
@@ -32,14 +32,14 @@
         android:id="@+id/SaveNewName"
         android:layout_below="@+id/NewUserName"
         android:layout_alignParentStart="true"
-        android:onClick=""/>
+        android:onClick="changeUsername"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Password"
         android:id="@+id/textView2"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:singleLine="true"
         android:layout_above="@+id/NewUserName"
         android:layout_alignParentEnd="true" />
@@ -58,14 +58,15 @@
         android:text="Save"
         android:id="@+id/SaveNewPassword"
         android:layout_alignTop="@+id/SaveNewName"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:onClick="changePassword" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Email"
         android:id="@+id/textView3"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:singleLine="true"
         android:layout_below="@+id/SaveNewName"
         android:layout_alignParentStart="true"
@@ -85,14 +86,15 @@
         android:text="Save"
         android:id="@+id/SaveNewEmail"
         android:layout_below="@+id/NewEmail"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:onClick="changeEmail" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Country"
         android:id="@+id/textView4"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:singleLine="true"
         android:layout_alignTop="@+id/textView3"
         android:layout_alignStart="@+id/NewPassword" />
@@ -111,14 +113,15 @@
         android:text="Save"
         android:id="@+id/SaveNewCountry"
         android:layout_alignTop="@+id/SaveNewEmail"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:onClick="changeCountry" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New City"
         android:id="@+id/textView5"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:singleLine="true"
         android:layout_marginTop="39dp"
         android:layout_below="@+id/SaveNewEmail"
@@ -138,5 +141,6 @@
         android:text="Save"
         android:id="@+id/SaveNewCity"
         android:layout_below="@+id/NewCity"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:onClick="changeCity" />
 </RelativeLayout>

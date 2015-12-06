@@ -31,14 +31,14 @@ public class Login extends AppCompatActivity {
         User userData = new User(username, password);
 
         ServerRequests serverRequest = new ServerRequests(this);
-        serverRequest.fetchUserDataInBackgroud(userData, new GetUserCallback() {
+        serverRequest.fetchUserDataInBackground(userData, new GetUserCallback() {
             @Override
             public void done(User returnedUser) {
                 if (returnedUser != null) {
                     logUserIn(returnedUser);
                 } else {
                     AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(Login.this);
-                    dialogBuilder.setMessage("Something went wrong");
+                    dialogBuilder.setMessage("Wrong username and password combination");
                     dialogBuilder.setPositiveButton("OK", null);
                     dialogBuilder.show();
                 }

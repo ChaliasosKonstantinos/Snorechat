@@ -16,10 +16,16 @@ public class UserMenu extends AppCompatActivity {
         setContentView(R.layout.activity_user_menu);
     }
 
+    //Show User Settings
+    public void showUserSettings(View view) {
+        startActivity(new Intent(this, UserSettings.class));
+    }
+
     //Log User out
     public void logUserOut(View view) {
         userData = new UserLocalStore(this);
         userData.setUserLoggedIn(false);
+        userData.clearUserData();
         Toast.makeText(UserMenu.this, "Logout Successful", Toast.LENGTH_LONG).show();
         startActivity(new Intent(this, Main.class));
 
