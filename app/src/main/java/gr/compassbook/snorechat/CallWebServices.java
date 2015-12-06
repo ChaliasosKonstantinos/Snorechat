@@ -55,7 +55,7 @@ public class CallWebServices extends AppCompatActivity {
     private class AsyncCallWS extends AsyncTask<String, Void, Void> {
         @Override
         protected Void doInBackground(String... params) {
-           // displayText = WebService.invokeHelloWorldWS(editText,"hello");
+           displayText = WebService.invokeHelloWorldWS(editText,"hello");
             return null;
         }
 
