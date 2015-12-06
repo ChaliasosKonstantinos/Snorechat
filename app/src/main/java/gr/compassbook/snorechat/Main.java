@@ -46,6 +46,8 @@ public class Main extends AppCompatActivity {
     }
 
 
-
-
+    public void callWebServices(View view) {
+        Intent intentcallws = new Intent(this,CallWebServices.class);
+        startActivity(intentcallws);
+    }
 }
