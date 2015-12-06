@@ -33,7 +33,7 @@ public class UserSettings extends AppCompatActivity {
     public void changeUsername (View view) {
         final String newUsername = etNewUsername.getText().toString();
 
-        if (newUsername != null) {
+        if (!newUsername.isEmpty()) {
             ServerRequests serverRequest = new ServerRequests(this);
             serverRequest.updateUserDataInBackground(userData.getString("username", ""), "username",
                     newUsername, new GetUserCallback() {
@@ -53,7 +53,7 @@ public class UserSettings extends AppCompatActivity {
     public void changePassword (View view) {
         final String newPassword = etNewPassword.getText().toString();
 
-        if (newPassword != null) {
+        if (!newPassword.isEmpty()) {
             ServerRequests serverRequest = new ServerRequests(this);
             serverRequest.updateUserDataInBackground(userData.getString("username", ""), "password",
                     newPassword, new GetUserCallback() {
@@ -72,7 +72,7 @@ public class UserSettings extends AppCompatActivity {
     public void changeEmail (View view) {
         final String newEmail = etNewEmail.getText().toString();
 
-        if (etNewEmail.getText().toString() != null) {
+        if (!newEmail.isEmpty()) {
             ServerRequests serverRequest = new ServerRequests(this);
             serverRequest.updateUserDataInBackground(userData.getString("username", ""), "email",
                     newEmail, new GetUserCallback() {
@@ -91,7 +91,7 @@ public class UserSettings extends AppCompatActivity {
     public void changeCountry (View view) {
         final String newCountry = etNewCountry.getText().toString();
 
-        if (newCountry != null) {
+        if (!newCountry.isEmpty()) {
             System.out.println(newCountry);
             ServerRequests serverRequest = new ServerRequests(this);
             serverRequest.updateUserDataInBackground(userData.getString("username", ""), "country",
@@ -111,7 +111,7 @@ public class UserSettings extends AppCompatActivity {
     public void changeCity (View view) {
         final String newCity = etNewCity.getText().toString();
 
-        if (newCity != null) {
+        if (!newCity.isEmpty()) {
             ServerRequests serverRequest = new ServerRequests(this);
             serverRequest.updateUserDataInBackground(userData.getString("username", ""), "City",
                     newCity, new GetUserCallback() {
