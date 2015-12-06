@@ -3,6 +3,7 @@ package gr.compassbook.snorechat;
 /**
  * Created by Katerina on 12/6/15.
  */
+
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.serialization.PropertyInfo;
 import org.ksoap2.serialization.SoapObject;
@@ -17,6 +18,7 @@ public class WebService {
     private static String URL = "http://localhost:8080/SnorechatWebServices/helloAndroid?WSDL";
     //SOAP Action URI again Namespace + Web method name
     private static String SOAP_ACTION = "http://androidcon.com/";
+
 
     public static String invokeHelloWorldWS(String name, String webMethName) {
         String resTxt = null;
@@ -39,6 +41,8 @@ public class WebService {
         envelope.setOutputSoapObject(request);
         // Create HTTP call object
         HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
+
+
 
         try {
             // Invoke web service
