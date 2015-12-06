@@ -55,6 +55,41 @@ public class UserLocalStore {
         }
     }
 
+    //Updates User's username
+    public void updateUserUsername(String newUsername) {
+        SharedPreferences.Editor spEditor = userLocalDatabase.edit();
+        spEditor.putString("username", newUsername);
+        spEditor.commit();
+    }
+
+    //Updates User's password
+    public void updateUserPassword(String newPassword) {
+        SharedPreferences.Editor spEditor = userLocalDatabase.edit();
+        spEditor.putString("password", newPassword);
+        spEditor.commit();
+    }
+
+    //Updates User's email
+    public void updateUserEmail(String newEmail) {
+        SharedPreferences.Editor spEditor = userLocalDatabase.edit();
+        spEditor.putString("email", newEmail);
+        spEditor.commit();
+    }
+
+    //Updates User's country
+    public void updateUserCountry(String newCountry) {
+        SharedPreferences.Editor spEditor = userLocalDatabase.edit();
+        spEditor.putString("country", newCountry);
+        spEditor.commit();
+    }
+
+    //Updates User's city
+    public void updateUserCity(String newCity) {
+        SharedPreferences.Editor spEditor = userLocalDatabase.edit();
+        spEditor.putString("city", newCity);
+        spEditor.commit();
+    }
+
     //Clears local user Database
     public void clearUserData() {
         SharedPreferences.Editor spEditor = userLocalDatabase.edit();

@@ -2,6 +2,7 @@ package gr.compassbook.snorechat;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 
 import org.json.JSONException;
@@ -102,13 +103,7 @@ public class ServerRequests {
                 }
 
 
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (ProtocolException e) {
-                e.printStackTrace();
-            } catch (JSONException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
+            } catch (JSONException | IOException e) {
                 e.printStackTrace();
             } finally {
                 if (urlConnection != null) {
@@ -172,10 +167,6 @@ public class ServerRequests {
                 urlConnection.setDoOutput(true);
                 urlConnection.connect();
                 InputStream errors = (urlConnection.getErrorStream());
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (ProtocolException e) {
-                e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -192,6 +183,62 @@ public class ServerRequests {
             super.onPostExecute(aVoid);
         }
     }
+
+    //Updates User's data on the server
+    public User updateUserDataInBackgroud(String username, String fieldToUpdate, String dataToUpdate, GetUserCallback userCallback) {
+        progressDialog.show();
+        new UpdateUserDataAsyncTask(username, fieldToUpdate, dataToUpdate, userCallback).execute();
+        return null;
+    }
+
+    public class UpdateUserDataAsyncTask extends AsyncTask<String, Void, Void> {
+
+        String username, fieldToUpdate, dataToUpdate;
+        GetUserCallback userCallback;
+
+        public UpdateUserDataAsyncTask(String username, String fieldToUpdate, String dataToUpdate, GetUserCallback userCallback) {
+            this.username = username;
+            this.fieldToUpdate = fieldToUpdate;
+            this.dataToUpdate = dataToUpdate;
+            this.userCallback = userCallback;
+        }
+
+        @Override
+        protected Void doInBackground(String... params) {
+
+
+            HashMap<String,String> dataToSend = new HashMap<>();
+            dataToSend.put("username", username);
+            dataToSend.put("fieldToUpdate", fieldToUpdate);
+            dataToSend.put("dataToUpdate", dataToUpdate);
+
+
+            try{
+                URL url = new URL(SERVER_ADDRESS + "updateUserData.php" + getQueryData(dataToSend));
+                urlConnection = (HttpURLConnection) url.openConnection();
+                urlConnection.setReadTimeout(10000);
+                urlConnection.setConnectTimeout(15000);
+                urlConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+                urlConnection.setRequestMethod("GET");
+                urlConnection.setDoOutput(true);
+                urlConnection.connect();
+                InputStream errors = (urlConnection.getErrorStream());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            progressDialog.dismiss();
+            userCallback.done(null);
+            super.onPostExecute(aVoid);
+        }
+    }
+
+
 
     //Resolve dataToSend
     public  String getQueryData(HashMap<String,String> data) throws UnsupportedEncodingException {

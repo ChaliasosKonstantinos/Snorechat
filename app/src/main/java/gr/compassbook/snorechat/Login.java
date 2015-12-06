@@ -38,7 +38,7 @@ public class Login extends AppCompatActivity {
                     logUserIn(returnedUser);
                 } else {
                     AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(Login.this);
-                    dialogBuilder.setMessage("Something went wrong");
+                    dialogBuilder.setMessage("Wrong username and password combination");
                     dialogBuilder.setPositiveButton("OK", null);
                     dialogBuilder.show();
                 }

@@ -20,6 +20,7 @@ public class UserMenu extends AppCompatActivity {
     public void logUserOut(View view) {
         userData = new UserLocalStore(this);
         userData.setUserLoggedIn(false);
+        userData.clearUserData();
         Toast.makeText(UserMenu.this, "Logout Successful", Toast.LENGTH_LONG).show();
         startActivity(new Intent(this, Main.class));
 
