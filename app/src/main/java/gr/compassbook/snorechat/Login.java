@@ -31,7 +31,7 @@ public class Login extends AppCompatActivity {
         User userData = new User(username, password);
 
         ServerRequests serverRequest = new ServerRequests(this);
-        serverRequest.fetchUserDataInBackgroud(userData, new GetUserCallback() {
+        serverRequest.fetchUserDataInBackground(userData, new GetUserCallback() {
             @Override
             public void done(User returnedUser) {
                 if (returnedUser != null) {

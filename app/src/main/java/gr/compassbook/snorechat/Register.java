@@ -34,7 +34,7 @@ public class Register extends AppCompatActivity {
         User userToRegister = new User(username, password, email, country, city);
 
         ServerRequests serverRequest = new ServerRequests(this);
-        serverRequest.storeUserDataInBackgroud(userToRegister, new GetUserCallback() {
+        serverRequest.storeUserDataInBackground(userToRegister, new GetUserCallback() {
             @Override
             public void done(User returnedUser) {
                 showLogin();

@@ -12,7 +12,7 @@ import android.widget.Toast;
 public class UserSettings extends AppCompatActivity {
 
     EditText etNewUsername, etNewPassword, etNewEmail, etNewCountry, etNewCity;
-    SharedPreferences userData = getSharedPreferences("userDetails", 0);
+    SharedPreferences userData;
     UserLocalStore userDatabase;
 
     @Override
@@ -25,18 +25,22 @@ public class UserSettings extends AppCompatActivity {
         etNewEmail = (EditText) findViewById(R.id.NewEmail);
         etNewCountry = (EditText) findViewById(R.id.NewCountry);
         etNewCity = (EditText) findViewById(R.id.NewCity);
+        userData = getSharedPreferences("userDetails", 0);
+        userDatabase = new UserLocalStore(this);
+
     }
 
     public void changeUsername (View view) {
-        final String newUsername = etNewUsername.toString();
+        final String newUsername = etNewUsername.getText().toString();
 
         if (newUsername != null) {
             ServerRequests serverRequest = new ServerRequests(this);
-            serverRequest.updateUserDataInBackgroud(userData.getString("username",""), "username",
+            serverRequest.updateUserDataInBackground(userData.getString("username", ""), "username",
                     newUsername, new GetUserCallback() {
                         @Override
                         public void done(User returnedUser) {
                             userDatabase.updateUserUsername(newUsername);
+                            etNewUsername.setText("");
                             Toast.makeText(UserSettings.this, "Username changed successfully", Toast.LENGTH_LONG).show();
                         }
                     });
@@ -47,15 +51,16 @@ public class UserSettings extends AppCompatActivity {
     }
 
     public void changePassword (View view) {
-        final String newPassword = etNewPassword.toString();
+        final String newPassword = etNewPassword.getText().toString();
 
         if (newPassword != null) {
             ServerRequests serverRequest = new ServerRequests(this);
-            serverRequest.updateUserDataInBackgroud(userData.getString("username",""), "password",
+            serverRequest.updateUserDataInBackground(userData.getString("username", ""), "password",
                     newPassword, new GetUserCallback() {
                         @Override
                         public void done(User returnedUser) {
                             userDatabase.updateUserPassword(newPassword);
+                            etNewPassword.setText("");
                             Toast.makeText(UserSettings.this, "Password changed successfully", Toast.LENGTH_LONG).show();
                         }
                     });
@@ -65,15 +70,16 @@ public class UserSettings extends AppCompatActivity {
     }
 
     public void changeEmail (View view) {
-        final String newEmail = etNewEmail.toString();
+        final String newEmail = etNewEmail.getText().toString();
 
-        if (newEmail != null) {
+        if (etNewEmail.getText().toString() != null) {
             ServerRequests serverRequest = new ServerRequests(this);
-            serverRequest.updateUserDataInBackgroud(userData.getString("username",""), "email",
+            serverRequest.updateUserDataInBackground(userData.getString("username", ""), "email",
                     newEmail, new GetUserCallback() {
                         @Override
                         public void done(User returnedUser) {
                             userDatabase.updateUserEmail(newEmail);
+                            etNewEmail.setText("");
                             Toast.makeText(UserSettings.this, "Email changed successfully", Toast.LENGTH_LONG).show();
                         }
                     });
@@ -83,15 +89,17 @@ public class UserSettings extends AppCompatActivity {
     }
 
     public void changeCountry (View view) {
-        final String newCountry = etNewCountry.toString();
+        final String newCountry = etNewCountry.getText().toString();
 
         if (newCountry != null) {
+            System.out.println(newCountry);
             ServerRequests serverRequest = new ServerRequests(this);
-            serverRequest.updateUserDataInBackgroud(userData.getString("username",""), "country",
+            serverRequest.updateUserDataInBackground(userData.getString("username", ""), "country",
                     newCountry, new GetUserCallback() {
                         @Override
                         public void done(User returnedUser) {
                             userDatabase.updateUserCountry(newCountry);
+                            etNewCountry.setText("");
                             Toast.makeText(UserSettings.this, "Country changed successfully", Toast.LENGTH_LONG).show();
                         }
                     });
@@ -101,15 +109,16 @@ public class UserSettings extends AppCompatActivity {
     }
 
     public void changeCity (View view) {
-        final String newCity = etNewCity.toString();
+        final String newCity = etNewCity.getText().toString();
 
         if (newCity != null) {
             ServerRequests serverRequest = new ServerRequests(this);
-            serverRequest.updateUserDataInBackgroud(userData.getString("username",""), "City",
+            serverRequest.updateUserDataInBackground(userData.getString("username", ""), "City",
                     newCity, new GetUserCallback() {
                         @Override
                         public void done(User returnedUser) {
                             userDatabase.updateUserCity(newCity);
+                            etNewCity.setText("");
                             Toast.makeText(UserSettings.this, "City changed successfully", Toast.LENGTH_LONG).show();
                         }
                     });

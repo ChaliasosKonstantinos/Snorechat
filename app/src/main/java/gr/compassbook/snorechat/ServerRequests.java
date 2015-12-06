@@ -40,7 +40,7 @@ public class ServerRequests {
     }
 
     //Fetches User's data from the server
-    public User fetchUserDataInBackgroud(User userData, GetUserCallback userCallback) {
+    public User fetchUserDataInBackground(User userData, GetUserCallback userCallback) {
         progressDialog.show();
         new FetchUserDataAsyncTask(userData, userCallback).execute();
         return null;
@@ -129,7 +129,7 @@ public class ServerRequests {
     }
 
     //Stores User's data on the server
-    public User storeUserDataInBackgroud(User userData, GetUserCallback userCallback) {
+    public User storeUserDataInBackground(User userData, GetUserCallback userCallback) {
         progressDialog.show();
         new StoreUserDataAsyncTask(userData, userCallback).execute();
         return null;
@@ -185,7 +185,7 @@ public class ServerRequests {
     }
 
     //Updates User's data on the server
-    public User updateUserDataInBackgroud(String username, String fieldToUpdate, String dataToUpdate, GetUserCallback userCallback) {
+    public User updateUserDataInBackground(String username, String fieldToUpdate, String dataToUpdate, GetUserCallback userCallback) {
         progressDialog.show();
         new UpdateUserDataAsyncTask(username, fieldToUpdate, dataToUpdate, userCallback).execute();
         return null;

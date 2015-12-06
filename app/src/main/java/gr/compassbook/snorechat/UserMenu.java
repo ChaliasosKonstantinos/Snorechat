@@ -16,6 +16,11 @@ public class UserMenu extends AppCompatActivity {
         setContentView(R.layout.activity_user_menu);
     }
 
+    //Show User Settings
+    public void showUserSettings(View view) {
+        startActivity(new Intent(this, UserSettings.class));
+    }
+
     //Log User out
     public void logUserOut(View view) {
         userData = new UserLocalStore(this);
