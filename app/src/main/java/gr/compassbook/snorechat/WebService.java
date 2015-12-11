@@ -15,7 +15,7 @@ public class WebService {
     //Namespace of the Webservice - can be found in WSDL
     private static String NAMESPACE = "http://androidcon.com/";
     //Webservice URL - WSDL File location
-    private static String URL = "http://localhost:8080/SnorechatWebServices/helloAndroid?WSDL";
+    private static String URL = "http://83.212.117.95:8080/SnoreChatWeb-1.0-SNAPSHOT/helloAndroid?wsdl";
     //SOAP Action URI again Namespace + Web method name
     private static String SOAP_ACTION = "http://androidcon.com/";
 
