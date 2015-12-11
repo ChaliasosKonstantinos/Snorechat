@@ -63,20 +63,36 @@
 
     </RelativeLayout>
 
-    <Space
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.05" />
+        android:layout_height="match_parent">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="WebServices"
-        android:background="#7a4444"
-        android:textColor="#d4d3d3"
-        android:textSize="22dp"
-        android:id="@+id/button"
-        android:onClick="callWebServices"/>
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="WebServices"
+            android:background="#7a4444"
+            android:textColor="#d4d3d3"
+            android:textSize="22dp"
+            android:id="@+id/button"
+            android:onClick="callWebServices"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="false" />
+
+        <Button
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="SEND MESSAGE"
+            android:id="@+id/button2"
+            android:layout_gravity="center_horizontal"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/button"
+            android:layout_alignParentEnd="true"
+            android:textColor="#d4d3d3"
+            android:textSize="22dp"
+            android:background="#7a4444"
+            android:onClick="callChatActivity"/>
+    </RelativeLayout>
 
 
 </LinearLayout>
