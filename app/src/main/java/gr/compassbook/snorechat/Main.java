@@ -50,4 +50,9 @@ public class Main extends AppCompatActivity {
         Intent intentcallws = new Intent(this,CallWebServices.class);
         startActivity(intentcallws);
     }
+
+    public void callChatActivity(View view) {
+        Intent intentCallChatWS = new Intent(this,ChatActivity.class);
+        startActivity(intentCallChatWS);
+    }
 }
