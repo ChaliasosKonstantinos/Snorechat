@@ -6,6 +6,10 @@ import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapPrimitive;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Mike&Katerina on 11/12/2015.
  */
@@ -48,6 +52,9 @@ public class ChatActivityWs {
             SoapPrimitive response = (SoapPrimitive) envelope.getResponse();
             // Assign it to resTxt variable static variable
             //resTxt = response.toString();
+
+
+
 
         } catch (Exception e) {
             //Print error
