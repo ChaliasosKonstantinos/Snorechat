@@ -8,91 +8,96 @@
     tools:context="gr.compassbook.snorechat.Main"
     android:weightSum="1">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/applicationLogo"
+    <Space
+        android:layout_width="20px"
+        android:layout_height="20px" />
+
+    <Button
+        android:text="Login"
+        android:id="@+id/bShowLogin"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+        android:textColor="#d4d3d3"
+        android:textStyle="bold"
+        android:background="#7a4444"
+        android:onClick="showLogin"
+        android:textSize="22dp"
+        android:textAlignment="center"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_gravity="center" />
+
+    <Space
+        android:layout_width="20px"
+        android:layout_height="20px" />
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+        android:text="Register"
+        android:id="@+id/bShowRegister"
+        android:textSize="22dp"
+        android:background="#7a4444"
+        android:textColor="#d4d3d3"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="showRegister"
+        android:layout_gravity="center" />
+
+    <Space
+        android:layout_width="20px"
+        android:layout_height="20px" />
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+        android:text="SEND MESSAGE"
+        android:id="@+id/bSendMessage"
         android:layout_gravity="center_horizontal"
-        android:src="@mipmap/ic_launcher" />
+        android:textColor="#d4d3d3"
+        android:textSize="22dp"
+        android:background="#7a4444"
+        android:onClick="callChatActivity"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <Space
+        android:layout_width="20px"
+        android:layout_height="20px" />
 
-        <Button
-            android:text="Login"
-            android:id="@+id/bShowLogin"
-            android:layout_width="115dp"
-            android:layout_height="50dp"
-            android:textColor="#d4d3d3"
-            android:textStyle="bold"
-            android:background="#7a4444"
-            android:onClick="showLogin"
-            android:textSize="22dp"
-            android:textAlignment="center"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true" />
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+        android:text="WebServices"
+        android:background="#7a4444"
+        android:textColor="#d4d3d3"
+        android:textSize="22dp"
+        android:id="@+id/bWebServices"
+        android:onClick="callWebServices"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_gravity="center" />
 
-        <Button
-            android:layout_width="115dp"
-            android:layout_height="50dp"
-            android:text="Register"
-            android:id="@+id/bShowRegister"
-            android:textSize="22dp"
-            android:background="#7a4444"
-            android:textColor="#d4d3d3"
-            android:textAlignment="center"
-            android:textStyle="bold"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:onClick="showRegister" />
+    <Space
+        android:layout_width="20px"
+        android:layout_height="20px" />
 
-        <Button
-            android:layout_width="115dp"
-            android:layout_height="50dp"
-            android:text="@string/about_us_text"
-            android:textStyle="bold"
-            android:textColor="#d4d3d3"
-            android:id="@+id/bAbout"
-            android:background="#7a4444"
-            android:onClick="showAbout"
-            android:textSize="22dp"
-            android:textAlignment="center"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true" />
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <Button
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:text="WebServices"
-            android:background="#7a4444"
-            android:textColor="#d4d3d3"
-            android:textSize="22dp"
-            android:id="@+id/button"
-            android:onClick="callWebServices"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="false" />
-
-        <Button
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:text="SEND MESSAGE"
-            android:id="@+id/button2"
-            android:layout_gravity="center_horizontal"
-            android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/button"
-            android:layout_alignParentEnd="true"
-            android:textColor="#d4d3d3"
-            android:textSize="22dp"
-            android:background="#7a4444"
-            android:onClick="callChatActivity"/>
-    </RelativeLayout>
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+        android:text="@string/about_us_text"
+        android:textStyle="bold"
+        android:textColor="#d4d3d3"
+        android:id="@+id/bAbout"
+        android:background="#7a4444"
+        android:onClick="showAbout"
+        android:textSize="22dp"
+        android:textAlignment="center"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="center" />
 
 
 </LinearLayout>
