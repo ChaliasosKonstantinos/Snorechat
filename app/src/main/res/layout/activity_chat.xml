@@ -5,6 +5,12 @@
     android:weightSum="1">
 
     <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="400dp"
+        android:id="@+id/messagesList"
+        android:layout_gravity="right" />
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Enter Message:"
@@ -18,10 +24,34 @@
         android:ems="10"
         android:id="@+id/MessageTextField" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Send"
-        android:id="@+id/bSendWS"
-        android:onClick="SendMessageToTxt"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Send"
+            android:id="@+id/bSendWS"
+            android:onClick="SendMessageToTxt"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="REFRESH"
+            android:id="@+id/bRefresh"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/bSendWS"
+            android:onClick="refreshMessages"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CLEAR"
+            android:id="@+id/bClearMessages"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/bRefresh"
+            android:onClick="ClearMessages"/>
+    </RelativeLayout>
+
 </LinearLayout>
