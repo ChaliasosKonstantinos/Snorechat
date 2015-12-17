@@ -8,6 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Mike&Katerina on 11/12/2015.
  */
@@ -16,6 +19,7 @@ public class ChatActivity extends AppCompatActivity {
     Button Send;
     String SaveMessage;
     TextView ShowMessage;
+    List<String> mList = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +42,10 @@ public class ChatActivity extends AppCompatActivity {
 
     public void refreshMessages(View view) {
 
+   AsyncReadFile read = new AsyncReadFile();
+        read.execute();
+
+
     }
 
     public void ClearMessages(View view) {
@@ -51,4 +59,28 @@ public class ChatActivity extends AppCompatActivity {
             return null;
         }
     }
+
+    private class AsyncReadFile extends AsyncTask<List<String >,Void,Void>{
+
+
+        @Override
+        protected Void doInBackground(List<String>... params) {
+            mList=ChatActivityWs.MessArchive("readFileOperation");
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+           //super.onPostExecute(aVoid);
+            String line ;
+           for(int i=0 ; i<mList.size();i++){
+               line= mList.get(i);
+               ShowMessage.setText(ShowMessage.getText().toString()+ line);
+           }
+
+        }
+
+    }
+   
+
 }

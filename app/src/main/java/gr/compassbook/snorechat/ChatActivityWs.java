@@ -1,6 +1,7 @@
 package gr.compassbook.snorechat;
 
 import org.ksoap2.SoapEnvelope;
+import org.ksoap2.serialization.KvmSerializable;
 import org.ksoap2.serialization.PropertyInfo;
 import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapPrimitive;
@@ -43,8 +44,6 @@ public class ChatActivityWs {
         // Create HTTP call object
         HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
 
-
-
         try {
             // Invoke web service
             androidHttpTransport.call(SOAP_ACTION+webMethName, envelope);
@@ -52,9 +51,6 @@ public class ChatActivityWs {
             SoapPrimitive response = (SoapPrimitive) envelope.getResponse();
             // Assign it to resTxt variable static variable
             //resTxt = response.toString();
-
-
-
 
         } catch (Exception e) {
             //Print error
@@ -64,6 +60,31 @@ public class ChatActivityWs {
         }
         //Return resTxt to calling object
 
+    }
+
+    public static List<String> MessArchive(String webMethName){
+        List<String> messages = new ArrayList<String>();
+        SoapObject request = new SoapObject(NAMESPACE, webMethName);
+        // Property which holds input parameters
+        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(
+                SoapEnvelope.VER11);
+        // Set output SOAP object
+        envelope.setOutputSoapObject(request);
+        // Create HTTP call object
+        HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
+        try {
+            // Invoke web service
+            androidHttpTransport.call(SOAP_ACTION+webMethName, envelope);
+            KvmSerializable kw = (KvmSerializable)envelope.bodyIn;
+            for(int i=0;i<kw.getPropertyCount();i++){
+                messages.add(kw.getProperty(i).toString());
+            }
+
+        } catch (Exception e) {
+            //Print error
+            e.printStackTrace();
+        }
+        return messages;
     }
 
 
