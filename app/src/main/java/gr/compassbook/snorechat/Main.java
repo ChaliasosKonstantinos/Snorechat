@@ -44,15 +44,4 @@ public class Main extends AppCompatActivity {
         Intent intentRegister = new Intent(this, Register.class);
         startActivity(intentRegister);
     }
-
-
-    public void callWebServices(View view) {
-        Intent intentcallws = new Intent(this,CallWebServices.class);
-        startActivity(intentcallws);
-    }
-
-    public void callChatActivity(View view) {
-        Intent intentCallChatWS = new Intent(this,ChatActivity.class);
-        startActivity(intentCallChatWS);
-    }
 }

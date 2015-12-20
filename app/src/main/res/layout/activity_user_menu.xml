@@ -14,23 +14,14 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="4dp"
         android:layout_marginBottom="4dp"
-        android:textSize="25sp" />
+        android:textSize="25sp"
+        android:onClick="showChatActivity" />
 
     <Button
         android:layout_width="250dp"
         android:layout_height="75dp"
         android:text="CAMERA"
         android:id="@+id/bCamera"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="4dp"
-        android:textSize="25sp" />
-
-    <Button
-        android:layout_width="250dp"
-        android:layout_height="75dp"
-        android:text="CONTACTS"
-        android:id="@+id/bContacts"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="4dp"
         android:layout_marginBottom="4dp"
@@ -46,16 +37,6 @@
         android:layout_marginBottom="4dp"
         android:textSize="25sp"
         android:onClick="showUserSettings" />
-
-    <Button
-        android:layout_width="250dp"
-        android:layout_height="75dp"
-        android:text="HISTORY"
-        android:id="@+id/bHistory"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="4dp"
-        android:textSize="25sp" />
 
     <Button
         android:layout_width="250dp"

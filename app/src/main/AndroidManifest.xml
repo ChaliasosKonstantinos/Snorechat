@@ -24,7 +24,6 @@
         <activity android:name=".UserMenu" />
         <activity android:name=".UserSettings" >
         </activity>
-        <activity android:name=".CallWebServices"/>
         <activity android:name=".ChatActivity"/>
     </application>
 

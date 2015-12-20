@@ -50,35 +50,9 @@
         android:layout_width="20px"
         android:layout_height="20px" />
 
-    <Button
-        android:layout_width="150dp"
-        android:layout_height="70dp"
-        android:text="SEND MESSAGE"
-        android:id="@+id/bSendMessage"
-        android:layout_gravity="center_horizontal"
-        android:textColor="#d4d3d3"
-        android:textSize="22dp"
-        android:background="#7a4444"
-        android:onClick="callChatActivity"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true" />
-
     <Space
         android:layout_width="20px"
         android:layout_height="20px" />
-
-    <Button
-        android:layout_width="150dp"
-        android:layout_height="70dp"
-        android:text="WebServices"
-        android:background="#7a4444"
-        android:textColor="#d4d3d3"
-        android:textSize="22dp"
-        android:id="@+id/bWebServices"
-        android:onClick="callWebServices"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_gravity="center" />
 
     <Space
         android:layout_width="20px"
