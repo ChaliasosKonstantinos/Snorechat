@@ -21,6 +21,11 @@ public class UserMenu extends AppCompatActivity {
         startActivity(new Intent(this, UserSettings.class));
     }
 
+    //Show Chat Activity
+    public void showChatActivity(View view) {
+        startActivity(new Intent(this, ChatActivity.class));
+    }
+
     //Log User out
     public void logUserOut(View view) {
         userData = new UserLocalStore(this);

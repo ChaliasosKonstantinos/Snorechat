@@ -1,8 +1,10 @@
 package gr.compassbook.snorechat;
 
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,6 +22,7 @@ public class ChatActivity extends AppCompatActivity {
     String SaveMessage;
     TextView ShowMessage;
     List<String> mList = new ArrayList<String>();
+    SharedPreferences userData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,12 +31,16 @@ public class ChatActivity extends AppCompatActivity {
         message = (EditText) findViewById(R.id.MessageTextField);
         Send = (Button) findViewById(R.id.bSendWS);
         ShowMessage = (TextView) findViewById(R.id.messagesList);
-
+        ShowMessage.setMovementMethod(new ScrollingMovementMethod());
     }
 
     public void SendMessageToTxt(View view) {
         SaveMessage = message.getText().toString();
-        ShowMessage.setText(ShowMessage.getText().toString()+ message.getText().toString());
+        userData = getSharedPreferences("userDetails",0);
+        String username = userData.getString("username", "");
+        ShowMessage.setText(ShowMessage.getText().toString()+ "\n" +username + ":  " +
+                message.getText().toString());
+        message.setText("");
         AsyncCallWebServices task = new AsyncCallWebServices();
         task.execute();
 
@@ -42,7 +49,8 @@ public class ChatActivity extends AppCompatActivity {
 
     public void refreshMessages(View view) {
 
-   AsyncReadFile read = new AsyncReadFile();
+        ShowMessage.setText("");
+        AsyncReadFile read = new AsyncReadFile();
         read.execute();
 
 
@@ -53,9 +61,14 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     private class AsyncCallWebServices extends AsyncTask<String, Void, Void> {
+        String username;
+
         @Override
         protected Void doInBackground(String... params) {
-            ChatActivityWs.invokeChatWS(SaveMessage, "chatOperation");
+            userData = getSharedPreferences("userDetails",0);
+            username = userData.getString("username", "");
+            System.out.println(username);
+            ChatActivityWs.invokeChatWS(username, SaveMessage, "chatOperation");
             return null;
         }
     }
@@ -71,13 +84,15 @@ public class ChatActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-           //super.onPostExecute(aVoid);
-            String line ;
-           for(int i=0 ; i<mList.size();i++){
-               line= mList.get(i);
-               ShowMessage.setText(ShowMessage.getText().toString()+ line);
-           }
+            super.onPostExecute(aVoid);
+            String newMessage ;
 
+
+            for(int i=0 ; i<mList.size();i++){
+                newMessage = mList.get(i);
+                ShowMessage.setText(ShowMessage.getText().toString() + "\n" + newMessage);
+
+            }
         }
 
     }

@@ -22,20 +22,25 @@ public class ChatActivityWs {
     //SOAP Action URI again Namespace + Web method name
     private static String SOAP_ACTION = "http://WebServices.com/";
 
-    public static void invokeChatWS(String name, String webMethName) {
+    public static void invokeChatWS(String username, String message, String webMethName) {
         //String resTxt = null;
         // Create request
         SoapObject request = new SoapObject(NAMESPACE, webMethName);
         // Property which holds input parameters
-        PropertyInfo sayHelloPI = new PropertyInfo();
+        PropertyInfo params = new PropertyInfo();
+        params.setName("username");
+        params.setValue(username);
+        params.setType(String.class);
+        PropertyInfo params2 = new PropertyInfo();
         // Set Name
-        sayHelloPI.setName("message");
+        params2.setName("message");
         // Set Value
-        sayHelloPI.setValue(name);
+        params2.setValue(message);
         // Set dataType
-        sayHelloPI.setType(String.class);
+        params2.setType(String.class);
         // Add the property to request object
-        request.addProperty(sayHelloPI);
+        request.addProperty(params);
+        request.addProperty(params2);
         // Create envelope
         SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(
                 SoapEnvelope.VER11);
