@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.List;
+
 public class Login extends AppCompatActivity {
 
     EditText etUsername, etPassword;
@@ -42,6 +44,11 @@ public class Login extends AppCompatActivity {
                     dialogBuilder.setPositiveButton("OK", null);
                     dialogBuilder.show();
                 }
+            }
+
+            @Override
+            public void done2(List usernames) {
+
             }
         });
     }

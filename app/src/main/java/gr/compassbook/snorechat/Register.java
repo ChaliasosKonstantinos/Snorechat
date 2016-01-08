@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.List;
+
 public class Register extends AppCompatActivity {
 
     EditText etUsername, etPassword, etEmail, etCountry, etCity;
@@ -38,6 +40,11 @@ public class Register extends AppCompatActivity {
             @Override
             public void done(User returnedUser) {
                 showLogin();
+            }
+
+            @Override
+            public void done2(List usernames) {
+
             }
         });
 

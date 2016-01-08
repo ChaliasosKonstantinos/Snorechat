@@ -35,4 +35,9 @@ public class UserMenu extends AppCompatActivity {
         startActivity(new Intent(this, Main.class));
 
     }
+
+    //Show JsonViewer
+    public void showJsonActivity(View view) {
+        startActivity(new Intent(this, Jsondecode.class));
+    }
 }

@@ -49,4 +49,15 @@
         android:textSize="25sp"
         android:onClick="logUserOut" />
 
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="75dp"
+        android:text="Json"
+        android:id="@+id/bJson"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:textSize="25sp"
+        android:onClick="showJsonActivity" />
+
 </LinearLayout>

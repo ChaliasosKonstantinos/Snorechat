@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -18,7 +19,9 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -264,4 +267,84 @@ public class ServerRequests {
         return result.toString();
     }
 
+    // ---------------------------------------------------------------------------------------------------------------------
+
+    public List fetchAllUsersInBackground(GetUserCallback userCallback) {
+        progressDialog.show();
+        new FetchAllUsersAsyncTask(userCallback).execute();
+        return null;
+    }
+
+    public class FetchAllUsersAsyncTask extends AsyncTask<Void, Void, List> {
+
+
+        GetUserCallback userCallback;
+
+        //FetchUserDataAsyncTask constructor
+        public FetchAllUsersAsyncTask(GetUserCallback userCallback) {
+            this.userCallback = userCallback;
+        }
+
+
+        @Override
+        protected List doInBackground(Void... params) {
+            User returnedUser = null;
+            List<String> usernames = new ArrayList<>();
+
+            try {
+
+                URL url = new URL(SERVER_ADDRESS + "fetchAllUsers.php");
+                urlConnection = (HttpURLConnection) url.openConnection();
+                urlConnection.setReadTimeout(10000);
+                urlConnection.setConnectTimeout(15000);
+                urlConnection.setRequestMethod("GET");
+                urlConnection.setDoInput(true);
+                //urlConnection.setDoOutput(true);
+
+                urlConnection.connect();
+
+                InputStream is = urlConnection.getInputStream();
+                reader = new BufferedReader(new InputStreamReader(is));
+
+                StringBuffer buffer = new StringBuffer();
+
+                String line = "";
+                while ((line = reader.readLine()) != null) {
+                    buffer.append(line);
+                }
+
+                String result = buffer.toString();
+                JSONObject jObject = new JSONObject(result);
+
+
+                if (jObject.length() != 0) {
+
+                    usernames.add(jObject.getString("username"));
+                }
+
+
+            } catch (JSONException | IOException e) {
+                e.printStackTrace();
+            } finally {
+                if (urlConnection != null) {
+                    urlConnection.disconnect();
+                }
+                try {
+                    if (reader != null) {
+                        reader.close();
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            return usernames;
+        }
+
+        @Override
+        protected void onPostExecute(List usernames) {
+            progressDialog.dismiss();
+            userCallback.done2(usernames);
+            super.onPostExecute(usernames);
+        }
+    }
 }
