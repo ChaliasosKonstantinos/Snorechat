@@ -46,6 +46,13 @@ public class UserLocalStore {
         spEditor.commit();
     }
 
+    //Setting the user "Logged In"
+    public void setReceiver(String receiver) {
+        SharedPreferences.Editor spEditor = userLocalDatabase.edit();
+        spEditor.putString("receiver", receiver);
+        spEditor.commit();
+    }
+
     //Check if the user is logged in
     public boolean isLoggedIn() {
         if (userLocalDatabase.getBoolean("loggedIn", false) == true) {

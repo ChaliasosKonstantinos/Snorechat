@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.List;
+
 
 public class UserSettings extends AppCompatActivity {
 
@@ -43,6 +45,11 @@ public class UserSettings extends AppCompatActivity {
                             etNewUsername.setText("");
                             Toast.makeText(UserSettings.this, "Username changed successfully", Toast.LENGTH_LONG).show();
                         }
+
+                        @Override
+                        public void done2(List usernames) {
+
+                        }
                     });
         } else {
             showAlertDialog("Username field is empty", "OK");
@@ -63,6 +70,11 @@ public class UserSettings extends AppCompatActivity {
                             etNewPassword.setText("");
                             Toast.makeText(UserSettings.this, "Password changed successfully", Toast.LENGTH_LONG).show();
                         }
+
+                        @Override
+                        public void done2(List usernames) {
+
+                        }
                     });
         } else {
             showAlertDialog("Password field is empty", "OK");
@@ -81,6 +93,11 @@ public class UserSettings extends AppCompatActivity {
                             userDatabase.updateUserEmail(newEmail);
                             etNewEmail.setText("");
                             Toast.makeText(UserSettings.this, "Email changed successfully", Toast.LENGTH_LONG).show();
+                        }
+
+                        @Override
+                        public void done2(List usernames) {
+
                         }
                     });
         } else {
@@ -102,6 +119,11 @@ public class UserSettings extends AppCompatActivity {
                             etNewCountry.setText("");
                             Toast.makeText(UserSettings.this, "Country changed successfully", Toast.LENGTH_LONG).show();
                         }
+
+                        @Override
+                        public void done2(List usernames) {
+
+                        }
                     });
         } else {
             showAlertDialog("Country field is empty", "OK");
@@ -120,6 +142,11 @@ public class UserSettings extends AppCompatActivity {
                             userDatabase.updateUserCity(newCity);
                             etNewCity.setText("");
                             Toast.makeText(UserSettings.this, "City changed successfully", Toast.LENGTH_LONG).show();
+                        }
+
+                        @Override
+                        public void done2(List usernames) {
+
                         }
                     });
         } else {
