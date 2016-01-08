@@ -318,7 +318,7 @@ public class ServerRequests {
 
 
                 if (jObject.length() != 0) {
-
+                    //TOFIX
                     usernames.add(jObject.getString("username"));
                 }
 
