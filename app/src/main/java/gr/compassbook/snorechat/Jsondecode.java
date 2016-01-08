@@ -34,9 +34,9 @@ public class Jsondecode extends AppCompatActivity {
             @Override
             public void done2(List usernames) {
 
-                String myString;
+                String myString = "";
                 for (int i = 0; i<usernames.size(); i++) {
-                    myString = usernames.get(i).toString();
+                    myString = myString + "\n" + usernames.get(i).toString();
                     JsonViewer.setText(myString);
                 }
 

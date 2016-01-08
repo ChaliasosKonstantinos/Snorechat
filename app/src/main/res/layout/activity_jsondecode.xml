@@ -12,7 +12,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Text"
+        android:text=""
         android:id="@+id/JsonViewer"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"

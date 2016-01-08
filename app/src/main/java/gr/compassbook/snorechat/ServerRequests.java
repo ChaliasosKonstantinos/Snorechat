@@ -315,12 +315,16 @@ public class ServerRequests {
 
                 String result = buffer.toString();
                 JSONObject jObject = new JSONObject(result);
+                JSONArray jArray = jObject.getJSONArray("username");
 
-
-                if (jObject.length() != 0) {
-                    //TOFIX
-                    usernames.add(jObject.getString("username"));
+                for (int i=0; i<jArray.length(); i++) {
+                    usernames.add(jArray.getString(i));
                 }
+                /*if (jObject.length() != 0) {
+                    for (int i = 0; i < jObject.length(); i++) {
+                        usernames.add();
+                    }
+                } */
 
 
             } catch (JSONException | IOException e) {
