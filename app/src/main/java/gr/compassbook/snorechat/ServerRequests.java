@@ -269,7 +269,7 @@ public class ServerRequests {
 
     // ---------------------------------------------------------------------------------------------------------------------
 
-    public List<String> fetchAllUsersInBackground(GetUserCallback userCallback) {
+    public List fetchAllUsersInBackground(GetUserCallback userCallback) {
         progressDialog.show();
         new FetchAllUsersAsyncTask(userCallback).execute();
         return null;
@@ -318,6 +318,7 @@ public class ServerRequests {
 
                 for (int i=0; i<jArray.length(); i++) {
                     usernames.add(jArray.getString(i));
+
                 }
 
 

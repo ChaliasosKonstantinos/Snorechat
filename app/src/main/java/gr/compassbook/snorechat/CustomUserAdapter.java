@@ -1,13 +1,17 @@
 package gr.compassbook.snorechat;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.util.List;
+
+
 
 /**
  * Created by Konstantinos on 8/1/2016.
@@ -15,7 +19,7 @@ import java.util.List;
 class CustomUserAdapter extends ArrayAdapter<String>{
 
     public CustomUserAdapter(Context context, List<String> usernames) {
-        super(context, R.layout.custom_row_user ,usernames);
+        super(context, R.layout.custom_row_user, usernames);
     }
 
     @Override

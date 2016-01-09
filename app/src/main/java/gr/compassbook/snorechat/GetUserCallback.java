@@ -1,6 +1,7 @@
 package gr.compassbook.snorechat;
 
 import java.util.List;
+import gr.compassbook.snorechat.Jsondecode;
 
 /**
  * Created by Konstantinos
@@ -8,7 +9,7 @@ import java.util.List;
 public interface GetUserCallback {
 
     void done(User returnedUser);
-    List<String> done2(List<String> usernames);
+    void done2(List<String> usernames);
 
 
 }
