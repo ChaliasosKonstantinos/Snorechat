@@ -351,7 +351,6 @@ public class ServerRequests {
 
     //Sends a private message on the server
     public List sendPrivateMessageInBackground(PrivateMessage messageToSend, GetUserCallback userCallback) {
-        progressDialog.show();
         new SendPrivateMessageAsyncTask(messageToSend, userCallback).execute();
         return null;
     }
@@ -361,7 +360,7 @@ public class ServerRequests {
         PrivateMessage messageToSend;
         GetUserCallback userCallback;
 
-        //StorePrivateMessageAsyncTask constructor
+        //SendPrivateMessageAsyncTask constructor
         public SendPrivateMessageAsyncTask(PrivateMessage messageToSend, GetUserCallback userCallback) {
             this.messageToSend = messageToSend;
             this.userCallback = userCallback;
@@ -396,7 +395,6 @@ public class ServerRequests {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            progressDialog.dismiss();
             userCallback.done(null);
             super.onPostExecute(aVoid);
         }
@@ -405,7 +403,6 @@ public class ServerRequests {
     // ---------------------------------------------------------------------------------------------------------------------
 
     public List fetchPrivateConvInBackground(PrivateMessage convDetails, GetUserCallback userCallback) {
-        progressDialog.show();
         new FetchPrivateConvAsyncTask(convDetails, userCallback).execute();
         return null;
     }
@@ -485,7 +482,6 @@ public class ServerRequests {
 
         @Override
         protected void onPostExecute(List<String> conv) {
-            progressDialog.dismiss();
             userCallback.done2(conv);
             super.onPostExecute(conv);
         }

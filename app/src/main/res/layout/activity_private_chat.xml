@@ -11,30 +11,44 @@
     android:baselineAligned="false">
 
 
-    <Button
+
+    <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Send"
-        android:id="@+id/bSend"
+        android:id="@+id/imgbSend"
+        android:layout_toEndOf="@+id/etMessage"
+        android:src="@drawable/ic_action_send"
         android:layout_alignParentBottom="true"
+        android:onClick="sendPrivateMessage"/>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imgbRefresh"
+        android:layout_toEndOf="@+id/imgbSend"
+        android:src="@drawable/ic_action_refresh"
         android:layout_alignParentEnd="true"
-        android:onClick="sendPrivateMessage" />
+        android:layout_alignParentBottom="true"
+        android:onClick="refreshChatView"/>
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:id="@+id/etMessage"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/bSend" />
+         />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text=""
         android:id="@+id/tChat"
+        android:textSize="20sp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_above="@+id/bSend" />
+        />
+
+
 
 </RelativeLayout>

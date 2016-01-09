@@ -52,23 +52,33 @@ public class PrivateChat extends AppCompatActivity {
 
         message = etMessage.getText().toString();
 
-        PrivateMessage messageToSend = new PrivateMessage(sender, receiver, message);
+        if (!message.isEmpty()) {
+            PrivateMessage messageToSend = new PrivateMessage(sender, receiver, message);
 
-        ServerRequests serverRequest = new ServerRequests(this);
-        serverRequest.sendPrivateMessageInBackground(messageToSend, new GetUserCallback() {
-            @Override
-            public void done(User returnedUser) {
-                fetchPrivateConv();
-            }
+            ServerRequests serverRequest = new ServerRequests(this);
+            serverRequest.sendPrivateMessageInBackground(messageToSend, new GetUserCallback() {
+                @Override
+                public void done(User returnedUser) {
+                    etMessage.setText("");
+                    fetchPrivateConv();
+                }
 
-            @Override
-            public void done2(List<String> returnedList) {
-                updateChatView(returnedList);
-            }
-        });
-
+                @Override
+                public void done2(List<String> returnedList) {
+                    updateChatView(returnedList);
+                }
+            });
+        } else {
+            showAlertDialog("Write a message", "OK");
+        }
     }
 
+    //Refresh the whole Conv
+    public void refreshChatView(View view) {
+        fetchPrivateConv();
+    }
+
+    //Fetches the whole of a Private Conv
     public void fetchPrivateConv() {
         PrivateMessage messageToSend = new PrivateMessage(sender, receiver);
 
@@ -86,13 +96,21 @@ public class PrivateChat extends AppCompatActivity {
         });
     }
 
+    //Updates the Conv view
     private void updateChatView(List<String> returnedList) {
+        tChat.setText("");
 
         for (int i=0; i<returnedList.size(); i+=2) {
             tChat.setText(tChat.getText() + "\n" + returnedList.get(i) + ": " + returnedList.get(i + 1));
         }
     }
 
-
+    //Shows an alert Dialog
+    private void showAlertDialog(String message, String positiveButton) {
+        android.app.AlertDialog.Builder dialogBuilder = new android.app.AlertDialog.Builder(PrivateChat.this);
+        dialogBuilder.setMessage(message);
+        dialogBuilder.setPositiveButton(positiveButton, null);
+        dialogBuilder.show();
+    }
 }
 
