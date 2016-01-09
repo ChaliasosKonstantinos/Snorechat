@@ -2,8 +2,8 @@ package gr.compassbook.snorechat;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 public class Main extends AppCompatActivity {
@@ -44,4 +44,5 @@ public class Main extends AppCompatActivity {
         Intent intentRegister = new Intent(this, Register.class);
         startActivity(intentRegister);
     }
+
 }

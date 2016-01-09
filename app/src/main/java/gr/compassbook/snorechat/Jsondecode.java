@@ -1,57 +1,59 @@
 package gr.compassbook.snorechat;
 
-import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.AdapterView;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 
 import java.util.List;
 
 public class Jsondecode extends AppCompatActivity {
 
-    TextView JsonViewer;
-    UserLocalStore userDatabase;
-    SharedPreferences userData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jsondecode);
+        showUserList();
 
-        JsonViewer = (TextView) findViewById(R.id.JsonViewer);
-    }
 
-    public void showJson(View view) {
+}
+
+    private void showUserList() {
 
         ServerRequests serverRequest = new ServerRequests(this);
         serverRequest.fetchAllUsersInBackground(new GetUserCallback() {
             @Override
             public void done(User returnedUser) {
-
             }
 
             @Override
-            public void done2(List usernames) {
-
-                String myString = "";
-                for (int i = 0; i<usernames.size(); i++) {
-                    myString = myString + "\n" + usernames.get(i).toString();
-                    JsonViewer.setText(myString);
-                }
-
+            public void done2(List<String> returnedList) {
+                createUserList(returnedList);
             }
         });
-
     }
 
-    private String setReceiver(User returnedUser) {
-        userDatabase = new UserLocalStore(this);
-        userDatabase.storeUserData(returnedUser);
-        userDatabase.setReceiver(returnedUser.username);
+    private void createUserList(List<String> returnedList) {
+        String[] users = new String[returnedList.size()];
 
-        userData = getSharedPreferences("userDetails", 0);
+        for (int i=0; i<returnedList.size(); i++){
+            users[i] = returnedList.get(i);
+        }
 
-        return userData.getString("receiver", "");
+        ListAdapter myAdapter = new CustomUserAdapter(this, users);
+        ListView userListView = (ListView) findViewById(R.id.userListView);
+        userListView.setAdapter(myAdapter);
+        userListView.setItemsCanFocus(true);
+
+        userListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String selectedUser = (String) parent.getItemAtPosition(position);
+            }
+        });
     }
+
 }
