@@ -9,7 +9,7 @@
     <Button
         android:layout_width="250dp"
         android:layout_height="75dp"
-        android:text="Send Message"
+        android:text="Group Chat"
         android:id="@+id/bSendMessage"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="4dp"
@@ -20,12 +20,13 @@
     <Button
         android:layout_width="250dp"
         android:layout_height="75dp"
-        android:text="CAMERA"
-        android:id="@+id/bCamera"
+        android:text="Private Message"
+        android:id="@+id/bPrivateMessage"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="4dp"
         android:layout_marginBottom="4dp"
-        android:textSize="25sp" />
+        android:textSize="25sp"
+        android:onClick="showPrivateChatActivity"/>
 
     <Button
         android:layout_width="250dp"

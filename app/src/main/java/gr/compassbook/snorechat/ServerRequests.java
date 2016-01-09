@@ -346,4 +346,148 @@ public class ServerRequests {
             super.onPostExecute(usernames);
         }
     }
+
+    // ---------------------------------------------------------------------------------------------------------------------
+
+    //Sends a private message on the server
+    public List sendPrivateMessageInBackground(PrivateMessage messageToSend, GetUserCallback userCallback) {
+        progressDialog.show();
+        new SendPrivateMessageAsyncTask(messageToSend, userCallback).execute();
+        return null;
+    }
+
+    public class SendPrivateMessageAsyncTask extends AsyncTask<PrivateMessage,Void,Void> {
+
+        PrivateMessage messageToSend;
+        GetUserCallback userCallback;
+
+        //StorePrivateMessageAsyncTask constructor
+        public SendPrivateMessageAsyncTask(PrivateMessage messageToSend, GetUserCallback userCallback) {
+            this.messageToSend = messageToSend;
+            this.userCallback = userCallback;
+        }
+
+
+        @Override
+        protected Void doInBackground(PrivateMessage... params) {
+            HashMap<String,String> dataToSend = new HashMap<>();
+            dataToSend.put("username", messageToSend.getSender());
+            dataToSend.put("receiver", messageToSend.getReceiver());
+            dataToSend.put("message", messageToSend.getMessage());
+
+
+            try{
+                URL url = new URL(SERVER_ADDRESS + "sendMessage.php" + getQueryData(dataToSend));
+                urlConnection = (HttpURLConnection) url.openConnection();
+                urlConnection.setReadTimeout(10000);
+                urlConnection.setConnectTimeout(15000);
+                urlConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+                urlConnection.setRequestMethod("GET");
+                urlConnection.setDoOutput(true);
+                urlConnection.connect();
+                InputStream errors = (urlConnection.getErrorStream());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            progressDialog.dismiss();
+            userCallback.done(null);
+            super.onPostExecute(aVoid);
+        }
+    }
+
+    // ---------------------------------------------------------------------------------------------------------------------
+
+    public List fetchPrivateConvInBackground(PrivateMessage convDetails, GetUserCallback userCallback) {
+        progressDialog.show();
+        new FetchPrivateConvAsyncTask(convDetails, userCallback).execute();
+        return null;
+    }
+
+    public class FetchPrivateConvAsyncTask extends AsyncTask<PrivateMessage, Void, List<String>> {
+
+        PrivateMessage convDetails;
+        GetUserCallback userCallback;
+
+        //FetchAllUsersAsyncTask constructor
+        public FetchPrivateConvAsyncTask(PrivateMessage convDetails, GetUserCallback userCallback) {
+            this.convDetails = convDetails;
+            this.userCallback = userCallback;
+        }
+
+
+        @Override
+        protected List<String> doInBackground(PrivateMessage... params) {
+            HashMap<String,String> dataToSend = new HashMap<>();
+            dataToSend.put("username", convDetails.getSender());
+            dataToSend.put("receiver", convDetails.getReceiver());
+
+            List<String> conv = new ArrayList<>();
+
+
+            try {
+
+                URL url = new URL(SERVER_ADDRESS + "fetchConv.php"  + getQueryData(dataToSend));
+                urlConnection = (HttpURLConnection) url.openConnection();
+                urlConnection.setReadTimeout(10000);
+                urlConnection.setConnectTimeout(15000);
+                urlConnection.setRequestMethod("GET");
+                urlConnection.setDoInput(true);
+                //urlConnection.setDoOutput(true);
+
+                urlConnection.connect();
+
+                InputStream is = urlConnection.getInputStream();
+                reader = new BufferedReader(new InputStreamReader(is));
+
+                StringBuffer buffer = new StringBuffer();
+
+                String line = "";
+                while ((line = reader.readLine()) != null) {
+                    buffer.append(line);
+                }
+
+                String result = buffer.toString();
+                JSONObject jObject = new JSONObject(result);
+                JSONArray jArray_sender = jObject.getJSONArray("sender");
+                JSONArray jArray_message = jObject.getJSONArray("messages");
+
+                for (int i=0; i<jArray_sender.length(); i++) {
+                    conv.add(jArray_sender.getString(i));
+                    conv.add(jArray_message.getString(i));
+                }
+
+
+            } catch (JSONException | IOException e) {
+                e.printStackTrace();
+            } finally {
+                if (urlConnection != null) {
+                    urlConnection.disconnect();
+                }
+                try {
+                    if (reader != null) {
+                        reader.close();
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            return conv;
+        }
+
+
+
+        @Override
+        protected void onPostExecute(List<String> conv) {
+            progressDialog.dismiss();
+            userCallback.done2(conv);
+            super.onPostExecute(conv);
+        }
+    }
 }
