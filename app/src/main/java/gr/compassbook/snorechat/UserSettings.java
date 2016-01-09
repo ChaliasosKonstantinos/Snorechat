@@ -47,9 +47,10 @@ public class UserSettings extends AppCompatActivity {
                         }
 
                         @Override
-                        public void done2(List usernames) {
+                        public void done2(List<String> usernames) {
 
                         }
+
                     });
         } else {
             showAlertDialog("Username field is empty", "OK");
@@ -72,7 +73,7 @@ public class UserSettings extends AppCompatActivity {
                         }
 
                         @Override
-                        public void done2(List usernames) {
+                        public void done2(List<String> usernames) {
 
                         }
                     });
@@ -96,7 +97,7 @@ public class UserSettings extends AppCompatActivity {
                         }
 
                         @Override
-                        public void done2(List usernames) {
+                        public void done2(List<String> usernames) {
 
                         }
                     });
@@ -121,7 +122,7 @@ public class UserSettings extends AppCompatActivity {
                         }
 
                         @Override
-                        public void done2(List usernames) {
+                        public void done2(List<String> usernames) {
 
                         }
                     });
@@ -145,7 +146,7 @@ public class UserSettings extends AppCompatActivity {
                         }
 
                         @Override
-                        public void done2(List usernames) {
+                        public void done2(List<String> usernames) {
 
                         }
                     });

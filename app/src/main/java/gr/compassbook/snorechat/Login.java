@@ -47,9 +47,11 @@ public class Login extends AppCompatActivity {
             }
 
             @Override
-            public void done2(List usernames) {
+            public void done2(List<String> usernames) {
 
             }
+
+
         });
     }
 

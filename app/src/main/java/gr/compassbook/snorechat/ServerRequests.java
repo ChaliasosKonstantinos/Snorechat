@@ -275,20 +275,19 @@ public class ServerRequests {
         return null;
     }
 
-    public class FetchAllUsersAsyncTask extends AsyncTask<Void, Void, List> {
+    public class FetchAllUsersAsyncTask extends AsyncTask<Void, Void, List<String>> {
 
 
         GetUserCallback userCallback;
 
-        //FetchUserDataAsyncTask constructor
+        //FetchAllUsersAsyncTask constructor
         public FetchAllUsersAsyncTask(GetUserCallback userCallback) {
             this.userCallback = userCallback;
         }
 
 
         @Override
-        protected List doInBackground(Void... params) {
-            User returnedUser = null;
+        protected List<String> doInBackground(Void... params) {
             List<String> usernames = new ArrayList<>();
 
             try {
@@ -319,12 +318,8 @@ public class ServerRequests {
 
                 for (int i=0; i<jArray.length(); i++) {
                     usernames.add(jArray.getString(i));
+
                 }
-                /*if (jObject.length() != 0) {
-                    for (int i = 0; i < jObject.length(); i++) {
-                        usernames.add();
-                    }
-                } */
 
 
             } catch (JSONException | IOException e) {
@@ -345,7 +340,7 @@ public class ServerRequests {
         }
 
         @Override
-        protected void onPostExecute(List usernames) {
+        protected void onPostExecute(List<String> usernames) {
             progressDialog.dismiss();
             userCallback.done2(usernames);
             super.onPostExecute(usernames);
