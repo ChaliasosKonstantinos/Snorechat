@@ -43,9 +43,10 @@ public class Register extends AppCompatActivity {
             }
 
             @Override
-            public void done2(List usernames) {
-
+            public List<String> done2(List<String> usernames) {
+                return usernames;
             }
+
         });
 
     }

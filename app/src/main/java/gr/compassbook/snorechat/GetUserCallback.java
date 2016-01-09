@@ -8,5 +8,7 @@ import java.util.List;
 public interface GetUserCallback {
 
     void done(User returnedUser);
-    void done2(List usernames);
+    List<String> done2(List<String> usernames);
+
+
 }
