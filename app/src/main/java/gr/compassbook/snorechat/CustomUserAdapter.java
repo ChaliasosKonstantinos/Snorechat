@@ -42,12 +42,10 @@ class CustomUserAdapter extends ArrayAdapter<String>{
             public void onClick(View v) {
                 Button bUser;
                 bUser = (Button) finalCustomView.findViewById(R.id.bUserList);
-                Jsondecode jsondecode = new Jsondecode();
                 UserLocalStore userDatabase;
                 userDatabase = new UserLocalStore(getContext());
                 userDatabase.setReceiver(bUser.getText().toString());
-                String receiver = bUser.getText().toString();
-                Intent intent = new Intent(context2, ChatActivity.class);
+                Intent intent = new Intent(context2, PrivateChat.class);
                 context2.startActivity(intent);
 
 

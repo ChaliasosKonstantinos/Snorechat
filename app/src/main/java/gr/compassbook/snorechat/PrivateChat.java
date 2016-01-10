@@ -13,7 +13,6 @@ import java.util.List;
 
 public class PrivateChat extends AppCompatActivity {
 
-    UserLocalStore userDatabase;
     SharedPreferences userData;
     EditText etMessage;
     TextView tChat;
@@ -32,8 +31,7 @@ public class PrivateChat extends AppCompatActivity {
         userData = getSharedPreferences("userDetails", 0);
         sender = userData.getString("username", "");
         receiver = userData.getString("receiver", "");
-        userDatabase = new UserLocalStore(this);
-        userDatabase.setReceiver("mix");
+        //userDatabase = new UserLocalStore(this);
         etMessage = (EditText) findViewById(R.id.etMessage);
         tChat = (TextView) findViewById(R.id.tChat);
         tChat.setMovementMethod(new ScrollingMovementMethod());
@@ -142,7 +140,6 @@ public class PrivateChat extends AppCompatActivity {
     Runnable mStatusChecker = new Runnable() {
         @Override
         public void run() {
-            System.out.println("Trexw");
             fetchPrivateConv();
             mHandler.postDelayed(mStatusChecker, mInterval);
         }

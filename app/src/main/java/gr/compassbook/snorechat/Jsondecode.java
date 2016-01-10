@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -50,8 +49,6 @@ public class Jsondecode extends AppCompatActivity {
         userListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String selectedUser = (String) parent.getItemAtPosition(position);
-                Toast.makeText(Jsondecode.this, selectedUser, Toast.LENGTH_LONG).show();
             }
         });
     }
