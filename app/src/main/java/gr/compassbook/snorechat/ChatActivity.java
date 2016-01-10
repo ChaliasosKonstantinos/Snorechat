@@ -3,6 +3,7 @@ package gr.compassbook.snorechat;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
@@ -24,6 +25,9 @@ public class ChatActivity extends AppCompatActivity {
     List<String> mList = new ArrayList<String>();
     SharedPreferences userData;
 
+    private int mInterval = 2000;
+    private Handler mHandler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +36,14 @@ public class ChatActivity extends AppCompatActivity {
         Send = (Button) findViewById(R.id.bSendWS);
         ShowMessage = (TextView) findViewById(R.id.messagesList);
         ShowMessage.setMovementMethod(new ScrollingMovementMethod());
+
+        mHandler = new Handler();
+        startRepeatingTask();
     }
+
+
+    //------------------------------------OnClick-------------------------------------------------//
+
 
     public void SendMessageToTxt(View view) {
         SaveMessage = message.getText().toString();
@@ -47,7 +58,11 @@ public class ChatActivity extends AppCompatActivity {
 
     }
 
-    public void refreshMessages(View view) {
+
+    //-------------------------------------Helpers------------------------------------------------//
+
+
+    public void refreshMessages() {
 
         ShowMessage.setText("");
         AsyncReadFile read = new AsyncReadFile();
@@ -96,6 +111,24 @@ public class ChatActivity extends AppCompatActivity {
         }
 
     }
-   
+
+    //--------------------------------------Timer-------------------------------------------------//
+
+
+    Runnable mStatusChecker = new Runnable() {
+        @Override
+        public void run() {
+            refreshMessages();
+            mHandler.postDelayed(mStatusChecker, mInterval);
+        }
+    };
+
+    void startRepeatingTask() {
+        mStatusChecker.run();
+    }
+
+    void stopRepeatingTask() {
+        mHandler.removeCallbacks(mStatusChecker);
+    }
 
 }
