@@ -64,7 +64,7 @@ public class ChatActivity extends AppCompatActivity {
 
     public void refreshMessages() {
 
-        ShowMessage.setText("");
+
         AsyncReadFile read = new AsyncReadFile();
         read.execute();
 
@@ -102,7 +102,7 @@ public class ChatActivity extends AppCompatActivity {
             super.onPostExecute(aVoid);
             String newMessage ;
 
-
+            ShowMessage.setText("");
             for(int i=0 ; i<mList.size();i++){
                 newMessage = mList.get(i);
                 ShowMessage.setText(ShowMessage.getText().toString() + "\n" + newMessage);
