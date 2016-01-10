@@ -49,7 +49,7 @@
             android:text="Send"
             android:textColor="#FFFFFF"
             android:textStyle="bold"
-            android:background="#3F51B5"
+            android:background="#0d2723"
             android:id="@+id/bSendWS"
             android:onClick="SendMessageToTxt"/>
 
@@ -59,7 +59,7 @@
             android:text="CLEAR"
             android:textColor="#FFFFFF"
             android:textStyle="bold"
-            android:background="#3F51B5"
+            android:background="#0d2723"
             android:id="@+id/bClearMessages"
             android:onClick="ClearMessages"
             android:layout_alignParentTop="true"
