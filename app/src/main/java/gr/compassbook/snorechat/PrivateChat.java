@@ -2,7 +2,9 @@ package gr.compassbook.snorechat;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -17,10 +19,15 @@ public class PrivateChat extends AppCompatActivity {
     TextView tChat;
     String sender, receiver, message;
 
+    private int mInterval = 2000;
+    private Handler mHandler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_private_chat);
+
+
 
         userData = getSharedPreferences("userDetails", 0);
         sender = userData.getString("username", "");
@@ -29,6 +36,10 @@ public class PrivateChat extends AppCompatActivity {
         userDatabase.setReceiver("mix");
         etMessage = (EditText) findViewById(R.id.etMessage);
         tChat = (TextView) findViewById(R.id.tChat);
+        tChat.setMovementMethod(new ScrollingMovementMethod());
+
+        mHandler = new Handler();
+        startRepeatingTask();
 
         PrivateMessage messageToSend = new PrivateMessage(sender, receiver);
 
@@ -46,6 +57,10 @@ public class PrivateChat extends AppCompatActivity {
         });
 
     }
+
+
+    //------------------------------------OnClick-------------------------------------------------//
+
 
     //Sends the private Message
     public void sendPrivateMessage(View view) {
@@ -78,8 +93,12 @@ public class PrivateChat extends AppCompatActivity {
         fetchPrivateConv();
     }
 
+
+    //-------------------------------------Helpers------------------------------------------------//
+
+
     //Fetches the whole of a Private Conv
-    public void fetchPrivateConv() {
+    private void fetchPrivateConv() {
         PrivateMessage messageToSend = new PrivateMessage(sender, receiver);
 
         ServerRequests serverRequest = new ServerRequests(this);
@@ -105,12 +124,36 @@ public class PrivateChat extends AppCompatActivity {
         }
     }
 
+
+    //----------------------------------AlertDialog-----------------------------------------------//
+
+
     //Shows an alert Dialog
     private void showAlertDialog(String message, String positiveButton) {
         android.app.AlertDialog.Builder dialogBuilder = new android.app.AlertDialog.Builder(PrivateChat.this);
         dialogBuilder.setMessage(message);
         dialogBuilder.setPositiveButton(positiveButton, null);
         dialogBuilder.show();
+    }
+
+
+    //--------------------------------------Timer-------------------------------------------------//
+
+    Runnable mStatusChecker = new Runnable() {
+        @Override
+        public void run() {
+            System.out.println("Trexw");
+            fetchPrivateConv();
+            mHandler.postDelayed(mStatusChecker, mInterval);
+        }
+    };
+
+    void startRepeatingTask() {
+        mStatusChecker.run();
+    }
+
+    void stopRepeatingTask() {
+        mHandler.removeCallbacks(mStatusChecker);
     }
 }
 

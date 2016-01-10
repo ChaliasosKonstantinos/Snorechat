@@ -25,7 +25,7 @@
         <activity android:name=".UserSettings" />
         <activity android:name=".ChatActivity" />
         <activity android:name=".Jsondecode" />
-        <activity android:name=".PrivateChat"></activity>
+        <activity android:name=".PrivateChat" android:windowSoftInputMode="adjustPan"/>
     </application>
 
 </manifest>
