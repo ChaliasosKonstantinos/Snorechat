@@ -9,7 +9,7 @@ import gr.compassbook.snorechat.Jsondecode;
 public interface GetUserCallback {
 
     void done(User returnedUser);
-    void done2(List<String> usernames);
+    void done2(List<String> returnedList);
 
 
 }
