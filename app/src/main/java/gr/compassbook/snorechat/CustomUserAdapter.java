@@ -7,9 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Toast;
-
-import java.util.List;
 
 
 
@@ -18,18 +15,44 @@ import java.util.List;
  */
 class CustomUserAdapter extends ArrayAdapter<String>{
 
-    public CustomUserAdapter(Context context, List<String> usernames) {
+    private Context context2;
+
+    public CustomUserAdapter(Context context, String[] usernames) {
         super(context, R.layout.custom_row_user, usernames);
+        this.context2 = context;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater myInflater = LayoutInflater.from(getContext());
-        View customView = myInflater.inflate(R.layout.custom_row_user, parent, false);
 
+        View customView = convertView;
+        LayoutInflater myInflater = LayoutInflater.from(getContext());
+        customView = myInflater.inflate(R.layout.custom_row_user, parent, false);
+
+
+        Button bUser;
         String singleUser = getItem(position);
-        Button bUser = (Button) customView.findViewById(R.id.bUserList);
+        bUser = (Button) customView.findViewById(R.id.bUserList);
         bUser.setText(singleUser);
+
+        final View finalCustomView = customView;
+        bUser.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Button bUser;
+                bUser = (Button) finalCustomView.findViewById(R.id.bUserList);
+                Jsondecode jsondecode = new Jsondecode();
+                UserLocalStore userDatabase;
+                userDatabase = new UserLocalStore(getContext());
+                userDatabase.setReceiver(bUser.getText().toString());
+                String receiver = bUser.getText().toString();
+                Intent intent = new Intent(context2, ChatActivity.class);
+                context2.startActivity(intent);
+
+
+            }
+        });
 
         return customView;
     }

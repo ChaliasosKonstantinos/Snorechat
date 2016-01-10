@@ -8,7 +8,6 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Jsondecode extends AppCompatActivity {
@@ -18,48 +17,45 @@ public class Jsondecode extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jsondecode);
-        List<String> adapterData = new ArrayList<>();
-        adapterData = setReceiver(adapterData);
-        final ListAdapter myAdapter = new CustomUserAdapter(this, adapterData);
-        ListView userListView = (ListView) findViewById(R.id.userListView);
-        userListView.setAdapter(myAdapter);
-
-        userListView.setOnItemClickListener(
-                new AdapterView.OnItemClickListener() {
-
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        String singleUser = String.valueOf(parent.getItemAtPosition(position));
-                        Toast.makeText(Jsondecode.this, singleUser, Toast.LENGTH_LONG).show();
-                    }
-                }
-        );
+        showUserList();
 
 }
 
-    public List<String> setReceiver(List<String> adapterData) {
-
+    private void showUserList() {
 
         ServerRequests serverRequest = new ServerRequests(this);
         serverRequest.fetchAllUsersInBackground(new GetUserCallback() {
             @Override
             public void done(User returnedUser) {
-
             }
 
             @Override
-            public void done2(List<String> usernames) {
-
+            public void done2(List<String> returnedList) {
+                createUserList(returnedList);
             }
         });
-
-        adapterData.add("dbtest");
-        adapterData.add("katko");
-        adapterData.add("kostas");
-        adapterData.add("mikeknight");
-        adapterData.add("mix");
-        adapterData.add("xristina");
-
-        return  adapterData;
     }
+
+    private void createUserList(List<String> returnedList) {
+        String[] users = new String[returnedList.size()];
+
+        for (int i=0; i<returnedList.size(); i++){
+            users[i] = returnedList.get(i);
+        }
+        ListAdapter myAdapter = new CustomUserAdapter(this, users);
+        ListView userListView = (ListView) findViewById(R.id.userListView);
+        userListView.setAdapter(myAdapter);
+        userListView.setItemsCanFocus(true);
+
+        userListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String selectedUser = (String) parent.getItemAtPosition(position);
+                Toast.makeText(Jsondecode.this, selectedUser, Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
 }
+
+
