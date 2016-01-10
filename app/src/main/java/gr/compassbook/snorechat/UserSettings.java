@@ -36,7 +36,8 @@ public class UserSettings extends AppCompatActivity {
         final String newUsername = etNewUsername.getText().toString();
 
         if (!newUsername.isEmpty()) {
-            ServerRequests serverRequest = new ServerRequests(this);
+            showAlertDialog("Username change is not supported!", "OK");
+            /*ServerRequests serverRequest = new ServerRequests(this);
             serverRequest.updateUserDataInBackground(userData.getString("username", ""), "username",
                     newUsername, new GetUserCallback() {
                         @Override
@@ -51,7 +52,7 @@ public class UserSettings extends AppCompatActivity {
 
                         }
 
-                    });
+                    });*/
         } else {
             showAlertDialog("Username field is empty", "OK");
         }

@@ -10,9 +10,12 @@
         android:layout_width="250dp"
         android:layout_height="75dp"
         android:text="Group Chat"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:background="#3F51B5"
         android:id="@+id/bSendMessage"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="8dp"
         android:layout_marginBottom="4dp"
         android:textSize="25sp"
         android:onClick="showChatActivity" />
@@ -21,6 +24,9 @@
         android:layout_width="250dp"
         android:layout_height="75dp"
         android:text="Private Message"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:background="#3F51B5"
         android:id="@+id/bPrivateMessage"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="4dp"
@@ -32,6 +38,9 @@
         android:layout_width="250dp"
         android:layout_height="75dp"
         android:text="Users"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:background="#3F51B5"
         android:id="@+id/bJson"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="4dp"
@@ -43,6 +52,9 @@
         android:layout_width="250dp"
         android:layout_height="75dp"
         android:text="SETTINGS"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:background="#3F51B5"
         android:id="@+id/bPlaces"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="4dp"
@@ -50,16 +62,23 @@
         android:textSize="25sp"
         android:onClick="showUserSettings" />
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <Button
         android:layout_width="250dp"
         android:layout_height="75dp"
         android:text="SIGN OUT"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:background="#c62528"
         android:id="@+id/bSignOut"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="4dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="5dp"
         android:textSize="25sp"
         android:onClick="logUserOut" />
+    </RelativeLayout>
 
 
 
