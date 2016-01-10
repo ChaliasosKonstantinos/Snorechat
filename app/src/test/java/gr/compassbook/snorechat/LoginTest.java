@@ -3,12 +3,6 @@ package gr.compassbook.snorechat;
 import junit.framework.Assert;
 
 import org.junit.Test;
-import java.util.regex.Pattern;
-
-import dalvik.annotation.TestTargetClass;
-
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
 /**
  * Created by Themis on 20/12/2015.
