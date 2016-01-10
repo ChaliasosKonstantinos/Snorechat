@@ -86,11 +86,6 @@ public class PrivateChat extends AppCompatActivity {
         }
     }
 
-    //Refresh the whole Conv
-    public void refreshChatView(View view) {
-        fetchPrivateConv();
-    }
-
 
     //-------------------------------------Helpers------------------------------------------------//
 
