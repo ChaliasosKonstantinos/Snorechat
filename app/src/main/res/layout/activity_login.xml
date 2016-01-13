@@ -33,7 +33,7 @@
         android:text="Remember me"
         android:layout_marginBottom="10dp"
         android:id="@+id/cbRememberMe"
-        android:buttonTint="#0d2723"
+        android:buttonTint="@color/cypress"
         android:checked="false" />
 
     <Button
@@ -41,7 +41,7 @@
         android:text="Login"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
-        android:background="#0d2723"
+        android:background="@color/cypress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="logIn" />
