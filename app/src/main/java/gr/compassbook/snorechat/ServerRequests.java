@@ -588,4 +588,84 @@ public class ServerRequests {
             super.onPostExecute(returnedUser);
         }
     }
+
+    //----------------------------------------------------------------------------------------------------------------------
+
+    public List fetchFriendsInBackground(String username, GetUserCallback userCallback) {
+        progressDialog.show();
+        new FetchFriendsAsyncTask(username, userCallback).execute();
+        return null;
+    }
+
+    public class FetchFriendsAsyncTask extends AsyncTask<String, Void, List<String>> {
+
+        String username;
+        GetUserCallback userCallback;
+
+        //FetchAllUsersAsyncTask constructor
+        public FetchFriendsAsyncTask(String username, GetUserCallback userCallback) {
+            this.username = username;
+            this.userCallback = userCallback;
+        }
+
+
+        @Override
+        protected List<String> doInBackground(String... params) {
+            List<String> friends = new ArrayList<>();
+
+            try {
+
+                URL url = new URL(SERVER_ADDRESS + "fetchFriends.php" + "?username=" + username);
+                urlConnection = (HttpURLConnection) url.openConnection();
+                urlConnection.setReadTimeout(10000);
+                urlConnection.setConnectTimeout(15000);
+                urlConnection.setRequestMethod("GET");
+                urlConnection.setDoInput(true);
+                //urlConnection.setDoOutput(true);
+
+                urlConnection.connect();
+
+                InputStream is = urlConnection.getInputStream();
+                reader = new BufferedReader(new InputStreamReader(is));
+
+                StringBuffer buffer = new StringBuffer();
+
+                String line = "";
+                while ((line = reader.readLine()) != null) {
+                    buffer.append(line);
+                }
+
+                String result = buffer.toString();
+                JSONObject jObject = new JSONObject(result);
+                JSONArray jArray = jObject.getJSONArray("friendusername");
+
+                for (int i=0; i<jArray.length(); i++) {
+                    friends.add(jArray.getString(i));
+                }
+
+
+            } catch (JSONException | IOException e) {
+                e.printStackTrace();
+            } finally {
+                if (urlConnection != null) {
+                    urlConnection.disconnect();
+                }
+                try {
+                    if (reader != null) {
+                        reader.close();
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            return friends;
+        }
+
+        @Override
+        protected void onPostExecute(List<String> friends) {
+            progressDialog.dismiss();
+            userCallback.done2(friends);
+            super.onPostExecute(friends);
+        }
+    }
 }

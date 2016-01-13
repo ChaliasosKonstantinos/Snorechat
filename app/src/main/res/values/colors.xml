@@ -4,4 +4,5 @@
     <color name="colorPrimaryDark">#589442</color>
     <color name="colorAccent">#FF4081</color>
     <color name="cypress">#589442</color>
+    <color name="transparent">#0000</color>
 </resources>

@@ -28,7 +28,8 @@
         <activity
             android:name=".PrivateChat"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".UserDetails"></activity>
+        <activity android:name=".UserDetails" />
+        <activity android:name=".FriendList" android:label="Friends"></activity>
     </application>
 
 </manifest>

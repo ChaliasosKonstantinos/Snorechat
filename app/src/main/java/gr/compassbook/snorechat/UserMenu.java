@@ -30,9 +30,15 @@ public class UserMenu extends AppCompatActivity {
         startActivity(new Intent(this, ChatActivity.class));
     }
 
-    //Show Private Chat Activity
-    public void showPrivateChatActivity(View view) {
-        startActivity(new Intent(this, PrivateChat.class));
+
+    //Show User List
+    public void showUserList(View view) {
+        startActivity(new Intent(this, UserList.class));
+    }
+
+    //Show User List
+    public void showFriendsList(View view) {
+        startActivity(new Intent(this, FriendList.class));
     }
 
     //Log User out
@@ -45,8 +51,5 @@ public class UserMenu extends AppCompatActivity {
 
     }
 
-    //Show JsonViewer
-    public void showJsonActivity(View view) {
-        startActivity(new Intent(this, UserList.class));
-    }
+
 }
