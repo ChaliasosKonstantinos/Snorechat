@@ -2,7 +2,6 @@ package gr.compassbook.snorechat;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
 
 import org.json.JSONArray;
@@ -15,8 +14,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
@@ -99,10 +96,10 @@ public class ServerRequests {
                     String username = jObject.getString("username");
                     String password = jObject.getString("password");
                     String email = jObject.getString("email");
-                    String country = jObject.getString("country");
-                    String city = jObject.getString("city");
+                    String lastName = jObject.getString("lastname");
+                    String firstName = jObject.getString("firstname");
 
-                    returnedUser = new User(username, password, email, country, city);
+                    returnedUser = new User(username, lastName, firstName, password, email);
                 }
 
 
@@ -132,33 +129,34 @@ public class ServerRequests {
     }
 
     //Stores User's data on the server
-    public User storeUserDataInBackground(User userData, GetUserCallback userCallback) {
+    public User storeUserDataInBackground(User userData, GetServerCallback serverCallback) {
         progressDialog.show();
-        new StoreUserDataAsyncTask(userData, userCallback).execute();
+        new StoreUserDataAsyncTask(userData, serverCallback).execute();
         return null;
     }
 
-    public class StoreUserDataAsyncTask extends AsyncTask<User,Void,Void> {
+    public class StoreUserDataAsyncTask extends AsyncTask<User,Void, String> {
 
         User user;
-        GetUserCallback userCallback;
+        GetServerCallback serverCallback;
 
         //StoreUserDataAsyncTask constructor
-        public StoreUserDataAsyncTask(User userData, GetUserCallback userCallback) {
+        public StoreUserDataAsyncTask(User userData, GetServerCallback serverCallback) {
             this.user = userData;
-            this.userCallback = userCallback;
+            this.serverCallback = serverCallback;
         }
 
 
         @Override
-        protected Void doInBackground(User... params) {
+        protected String doInBackground(User... params) {
+            String registerResult = null;
 
             HashMap<String,String> dataToSend = new HashMap<>();
             dataToSend.put("username", user.username);
             dataToSend.put("password", user.password);
             dataToSend.put("email", user.email);
-            dataToSend.put("country", user.country);
-            dataToSend.put("city", user.city);
+            dataToSend.put("lastName", user.lastName);
+            dataToSend.put("firstName", user.firstName);
 
             try{
                 URL url = new URL(SERVER_ADDRESS + "register.php" + getQueryData(dataToSend));
@@ -169,21 +167,39 @@ public class ServerRequests {
                 urlConnection.setRequestMethod("GET");
                 urlConnection.setDoOutput(true);
                 urlConnection.connect();
-                InputStream errors = (urlConnection.getErrorStream());
+
+                InputStream is = urlConnection.getInputStream();
+                reader = new BufferedReader(new InputStreamReader(is));
+
+                StringBuffer buffer = new StringBuffer();
+
+                String line = "";
+                while ((line = reader.readLine()) != null) {
+                    buffer.append(line);
+                }
+
+                String result = buffer.toString();
+                JSONObject jObject = new JSONObject(result);
+
+                if (jObject.length() != 0) {
+                    registerResult = jObject.getString("result");
+                }
             } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
                 e.printStackTrace();
             }
 
-            return null;
+            return registerResult;
         }
 
 
 
         @Override
-        protected void onPostExecute(Void aVoid) {
+        protected void onPostExecute(String registerResult) {
             progressDialog.dismiss();
-            userCallback.done(null);
-            super.onPostExecute(aVoid);
+            serverCallback.done(registerResult);
+            super.onPostExecute(registerResult);
         }
     }
 

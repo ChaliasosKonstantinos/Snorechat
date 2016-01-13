@@ -22,7 +22,7 @@ public class ChatActivity extends AppCompatActivity {
     Button Send;
     String SaveMessage;
     TextView ShowMessage;
-    List<String> mList = new ArrayList<String>();
+    List<String> mList = new ArrayList<>();
     SharedPreferences userData;
 
     private int mInterval = 2000;
@@ -41,6 +41,11 @@ public class ChatActivity extends AppCompatActivity {
         startRepeatingTask();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        stopRepeatingTask();
+    }
 
     //------------------------------------OnClick-------------------------------------------------//
 

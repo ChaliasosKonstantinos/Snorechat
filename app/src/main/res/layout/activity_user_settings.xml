@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -7,155 +7,178 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="gr.compassbook.snorechat.UserSettings">
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New User Name"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Settings"
         android:id="@+id/textView"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:textSize="20sp"
-        android:singleLine="true" />
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="center_horizontal" />
 
-    <EditText
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#ec000000" />
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/NewUserName"
-        android:layout_below="@+id/textView"
-        android:layout_alignEnd="@+id/textView"
-        android:layout_alignParentStart="true" />
+        android:layout_marginTop="10dp"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Password Change"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/textView2" />
 
-    <Button
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Save"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold"
-        android:background="#0d2723"
-        android:id="@+id/SaveNewName"
-        android:layout_below="@+id/NewUserName"
-        android:layout_alignParentStart="true"
-        android:onClick="changeUsername"/>
+        android:text="Your password"
+        android:layout_marginTop="10dp"
+        android:id="@+id/tvCurrentPassword" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="edw mpainei o torinos kwdikos"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/textView4" />
+
+    <View
+        android:layout_width="100dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="2dp"
+        android:background="#ecececec" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Password"
-        android:id="@+id/textView2"
-        android:textSize="20sp"
-        android:singleLine="true"
-        android:layout_above="@+id/NewUserName"
-        android:layout_alignParentEnd="true" />
+        android:layout_marginTop="10dp"
+
+        android:id="@+id/tvNewPassword" />
 
     <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/etNewPassword" />
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/NewPassword"
-        android:layout_below="@+id/textView2"
-        android:layout_alignParentEnd="true"
-        android:layout_alignStart="@+id/textView2" />
+        android:text="Confirm Password"
+        android:layout_marginTop="10dp"
+        android:id="@+id/tvNewPassword2" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/etNewPassword2" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/bChangePassword"
         android:text="Save"
         android:textColor="#FFFFFF"
-        android:textStyle="bold"
+        android:textStyle="normal"
         android:background="#0d2723"
-        android:id="@+id/SaveNewPassword"
-        android:layout_alignTop="@+id/SaveNewName"
-        android:layout_alignParentEnd="true"
+        android:layout_width="100dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         android:onClick="changePassword" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#ec000000" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Email"
-        android:id="@+id/textView3"
-        android:textSize="20sp"
-        android:singleLine="true"
-        android:layout_below="@+id/SaveNewName"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="39dp" />
+        android:layout_marginTop="10dp"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Email Change"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/textView5" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your email"
+        android:layout_marginTop="10dp"
+        android:id="@+id/tvCurrentEmail" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="edw mpainei to torino email"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/textView6" />
+
+    <View
+        android:layout_width="100dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="2dp"
+        android:background="#ecececec" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Password"
+        android:layout_marginTop="10dp"
+
+        android:id="@+id/tvNewEmail" />
 
     <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/etNewEmail" />
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/NewEmail"
-        android:layout_below="@+id/textView3"
-        android:layout_alignParentStart="true"
-        android:layout_alignEnd="@+id/NewUserName" />
+        android:text="Confirm Password"
+        android:layout_marginTop="10dp"
+        android:id="@+id/tvNewEmail2" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/etNewEmail2" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/bChangeEmail"
         android:text="Save"
         android:textColor="#FFFFFF"
-        android:textStyle="bold"
+        android:textStyle="normal"
         android:background="#0d2723"
-        android:id="@+id/SaveNewEmail"
-        android:layout_below="@+id/NewEmail"
-        android:layout_alignParentStart="true"
+        android:layout_width="100dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         android:onClick="changeEmail" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Country"
-        android:id="@+id/textView4"
-        android:textSize="20sp"
-        android:singleLine="true"
-        android:layout_alignTop="@+id/textView3"
-        android:layout_alignStart="@+id/NewPassword" />
+    </LinearLayout>
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/NewCountry"
-        android:layout_alignTop="@+id/NewEmail"
-        android:layout_alignStart="@+id/textView4"
-        android:layout_alignEnd="@+id/SaveNewPassword" />
+</ScrollView>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Save"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold"
-        android:background="#0d2723"
-        android:id="@+id/SaveNewCountry"
-        android:layout_alignTop="@+id/SaveNewEmail"
-        android:layout_alignParentEnd="true"
-        android:onClick="changeCountry" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New City"
-        android:id="@+id/textView5"
-        android:textSize="20sp"
-        android:singleLine="true"
-        android:layout_marginTop="39dp"
-        android:layout_below="@+id/SaveNewEmail"
-        android:layout_alignParentStart="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/NewCity"
-        android:layout_below="@+id/textView5"
-        android:layout_alignParentStart="true"
-        android:layout_alignEnd="@+id/NewEmail" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Save"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold"
-        android:background="#0d2723"
-        android:id="@+id/SaveNewCity"
-        android:layout_below="@+id/NewCity"
-        android:layout_alignParentStart="true"
-        android:onClick="changeCity" />
-</RelativeLayout>

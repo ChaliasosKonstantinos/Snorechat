@@ -22,8 +22,8 @@ public class UserLocalStore {
         spEditor.putString("username", user.username);
         spEditor.putString("password", user.password);
         spEditor.putString("email", user.email);
-        spEditor.putString("country", user.country);
-        spEditor.putString("city", user.city);
+        spEditor.putString("lastname", user.lastName);
+        spEditor.putString("firstname", user.firstName);
         spEditor.commit();
     }
 
@@ -32,10 +32,10 @@ public class UserLocalStore {
         String username = userLocalDatabase.getString("username", "");
         String password = userLocalDatabase.getString("password", "");
         String email = userLocalDatabase.getString("email", "");
-        String country = userLocalDatabase.getString("country", "");
-        String city = userLocalDatabase.getString("city", "");
+        String lastName = userLocalDatabase.getString("lastname", "");
+        String firstName = userLocalDatabase.getString("firstname", "");
 
-        User storedUser = new User(username, password, email, country, city);
+        User storedUser = new User(username, lastName, firstName, password, email);
         return storedUser;
     }
 
@@ -84,16 +84,16 @@ public class UserLocalStore {
     }
 
     //Updates User's country
-    public void updateUserCountry(String newCountry) {
+    public void updateUserLastName(String newLastName) {
         SharedPreferences.Editor spEditor = userLocalDatabase.edit();
-        spEditor.putString("country", newCountry);
+        spEditor.putString("lastname", newLastName);
         spEditor.commit();
     }
 
     //Updates User's city
-    public void updateUserCity(String newCity) {
+    public void updateUserFirstName(String firstName) {
         SharedPreferences.Editor spEditor = userLocalDatabase.edit();
-        spEditor.putString("city", newCity);
+        spEditor.putString("firstname", firstName);
         spEditor.commit();
     }
 
