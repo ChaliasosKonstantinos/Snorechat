@@ -14,10 +14,10 @@ import java.util.List;
 
 public class Login extends AppCompatActivity {
 
-    EditText etUsername, etPassword;
-    CheckBox cbRememberMe;
-    UserLocalStore userDatabase;
-    SharedPreferences userData;
+    private  EditText etUsername, etPassword;
+    private  CheckBox cbRememberMe;
+    private  UserLocalStore userDatabase;
+    private  SharedPreferences userData;
 
 
     @Override

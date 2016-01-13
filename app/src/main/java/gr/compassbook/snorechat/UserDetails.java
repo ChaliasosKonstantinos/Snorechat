@@ -11,8 +11,8 @@ import java.util.List;
 
 public class UserDetails extends AppCompatActivity {
 
-    TextView tvLastName, tvFirstName, tvEmail;
-    SharedPreferences userData;
+    private TextView tvLastName, tvFirstName, tvEmail;
+    private SharedPreferences userData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +40,9 @@ public class UserDetails extends AppCompatActivity {
 
     private void showSingleUserDetails(User returnedUser) {
 
-        tvLastName.setText(returnedUser.lastName);
-        tvFirstName.setText(returnedUser.firstName);
-        tvEmail.setText(returnedUser.email);
+        tvLastName.setText(returnedUser.getLastName());
+        tvFirstName.setText(returnedUser.getFirstName());
+        tvEmail.setText(returnedUser.getEmail());
     }
 
     public void showPrivateChat(View view) {

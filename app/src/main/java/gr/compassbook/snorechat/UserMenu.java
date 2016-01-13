@@ -8,7 +8,7 @@ import android.widget.Toast;
 
 public class UserMenu extends AppCompatActivity {
 
-    UserLocalStore userData;
+    private UserLocalStore userData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

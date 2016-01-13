@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 public class Register extends AppCompatActivity {
 
-    EditText etUsername, etPassword, etLastName, etFirstName, etEmail;
+    private EditText etUsername, etPassword, etLastName, etFirstName, etEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -13,10 +13,10 @@ import java.util.List;
 
 public class PrivateChat extends AppCompatActivity {
 
-    SharedPreferences userData;
-    EditText etMessage;
-    TextView tChat;
-    String sender, receiver, message;
+    private SharedPreferences userData;
+    private EditText etMessage;
+    private TextView tChat;
+    private String sender, receiver, message;
 
     private int mInterval = 2000;
     private Handler mHandler;

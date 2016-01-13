@@ -14,10 +14,10 @@ import java.util.List;
 
 public class UserSettings extends AppCompatActivity {
 
-    EditText etNewPassword, etNewPassword2, etNewEmail, etNewEmail2;
-    TextView tvCurrentPassword, tvCurrentEmail;
-    SharedPreferences userData;
-    UserLocalStore userDatabase;
+    private EditText etNewPassword, etNewPassword2, etNewEmail, etNewEmail2;
+    private TextView tvCurrentPassword, tvCurrentEmail;
+    private SharedPreferences userData;
+    private UserLocalStore userDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

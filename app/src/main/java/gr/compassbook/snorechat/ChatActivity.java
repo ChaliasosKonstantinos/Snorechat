@@ -14,16 +14,14 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Mike&Katerina on 11/12/2015.
- */
+
 public class ChatActivity extends AppCompatActivity {
-    EditText message;
-    Button Send;
-    String SaveMessage;
-    TextView ShowMessage;
-    List<String> mList = new ArrayList<>();
-    SharedPreferences userData;
+    private EditText message;
+    private Button Send;
+    private String SaveMessage;
+    private TextView ShowMessage;
+    private List<String> mList = new ArrayList<>();
+    private  SharedPreferences userData;
 
     private int mInterval = 2000;
     private Handler mHandler;

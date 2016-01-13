@@ -12,7 +12,7 @@ import java.util.List;
 
 public class FriendList extends AppCompatActivity {
 
-    SharedPreferences userData;
+    private SharedPreferences userData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

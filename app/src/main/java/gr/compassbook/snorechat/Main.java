@@ -9,8 +9,8 @@ import android.widget.ImageView;
 
 public class Main extends AppCompatActivity {
 
-    SharedPreferences userData;
-    ImageView imageView;
+    private SharedPreferences userData;
+    private ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +27,7 @@ public class Main extends AppCompatActivity {
         super.onStart();
         userData = getSharedPreferences("userDetails", 0);
 
-        if (userData.getBoolean("loggedIn", false) == true) {
+        if (userData.getBoolean("loggedIn", false)) {
             startActivity(new Intent(this,UserMenu.class));
         }
 

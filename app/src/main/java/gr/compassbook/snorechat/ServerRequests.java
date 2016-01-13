@@ -64,8 +64,8 @@ public class ServerRequests {
         protected User doInBackground(Void... params) {
             User returnedUser = null;
             HashMap<String,String> dataToSend = new HashMap<>();
-            dataToSend.put("username", user.username);
-            dataToSend.put("password", user.password);
+            dataToSend.put("username", user.getUsername());
+            dataToSend.put("password", user.getPassword());
 
             try {
 
@@ -84,7 +84,7 @@ public class ServerRequests {
 
                 StringBuffer buffer = new StringBuffer();
 
-                String line = "";
+                String line;
                 while ((line = reader.readLine()) != null) {
                     buffer.append(line);
                 }
@@ -152,11 +152,11 @@ public class ServerRequests {
             String registerResult = null;
 
             HashMap<String,String> dataToSend = new HashMap<>();
-            dataToSend.put("username", user.username);
-            dataToSend.put("password", user.password);
-            dataToSend.put("email", user.email);
-            dataToSend.put("lastName", user.lastName);
-            dataToSend.put("firstName", user.firstName);
+            dataToSend.put("username", user.getUsername());
+            dataToSend.put("password", user.getPassword());
+            dataToSend.put("email", user.getEmail());
+            dataToSend.put("lastName", user.getLastName());
+            dataToSend.put("firstName", user.getFirstName());
 
             try{
                 URL url = new URL(SERVER_ADDRESS + "register.php" + getQueryData(dataToSend));
@@ -173,7 +173,7 @@ public class ServerRequests {
 
                 StringBuffer buffer = new StringBuffer();
 
-                String line = "";
+                String line;
                 while ((line = reader.readLine()) != null) {
                     buffer.append(line);
                 }
@@ -184,9 +184,7 @@ public class ServerRequests {
                 if (jObject.length() != 0) {
                     registerResult = jObject.getString("result");
                 }
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (JSONException e) {
+            } catch (IOException | JSONException e) {
                 e.printStackTrace();
             }
 
@@ -323,7 +321,7 @@ public class ServerRequests {
 
                 StringBuffer buffer = new StringBuffer();
 
-                String line = "";
+                String line;
                 while ((line = reader.readLine()) != null) {
                     buffer.append(line);
                 }
@@ -461,7 +459,7 @@ public class ServerRequests {
 
                 StringBuffer buffer = new StringBuffer();
 
-                String line = "";
+                String line;
                 while ((line = reader.readLine()) != null) {
                     buffer.append(line);
                 }
@@ -547,7 +545,7 @@ public class ServerRequests {
 
                 StringBuffer buffer = new StringBuffer();
 
-                String line = "";
+                String line;
                 while ((line = reader.readLine()) != null) {
                     buffer.append(line);
                 }
@@ -630,7 +628,7 @@ public class ServerRequests {
 
                 StringBuffer buffer = new StringBuffer();
 
-                String line = "";
+                String line;
                 while ((line = reader.readLine()) != null) {
                     buffer.append(line);
                 }
