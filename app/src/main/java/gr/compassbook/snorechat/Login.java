@@ -2,9 +2,11 @@ package gr.compassbook.snorechat;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -13,7 +15,9 @@ import java.util.List;
 public class Login extends AppCompatActivity {
 
     EditText etUsername, etPassword;
+    CheckBox cbRememberMe;
     UserLocalStore userDatabase;
+    SharedPreferences userData;
 
 
     @Override
@@ -23,6 +27,11 @@ public class Login extends AppCompatActivity {
 
         etUsername = (EditText) findViewById(R.id.etUsername);
         etPassword = (EditText) findViewById(R.id.etPassword);
+        cbRememberMe = (CheckBox) findViewById(R.id.cbRememberMe);
+        userData = getSharedPreferences("userDetails", 0);
+        etUsername.setText(userData.getString("usernameRemember", ""));
+        etPassword.setText(userData.getString("passwordRemember", ""));
+
     }
 
     //Login User
@@ -59,6 +68,10 @@ public class Login extends AppCompatActivity {
         userDatabase = new UserLocalStore(this);
         userDatabase.storeUserData(returnedUser);
         userDatabase.setUserLoggedIn(true);
+        if (cbRememberMe.isChecked()) {
+            User rememberUser = new User(etUsername.getText().toString(), etPassword.getText().toString());
+            userDatabase.setRememberMe(rememberUser);
+        }
         Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_LONG).show();
         startActivity(new Intent(this, UserMenu.class));
 
