@@ -77,7 +77,8 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     public void ClearMessages(View view) {
-        ShowMessage.setText(" ");
+        ShowMessage.setText("");
+        stopRepeatingTask();
     }
 
     private class AsyncCallWebServices extends AsyncTask<String, Void, Void> {
