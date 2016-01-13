@@ -24,7 +24,7 @@ public class UserLocalStore {
         spEditor.putString("email", user.email);
         spEditor.putString("lastname", user.lastName);
         spEditor.putString("firstname", user.firstName);
-        spEditor.commit();
+        spEditor.apply();
     }
 
     //Gets logged in user's details
@@ -43,14 +43,14 @@ public class UserLocalStore {
     public void setUserLoggedIn(boolean loggedIn) {
         SharedPreferences.Editor spEditor = userLocalDatabase.edit();
         spEditor.putBoolean("loggedIn", loggedIn);
-        spEditor.commit();
+        spEditor.apply();
     }
 
     //Setting the user "Logged In"
     public void setReceiver(String receiver) {
         SharedPreferences.Editor spEditor = userLocalDatabase.edit();
         spEditor.putString("receiver", receiver);
-        spEditor.commit();
+        spEditor.apply();
     }
 
     //Check if the user is logged in
@@ -66,45 +66,56 @@ public class UserLocalStore {
     public void updateUserUsername(String newUsername) {
         SharedPreferences.Editor spEditor = userLocalDatabase.edit();
         spEditor.putString("username", newUsername);
-        spEditor.commit();
+        spEditor.apply();
     }
 
     //Updates User's password
     public void updateUserPassword(String newPassword) {
         SharedPreferences.Editor spEditor = userLocalDatabase.edit();
         spEditor.putString("password", newPassword);
-        spEditor.commit();
+        spEditor.apply();
     }
 
     //Updates User's email
     public void updateUserEmail(String newEmail) {
         SharedPreferences.Editor spEditor = userLocalDatabase.edit();
         spEditor.putString("email", newEmail);
-        spEditor.commit();
+        spEditor.apply();
     }
 
     //Updates User's country
     public void updateUserLastName(String newLastName) {
         SharedPreferences.Editor spEditor = userLocalDatabase.edit();
         spEditor.putString("lastname", newLastName);
-        spEditor.commit();
+        spEditor.apply();
     }
 
     //Updates User's city
     public void updateUserFirstName(String firstName) {
         SharedPreferences.Editor spEditor = userLocalDatabase.edit();
         spEditor.putString("firstname", firstName);
-        spEditor.commit();
+        spEditor.apply();
     }
 
     //Clears local user Database
     public void clearUserData() {
         SharedPreferences.Editor spEditor = userLocalDatabase.edit();
-        spEditor.clear();
-        spEditor.commit();
+        spEditor.remove("username");
+        spEditor.remove("password");
+        spEditor.remove("email");
+        spEditor.remove("lastname");
+        spEditor.remove("firstname");
+        spEditor.apply();
     }
 
     public String getStoredUserEmail() {
         return userLocalDatabase.getString("Email", "");
+    }
+
+    public void setRememberMe(User user) {
+        SharedPreferences.Editor spEditor = userLocalDatabase.edit();
+        spEditor.putString("usernameRemember", user.username);
+        spEditor.putString("passwordRemember", user.password);
+        spEditor.apply();
     }
 }
