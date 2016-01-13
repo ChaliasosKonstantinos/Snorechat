@@ -5,16 +5,16 @@ package gr.compassbook.snorechat;
  */
 public class User {
 
-    String username, password, email, country, city;
+    String username, password, email, lastName, firstName;
 
     //Full details User constructor
-    public User(String username, String password, String email, String country, String city) {
+    public User(String username, String lastName, String firstName, String password, String email) {
 
         this.username = username;
+        this.lastName = lastName;
+        this.firstName = firstName;
         this.password = password;
         this.email = email;
-        this.country = country;
-        this.city = city;
     }
 
     //Limited details User constructor
