@@ -1,7 +1,6 @@
 package gr.compassbook.snorechat;
 
 import java.util.List;
-import gr.compassbook.snorechat.Jsondecode;
 
 /**
  * Created by Konstantinos

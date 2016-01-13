@@ -502,4 +502,90 @@ public class ServerRequests {
             super.onPostExecute(conv);
         }
     }
+
+    //----------------------------------------------------------------------------------------------------------------------
+
+    //Fetches User's data from the server
+    public User fetchSingleUserDataInBackground(String username, GetUserCallback userCallback) {
+        progressDialog.show();
+        new fetchSingleUserDataAsyncTask(username, userCallback).execute();
+        return null;
+    }
+
+    //AsyncTask that get User's data from the server
+    public class fetchSingleUserDataAsyncTask extends AsyncTask<String, Void, User> {
+
+        String username;
+        GetUserCallback userCallback;
+
+        //FetchUserDataAsyncTask constructor
+        public fetchSingleUserDataAsyncTask(String username, GetUserCallback userCallback) {
+            this.username = username;
+            this.userCallback = userCallback;
+        }
+
+
+
+        @Override
+        protected User doInBackground(String... params) {
+            User returnedUser = null;
+
+            try {
+
+                URL url = new URL(SERVER_ADDRESS + "fetchSingleUserData.php" + "?username=" + username);
+                urlConnection = (HttpURLConnection) url.openConnection();
+                urlConnection.setReadTimeout(10000);
+                urlConnection.setConnectTimeout(15000);
+                urlConnection.setRequestMethod("GET");
+                urlConnection.setDoInput(true);
+                //urlConnection.setDoOutput(true);
+
+                urlConnection.connect();
+
+                InputStream is = urlConnection.getInputStream();
+                reader = new BufferedReader(new InputStreamReader(is));
+
+                StringBuffer buffer = new StringBuffer();
+
+                String line = "";
+                while ((line = reader.readLine()) != null) {
+                    buffer.append(line);
+                }
+
+                String result = buffer.toString();
+                JSONObject jObject = new JSONObject(result);
+
+                if (jObject.length() != 0) {
+                    String email = jObject.getString("email");
+                    String lastName = jObject.getString("lastname");
+                    String firstName = jObject.getString("firstname");
+
+                    returnedUser = new User(lastName, firstName, email);
+                }
+
+
+            } catch (JSONException | IOException e) {
+                e.printStackTrace();
+            } finally {
+                if (urlConnection != null) {
+                    urlConnection.disconnect();
+                }
+                try {
+                    if (reader != null) {
+                        reader.close();
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            return returnedUser;
+        }
+
+        @Override
+        protected void onPostExecute(User returnedUser) {
+            progressDialog.dismiss();
+            userCallback.done(returnedUser);
+            super.onPostExecute(returnedUser);
+        }
+    }
 }

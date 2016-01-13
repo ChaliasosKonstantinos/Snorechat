@@ -16,6 +16,10 @@ public class UserMenu extends AppCompatActivity {
         setContentView(R.layout.activity_user_menu);
     }
 
+    @Override
+    public void onBackPressed() {
+    }
+
     //Show User Settings
     public void showUserSettings(View view) {
         startActivity(new Intent(this, UserSettings.class));
@@ -43,6 +47,6 @@ public class UserMenu extends AppCompatActivity {
 
     //Show JsonViewer
     public void showJsonActivity(View view) {
-        startActivity(new Intent(this, Jsondecode.class));
+        startActivity(new Intent(this, UserList.class));
     }
 }

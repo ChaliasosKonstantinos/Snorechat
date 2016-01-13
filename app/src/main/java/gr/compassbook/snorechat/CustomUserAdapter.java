@@ -45,7 +45,7 @@ class CustomUserAdapter extends ArrayAdapter<String>{
                 UserLocalStore userDatabase;
                 userDatabase = new UserLocalStore(getContext());
                 userDatabase.setReceiver(bUser.getText().toString());
-                Intent intent = new Intent(context2, PrivateChat.class);
+                Intent intent = new Intent(context2, UserDetails.class);
                 context2.startActivity(intent);
 
 

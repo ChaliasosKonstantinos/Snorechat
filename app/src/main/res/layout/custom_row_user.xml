@@ -11,6 +11,6 @@
         android:id="@+id/bUserList"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
-        android:background="#0d2723"
+        android:background="@color/cypress"
         android:focusable="false"/>
 </LinearLayout>
