@@ -13,10 +13,10 @@ import java.util.List;
 
 public class PrivateChat extends AppCompatActivity {
 
-    SharedPreferences userData;
-    EditText etMessage;
-    TextView tChat;
-    String sender, receiver, message;
+    private SharedPreferences userData;
+    private EditText etMessage;
+    private TextView tChat;
+    private String sender, receiver, message;
 
     private int mInterval = 2000;
     private Handler mHandler;
@@ -26,11 +26,10 @@ public class PrivateChat extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_private_chat);
 
-
-
         userData = getSharedPreferences("userDetails", 0);
         sender = userData.getString("username", "");
         receiver = userData.getString("receiver", "");
+        setTitle(receiver);
         //userDatabase = new UserLocalStore(this);
         etMessage = (EditText) findViewById(R.id.etMessage);
         tChat = (TextView) findViewById(R.id.tChat);

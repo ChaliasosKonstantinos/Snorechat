@@ -23,16 +23,16 @@
     <Button
         android:layout_width="250dp"
         android:layout_height="75dp"
-        android:text="Private Message"
+        android:text="Friends"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
         android:background="@color/cypress"
-        android:id="@+id/bPrivateMessage"
+        android:id="@+id/bFriends"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="4dp"
         android:layout_marginBottom="4dp"
         android:textSize="25sp"
-        android:onClick="showPrivateChatActivity"/>
+        android:onClick="showFriendsList" />
 
     <Button
         android:layout_width="250dp"
@@ -41,45 +41,11 @@
         android:textColor="#FFFFFF"
         android:textStyle="bold"
         android:background="@color/cypress"
-        android:id="@+id/bJson"
+        android:id="@+id/bUsers"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="4dp"
         android:layout_marginBottom="4dp"
         android:textSize="25sp"
-        android:onClick="showJsonActivity" />
-
-    <Button
-        android:layout_width="250dp"
-        android:layout_height="75dp"
-        android:text="SETTINGS"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold"
-        android:background="@color/cypress"
-        android:id="@+id/bPlaces"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="4dp"
-        android:textSize="25sp"
-        android:onClick="showUserSettings" />
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <Button
-        android:layout_width="250dp"
-        android:layout_height="75dp"
-        android:text="SIGN OUT"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold"
-        android:background="#96281b"
-        android:id="@+id/bSignOut"
-        android:layout_alignParentBottom="true"
-        android:layout_centerInParent="true"
-        android:layout_marginBottom="5dp"
-        android:textSize="25sp"
-        android:onClick="logUserOut" />
-    </RelativeLayout>
-
-
+        android:onClick="showUserList" />
 
 </LinearLayout>

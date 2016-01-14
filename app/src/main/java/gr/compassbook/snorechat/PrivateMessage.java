@@ -1,11 +1,9 @@
 package gr.compassbook.snorechat;
 
-/**
- * Created by Konstantinos on 9/1/2016.
- */
+
 public class PrivateMessage {
 
-    String sender, receiver, message;
+    private String sender, receiver, message;
 
     public PrivateMessage(String sender, String receiver, String message) {
         this.sender = sender;

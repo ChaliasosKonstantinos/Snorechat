@@ -18,14 +18,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Login" />
-        <activity android:name=".About" />
-        <activity android:name=".Register" />
-        <activity android:name=".UserMenu" />
-        <activity android:name=".UserSettings" />
-        <activity android:name=".ChatActivity" />
-        <activity android:name=".Jsondecode" />
-        <activity android:name=".PrivateChat" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".Login" android:parentActivityName=".Main" android:label="Login"/>
+        <activity android:name=".About" android:label="About Us"/>
+        <activity android:name=".Register" android:parentActivityName=".Main" android:label="Register"/>
+        <activity android:name=".UserMenu" android:label="Menu"/>
+        <activity android:name=".UserSettings" android:parentActivityName=".UserMenu" android:label="Settings"/>
+        <activity android:name=".ChatActivity" android:parentActivityName=".UserMenu" android:label="Chat"/>
+        <activity android:name=".UserList" android:parentActivityName=".UserMenu" android:label="Users"/>
+        <activity android:name=".PrivateChat" android:windowSoftInputMode="adjustPan" android:parentActivityName=".UserMenu" android:label="Chat"/>
+        <activity android:name=".UserDetails" android:parentActivityName=".UserList" android:label="Details"/>
+        <activity android:name=".FriendList" android:label="Friends" android:parentActivityName=".UserMenu"/>
     </application>
 
 </manifest>

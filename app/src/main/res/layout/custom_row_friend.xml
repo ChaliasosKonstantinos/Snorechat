@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:focusable="false">
 
@@ -8,9 +9,10 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:text="New Button"
-        android:id="@+id/bUserList"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold"
-        android:background="@color/cypress"
+        android:backgroundTint="@color/transparent"
+        android:textColor="#000000"
+        android:id="@+id/bFriend"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
         android:focusable="false"/>
 </LinearLayout>

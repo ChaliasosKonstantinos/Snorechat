@@ -8,17 +8,15 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 
-
-
 /**
- * Created by Konstantinos on 8/1/2016.
+ * Created by Konstantinos on 13/1/2016.
  */
-class CustomUserAdapter extends ArrayAdapter<String>{
+public class CustomFriendAdapter extends ArrayAdapter<String> {
 
     private Context context2;
 
-    public CustomUserAdapter(Context context, String[] usernames) {
-        super(context, R.layout.custom_row_user, usernames);
+    public CustomFriendAdapter(Context context, String[] friends) {
+        super(context, R.layout.custom_row_friend, friends);
         this.context2 = context;
     }
 
@@ -27,31 +25,27 @@ class CustomUserAdapter extends ArrayAdapter<String>{
 
         View customView = convertView;
         LayoutInflater myInflater = LayoutInflater.from(getContext());
-        customView = myInflater.inflate(R.layout.custom_row_user, parent, false);
+        customView = myInflater.inflate(R.layout.custom_row_friend, parent, false);
 
-
-        Button bUser;
-        String singleUser = getItem(position);
-        bUser = (Button) customView.findViewById(R.id.bUserList);
-        bUser.setText(singleUser);
+        Button bFriend;
+        String singleFriend = getItem(position);
+        bFriend = (Button) customView.findViewById(R.id.bFriend);
+        bFriend.setText(singleFriend);
 
         final View finalCustomView = customView;
-        bUser.setOnClickListener(new View.OnClickListener() {
-
+        bFriend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Button bUser;
-                bUser = (Button) finalCustomView.findViewById(R.id.bUserList);
+                Button bFriend;
+                bFriend = (Button) finalCustomView.findViewById(R.id.bFriend);
                 UserLocalStore userDatabase;
                 userDatabase = new UserLocalStore(getContext());
-                userDatabase.setReceiver(bUser.getText().toString());
-                Intent intent = new Intent(context2, UserDetails.class);
+                userDatabase.setReceiver(bFriend.getText().toString());
+                Intent intent = new Intent(context2, PrivateChat.class);
                 context2.startActivity(intent);
-
-
             }
         });
 
-        return customView;
+        return  customView;
     }
 }

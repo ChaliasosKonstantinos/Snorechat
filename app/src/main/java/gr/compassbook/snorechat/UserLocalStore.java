@@ -19,11 +19,11 @@ public class UserLocalStore {
     //User local Database constructor
     public void storeUserData(User user) {
         SharedPreferences.Editor spEditor = userLocalDatabase.edit();
-        spEditor.putString("username", user.username);
-        spEditor.putString("password", user.password);
-        spEditor.putString("email", user.email);
-        spEditor.putString("lastname", user.lastName);
-        spEditor.putString("firstname", user.firstName);
+        spEditor.putString("username", user.getUsername());
+        spEditor.putString("password", user.getPassword());
+        spEditor.putString("email", user.getEmail());
+        spEditor.putString("lastname", user.getLastName());
+        spEditor.putString("firstname", user.getFirstName());
         spEditor.apply();
     }
 
@@ -35,8 +35,7 @@ public class UserLocalStore {
         String lastName = userLocalDatabase.getString("lastname", "");
         String firstName = userLocalDatabase.getString("firstname", "");
 
-        User storedUser = new User(username, lastName, firstName, password, email);
-        return storedUser;
+        return new User(username, lastName, firstName, password, email);
     }
 
     //Setting the user "Logged In"
@@ -55,11 +54,7 @@ public class UserLocalStore {
 
     //Check if the user is logged in
     public boolean isLoggedIn() {
-        if (userLocalDatabase.getBoolean("loggedIn", false) == true) {
-            return true;
-        }else {
-            return false;
-        }
+        return userLocalDatabase.getBoolean("loggedIn", false);
     }
 
     //Updates User's username
@@ -114,8 +109,8 @@ public class UserLocalStore {
 
     public void setRememberMe(User user) {
         SharedPreferences.Editor spEditor = userLocalDatabase.edit();
-        spEditor.putString("usernameRemember", user.username);
-        spEditor.putString("passwordRemember", user.password);
+        spEditor.putString("usernameRemember", user.getUsername());
+        spEditor.putString("passwordRemember", user.getPassword());
         spEditor.apply();
     }
 }

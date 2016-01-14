@@ -64,8 +64,8 @@ public class ServerRequests {
         protected User doInBackground(Void... params) {
             User returnedUser = null;
             HashMap<String,String> dataToSend = new HashMap<>();
-            dataToSend.put("username", user.username);
-            dataToSend.put("password", user.password);
+            dataToSend.put("username", user.getUsername());
+            dataToSend.put("password", user.getPassword());
 
             try {
 
@@ -84,7 +84,7 @@ public class ServerRequests {
 
                 StringBuffer buffer = new StringBuffer();
 
-                String line = "";
+                String line;
                 while ((line = reader.readLine()) != null) {
                     buffer.append(line);
                 }
@@ -152,11 +152,11 @@ public class ServerRequests {
             String registerResult = null;
 
             HashMap<String,String> dataToSend = new HashMap<>();
-            dataToSend.put("username", user.username);
-            dataToSend.put("password", user.password);
-            dataToSend.put("email", user.email);
-            dataToSend.put("lastName", user.lastName);
-            dataToSend.put("firstName", user.firstName);
+            dataToSend.put("username", user.getUsername());
+            dataToSend.put("password", user.getPassword());
+            dataToSend.put("email", user.getEmail());
+            dataToSend.put("lastName", user.getLastName());
+            dataToSend.put("firstName", user.getFirstName());
 
             try{
                 URL url = new URL(SERVER_ADDRESS + "register.php" + getQueryData(dataToSend));
@@ -173,7 +173,7 @@ public class ServerRequests {
 
                 StringBuffer buffer = new StringBuffer();
 
-                String line = "";
+                String line;
                 while ((line = reader.readLine()) != null) {
                     buffer.append(line);
                 }
@@ -184,9 +184,7 @@ public class ServerRequests {
                 if (jObject.length() != 0) {
                     registerResult = jObject.getString("result");
                 }
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (JSONException e) {
+            } catch (IOException | JSONException e) {
                 e.printStackTrace();
             }
 
@@ -323,7 +321,7 @@ public class ServerRequests {
 
                 StringBuffer buffer = new StringBuffer();
 
-                String line = "";
+                String line;
                 while ((line = reader.readLine()) != null) {
                     buffer.append(line);
                 }
@@ -461,7 +459,7 @@ public class ServerRequests {
 
                 StringBuffer buffer = new StringBuffer();
 
-                String line = "";
+                String line;
                 while ((line = reader.readLine()) != null) {
                     buffer.append(line);
                 }
@@ -500,6 +498,172 @@ public class ServerRequests {
         protected void onPostExecute(List<String> conv) {
             userCallback.done2(conv);
             super.onPostExecute(conv);
+        }
+    }
+
+    //----------------------------------------------------------------------------------------------------------------------
+
+    //Fetches User's data from the server
+    public User fetchSingleUserDataInBackground(String username, GetUserCallback userCallback) {
+        progressDialog.show();
+        new fetchSingleUserDataAsyncTask(username, userCallback).execute();
+        return null;
+    }
+
+    //AsyncTask that get User's data from the server
+    public class fetchSingleUserDataAsyncTask extends AsyncTask<String, Void, User> {
+
+        String username;
+        GetUserCallback userCallback;
+
+        //FetchUserDataAsyncTask constructor
+        public fetchSingleUserDataAsyncTask(String username, GetUserCallback userCallback) {
+            this.username = username;
+            this.userCallback = userCallback;
+        }
+
+
+
+        @Override
+        protected User doInBackground(String... params) {
+            User returnedUser = null;
+
+            try {
+
+                URL url = new URL(SERVER_ADDRESS + "fetchSingleUserData.php" + "?username=" + username);
+                urlConnection = (HttpURLConnection) url.openConnection();
+                urlConnection.setReadTimeout(10000);
+                urlConnection.setConnectTimeout(15000);
+                urlConnection.setRequestMethod("GET");
+                urlConnection.setDoInput(true);
+                //urlConnection.setDoOutput(true);
+
+                urlConnection.connect();
+
+                InputStream is = urlConnection.getInputStream();
+                reader = new BufferedReader(new InputStreamReader(is));
+
+                StringBuffer buffer = new StringBuffer();
+
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    buffer.append(line);
+                }
+
+                String result = buffer.toString();
+                JSONObject jObject = new JSONObject(result);
+
+                if (jObject.length() != 0) {
+                    String email = jObject.getString("email");
+                    String lastName = jObject.getString("lastname");
+                    String firstName = jObject.getString("firstname");
+
+                    returnedUser = new User(lastName, firstName, email);
+                }
+
+
+            } catch (JSONException | IOException e) {
+                e.printStackTrace();
+            } finally {
+                if (urlConnection != null) {
+                    urlConnection.disconnect();
+                }
+                try {
+                    if (reader != null) {
+                        reader.close();
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            return returnedUser;
+        }
+
+        @Override
+        protected void onPostExecute(User returnedUser) {
+            progressDialog.dismiss();
+            userCallback.done(returnedUser);
+            super.onPostExecute(returnedUser);
+        }
+    }
+
+    //----------------------------------------------------------------------------------------------------------------------
+
+    public List fetchFriendsInBackground(String username, GetUserCallback userCallback) {
+        progressDialog.show();
+        new FetchFriendsAsyncTask(username, userCallback).execute();
+        return null;
+    }
+
+    public class FetchFriendsAsyncTask extends AsyncTask<String, Void, List<String>> {
+
+        String username;
+        GetUserCallback userCallback;
+
+        //FetchAllUsersAsyncTask constructor
+        public FetchFriendsAsyncTask(String username, GetUserCallback userCallback) {
+            this.username = username;
+            this.userCallback = userCallback;
+        }
+
+
+        @Override
+        protected List<String> doInBackground(String... params) {
+            List<String> friends = new ArrayList<>();
+
+            try {
+
+                URL url = new URL(SERVER_ADDRESS + "fetchFriends.php" + "?username=" + username);
+                urlConnection = (HttpURLConnection) url.openConnection();
+                urlConnection.setReadTimeout(10000);
+                urlConnection.setConnectTimeout(15000);
+                urlConnection.setRequestMethod("GET");
+                urlConnection.setDoInput(true);
+                //urlConnection.setDoOutput(true);
+
+                urlConnection.connect();
+
+                InputStream is = urlConnection.getInputStream();
+                reader = new BufferedReader(new InputStreamReader(is));
+
+                StringBuffer buffer = new StringBuffer();
+
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    buffer.append(line);
+                }
+
+                String result = buffer.toString();
+                JSONObject jObject = new JSONObject(result);
+                JSONArray jArray = jObject.getJSONArray("friendusername");
+
+                for (int i=0; i<jArray.length(); i++) {
+                    friends.add(jArray.getString(i));
+                }
+
+
+            } catch (JSONException | IOException e) {
+                e.printStackTrace();
+            } finally {
+                if (urlConnection != null) {
+                    urlConnection.disconnect();
+                }
+                try {
+                    if (reader != null) {
+                        reader.close();
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            return friends;
+        }
+
+        @Override
+        protected void onPostExecute(List<String> friends) {
+            progressDialog.dismiss();
+            userCallback.done2(friends);
+            super.onPostExecute(friends);
         }
     }
 }
