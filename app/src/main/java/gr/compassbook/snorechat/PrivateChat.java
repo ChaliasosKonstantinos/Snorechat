@@ -26,11 +26,10 @@ public class PrivateChat extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_private_chat);
 
-
-
         userData = getSharedPreferences("userDetails", 0);
         sender = userData.getString("username", "");
         receiver = userData.getString("receiver", "");
+        setTitle(receiver);
         //userDatabase = new UserLocalStore(this);
         etMessage = (EditText) findViewById(R.id.etMessage);
         tChat = (TextView) findViewById(R.id.tChat);

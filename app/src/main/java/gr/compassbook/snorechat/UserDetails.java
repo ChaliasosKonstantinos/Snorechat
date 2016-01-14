@@ -14,6 +14,7 @@ public class UserDetails extends AppCompatActivity {
     private TextView tvLastName, tvFirstName, tvEmail;
     private SharedPreferences userData;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

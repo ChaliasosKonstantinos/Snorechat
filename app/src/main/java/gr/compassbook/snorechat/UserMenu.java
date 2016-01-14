@@ -3,6 +3,8 @@ package gr.compassbook.snorechat;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -17,12 +19,40 @@ public class UserMenu extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                showUserSettings();
+                return true;
+            case R.id.action_about:
+                showAboutUs();
+                return true;
+            case R.id.action_sign_out:
+                logUserOut();
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     public void onBackPressed() {
     }
 
     //Show User Settings
-    public void showUserSettings(View view) {
+    private void showUserSettings() {
         startActivity(new Intent(this, UserSettings.class));
+    }
+
+    //Show About Us
+    private void showAboutUs() {
+        startActivity(new Intent(this, About.class));
     }
 
     //Show Chat Activity
@@ -42,7 +72,7 @@ public class UserMenu extends AppCompatActivity {
     }
 
     //Log User out
-    public void logUserOut(View view) {
+    private void logUserOut() {
         userData = new UserLocalStore(this);
         userData.setUserLoggedIn(false);
         userData.clearUserData();
