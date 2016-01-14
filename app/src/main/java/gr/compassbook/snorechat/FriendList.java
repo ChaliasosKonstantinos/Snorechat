@@ -22,6 +22,7 @@ public class FriendList extends AppCompatActivity {
         showFriendList();
     }
 
+    //Show Friends List using Adapter
     private void showFriendList() {
         ServerRequests serverRequest = new ServerRequests(this);
         serverRequest.fetchFriendsInBackground(userData.getString("username", ""), new GetUserCallback() {
