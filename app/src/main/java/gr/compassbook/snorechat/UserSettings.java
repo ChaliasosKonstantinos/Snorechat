@@ -56,9 +56,11 @@ public class UserSettings extends AppCompatActivity {
                             @Override
                             public void done(User returnedUser) {
                                 userDatabase.updateUserPassword(newPassword);
+                                userDatabase.setRememberMe(new User(userData.getString("username",""),newPassword));
                                 etNewPassword.setText("");
                                 etNewPassword2.setText("");
-                                Toast.makeText(UserSettings.this, "Password changed successfully", Toast.LENGTH_LONG).show();
+                                tvCurrentPassword.setText(newPassword);
+                                Toast.makeText(UserSettings.this, "Password changed successfully and remembered!", Toast.LENGTH_LONG).show();
                             }
 
                             @Override
@@ -92,6 +94,7 @@ public class UserSettings extends AppCompatActivity {
                                 userDatabase.updateUserEmail(newEmail);
                                 etNewEmail.setText("");
                                 etNewEmail2.setText("");
+                                tvCurrentEmail.setText(newEmail);
                                 Toast.makeText(UserSettings.this, "Email changed successfully", Toast.LENGTH_LONG).show();
                             }
 
