@@ -635,10 +635,12 @@ public class ServerRequests {
 
                 String result = buffer.toString();
                 JSONObject jObject = new JSONObject(result);
-                JSONArray jArray = jObject.getJSONArray("friendusername");
+                JSONArray jArray_friends = jObject.getJSONArray("friendusername");
+                JSONArray jArray_isOnline = jObject.getJSONArray("isonline");
 
-                for (int i=0; i<jArray.length(); i++) {
-                    friends.add(jArray.getString(i));
+                for (int i=0; i<jArray_friends.length(); i++) {
+                    friends.add(jArray_friends.getString(i));
+                    friends.add(jArray_isOnline.getString(i));
                 }
 
 
