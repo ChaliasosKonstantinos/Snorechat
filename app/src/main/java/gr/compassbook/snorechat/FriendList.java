@@ -38,6 +38,7 @@ public class FriendList extends AppCompatActivity {
         });
     }
 
+    //Creates the Friends List
     private void createFriendList(List<String> returnedList) {
         String[] friends = new String[returnedList.size()];
 

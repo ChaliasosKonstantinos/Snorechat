@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -47,6 +48,21 @@ public class UserDetails extends AppCompatActivity {
     }
 
     public void showPrivateChat(View view) {
-        startActivity(new Intent(this,PrivateChat.class));
+        startActivity(new Intent(this, PrivateChat.class));
+    }
+
+    public void addFriend(View view) {
+        ServerRequests serverRequest = new ServerRequests(this);
+        serverRequest.addFriendInBackground(userData.getString("username", ""),userData.getString("receiver", ""), new GetUserCallback() {
+            @Override
+            public void done(User returnedUser) {
+                Toast.makeText(UserDetails.this, "Friend added!", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void done2(List<String> returnedList) {
+
+            }
+        });
     }
 }

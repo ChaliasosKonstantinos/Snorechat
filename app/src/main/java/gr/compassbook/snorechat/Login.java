@@ -72,8 +72,28 @@ public class Login extends AppCompatActivity {
             User rememberUser = new User(etUsername.getText().toString(), etPassword.getText().toString());
             userDatabase.setRememberMe(rememberUser);
         }
+        setUserOnline(returnedUser);
+
+
+    }
+
+    private void setUserOnline(User returnedUser) {
+        ServerRequests serverRequest = new ServerRequests(this);
+        serverRequest.updateUserDataInBackground(returnedUser.getUsername(), "isonline", "1", new GetUserCallback() {
+            @Override
+            public void done(User returnedUser) {
+                showUserMenu();
+            }
+
+            @Override
+            public void done2(List<String> returnedList) {
+
+            }
+        });
+    }
+
+    private void showUserMenu() {
         Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_LONG).show();
         startActivity(new Intent(this, UserMenu.class));
-
     }
 }

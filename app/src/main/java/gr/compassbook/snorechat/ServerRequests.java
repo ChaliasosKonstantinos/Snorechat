@@ -666,4 +666,69 @@ public class ServerRequests {
             super.onPostExecute(friends);
         }
     }
+
+    //----------------------------------------------------------------------------------------------------------------------
+
+    public List addFriendInBackground(String username, String friendName, GetUserCallback userCallback) {
+        progressDialog.show();
+        new AddFriendAsyncTask(username, friendName, userCallback).execute();
+        return null;
+    }
+
+    public class AddFriendAsyncTask extends AsyncTask<String, Void, Void> {
+
+        String username, friendName;
+        GetUserCallback userCallback;
+
+        //FetchAllUsersAsyncTask constructor
+        public AddFriendAsyncTask(String username, String friendName, GetUserCallback userCallback) {
+            this.username = username;
+            this.friendName = friendName;
+            this.userCallback = userCallback;
+        }
+
+
+        @Override
+        protected Void doInBackground(String... params) {
+
+            try {
+
+                URL url = new URL(SERVER_ADDRESS + "addFriend.php" + "?username=" + username + "&friendName=" + friendName);
+                urlConnection = (HttpURLConnection) url.openConnection();
+                urlConnection.setReadTimeout(10000);
+                urlConnection.setConnectTimeout(15000);
+                urlConnection.setRequestMethod("GET");
+                urlConnection.setDoInput(true);
+                //urlConnection.setDoOutput(true);
+
+                urlConnection.connect();
+
+                InputStream errors = (urlConnection.getErrorStream());
+
+
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                if (urlConnection != null) {
+                    urlConnection.disconnect();
+                }
+                try {
+                    if (reader != null) {
+                        reader.close();
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            progressDialog.dismiss();
+            userCallback.done(null);
+            super.onPostExecute(aVoid);
+        }
+    }
 }
