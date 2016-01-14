@@ -6,6 +6,11 @@ package gr.compassbook.snorechat;
 public class User {
 
     private String username, password, email, lastName, firstName;
+    private int isOnline;
+
+    public User() {
+
+    }
 
     //Full details User constructor
     public User(String username, String lastName, String firstName, String password, String email) {
@@ -71,6 +76,11 @@ public class User {
         this.firstName = firstName;
     }
 
+    public int getIsOnline() {
+        return isOnline;
+    }
 
-
+    public void setIsOnline(int isOnline) {
+        this.isOnline = isOnline;
+    }
 }

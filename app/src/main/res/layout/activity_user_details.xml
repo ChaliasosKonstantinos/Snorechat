@@ -103,7 +103,8 @@
         android:layout_alignParentEnd="true"
         android:src="@drawable/ic_action_user_add"
         android:backgroundTint="@color/cypress"
-        android:id="@+id/imgbAddFriend" />
+        android:id="@+id/imgbAddFriend"
+        android:onClick="addFriend" />
 
     </RelativeLayout>
 

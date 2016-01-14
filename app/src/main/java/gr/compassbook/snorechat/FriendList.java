@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FriendList extends AppCompatActivity {
@@ -38,11 +39,15 @@ public class FriendList extends AppCompatActivity {
         });
     }
 
+    //Creates the Friends List
     private void createFriendList(List<String> returnedList) {
-        String[] friends = new String[returnedList.size()];
+        List<User> friends = new ArrayList<>();
 
-        for (int i=0; i<returnedList.size(); i++){
-            friends[i] = returnedList.get(i);
+        for (int i =0; i<returnedList.size(); i+=2) {
+            User user = new User();
+            user.setUsername(returnedList.get(i));
+            user.setIsOnline(Integer.parseInt(returnedList.get(i+1)));
+            friends.add(user);
         }
 
         ListAdapter myAdapter = new CustomFriendAdapter(this, friends);

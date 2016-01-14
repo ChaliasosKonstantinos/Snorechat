@@ -1,6 +1,7 @@
 package gr.compassbook.snorechat;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -8,9 +9,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import java.util.List;
+
 public class UserMenu extends AppCompatActivity {
 
-    private UserLocalStore userData;
+    private UserLocalStore userDatabase;
+    private SharedPreferences userData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +38,19 @@ public class UserMenu extends AppCompatActivity {
                 showAboutUs();
                 return true;
             case R.id.action_sign_out:
-                logUserOut();
+                userData = getSharedPreferences("userDetails", 0);
+                ServerRequests serverRequest = new ServerRequests(this);
+                serverRequest.updateUserDataInBackground(userData.getString("username", ""), "isonline", "0", new GetUserCallback() {
+                    @Override
+                    public void done(User returnedUser) {
+                        logUserOut();
+                    }
+
+                    @Override
+                    public void done2(List<String> returnedList) {
+
+                    }
+                });
                 return true;
         }
 
@@ -73,9 +89,9 @@ public class UserMenu extends AppCompatActivity {
 
     //Log User out
     private void logUserOut() {
-        userData = new UserLocalStore(this);
-        userData.setUserLoggedIn(false);
-        userData.clearUserData();
+        userDatabase = new UserLocalStore(this);
+        userDatabase.setUserLoggedIn(false);
+        userDatabase.clearUserData();
         Toast.makeText(UserMenu.this, "Logout Successful", Toast.LENGTH_LONG).show();
         startActivity(new Intent(this, Main.class));
 
