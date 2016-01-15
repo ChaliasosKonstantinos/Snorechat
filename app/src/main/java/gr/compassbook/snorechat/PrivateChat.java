@@ -35,7 +35,7 @@ public class PrivateChat extends AppCompatActivity {
         lvPrivateChat = (ListView) findViewById(R.id.lvPrivateChat);
 
         mHandler = new Handler();
-        //startRepeatingTask();
+        startRepeatingTask();
 
         PrivateMessage messageToSend = new PrivateMessage(sender, receiver);
 
