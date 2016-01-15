@@ -9,14 +9,14 @@
     tools:context="gr.compassbook.snorechat.PrivateChat">
 
 
-    <TextView
+    <ListView
         android:layout_width="match_parent"
         android:layout_height="430dp"
-        android:text=""
-        android:id="@+id/tChat"
-        android:textSize="20sp"
-        android:scrollbars="vertical"
-        />
+        android:id="@+id/lvPrivateChat"
+        android:focusable="true"
+        android:transcriptMode="alwaysScroll"
+        android:stackFromBottom="true"
+        android:divider="@color/transparent"/>
 
     <View
         android:layout_width="match_parent"

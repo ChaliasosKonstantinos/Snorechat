@@ -5,6 +5,10 @@ public class PrivateMessage {
 
     private String sender, receiver, message;
 
+    public PrivateMessage() {
+
+    }
+
     public PrivateMessage(String sender, String receiver, String message) {
         this.sender = sender;
         this.message = message;
