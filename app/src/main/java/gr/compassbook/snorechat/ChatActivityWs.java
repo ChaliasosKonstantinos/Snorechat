@@ -24,7 +24,7 @@ public class ChatActivityWs {
 
     public static void invokeChatWS(String username, String message, String webMethName) {
         //String resTxt = null;
-        // Create request
+        // Create request!
         SoapObject request = new SoapObject(NAMESPACE, webMethName);
         // Property which holds input parameters
         PropertyInfo params = new PropertyInfo();
