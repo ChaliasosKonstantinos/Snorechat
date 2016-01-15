@@ -9,8 +9,8 @@
         android:layout_height="60dp"
         android:text="New Button"
         android:id="@+id/bUserList"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold"
-        android:background="@color/cypress"
+        android:textColor="#000000"
+        android:textStyle="italic"
+        android:background="@color/transparent"
         android:focusable="false"/>
 </LinearLayout>
