@@ -4,18 +4,19 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PrivateChat extends AppCompatActivity {
 
     private SharedPreferences userData;
     private EditText etMessage;
-    private TextView tChat;
+    private ListView lvPrivateChat;
     private String sender, receiver, message;
 
     private int mInterval = 2000;
@@ -30,10 +31,8 @@ public class PrivateChat extends AppCompatActivity {
         sender = userData.getString("username", "");
         receiver = userData.getString("receiver", "");
         setTitle(receiver);
-        //userDatabase = new UserLocalStore(this);
         etMessage = (EditText) findViewById(R.id.etMessage);
-        tChat = (TextView) findViewById(R.id.tChat);
-        tChat.setMovementMethod(new ScrollingMovementMethod());
+        lvPrivateChat = (ListView) findViewById(R.id.lvPrivateChat);
 
         mHandler = new Handler();
         startRepeatingTask();
@@ -114,11 +113,20 @@ public class PrivateChat extends AppCompatActivity {
 
     //Updates the Conv view
     private void updateChatView(List<String> returnedList) {
-        tChat.setText("");
+        List<PrivateMessage> messages = new ArrayList<>();
+
 
         for (int i=0; i<returnedList.size(); i+=2) {
-            tChat.setText(tChat.getText() + "\n" + returnedList.get(i) + ": " + returnedList.get(i + 1));
+            PrivateMessage message = new PrivateMessage();
+            message.setSender(returnedList.get(i));
+            message.setMessage(returnedList.get(i+1));
+            messages.add(message);
         }
+
+        ListAdapter myAdapter = new CustomChatAdapter(this, messages);
+        ListView privateChatListView = (ListView) findViewById(R.id.lvPrivateChat);
+        privateChatListView.setAdapter(myAdapter);
+        privateChatListView.setItemsCanFocus(true);
     }
 
 
