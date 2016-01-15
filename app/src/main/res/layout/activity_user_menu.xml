@@ -5,34 +5,6 @@
     android:orientation="vertical">
 
 
-    <Button
-        android:id="@+id/bSendMessage"
-        android:layout_width="250dp"
-        android:layout_height="75dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="4dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/cypress"
-        android:onClick="showChatActivity"
-        android:text="Group Chat"
-        android:textColor="#FFFFFF"
-        android:textSize="25sp"
-        android:textStyle="bold" />
-
-    <Button
-        android:id="@+id/bFriends"
-        android:layout_width="250dp"
-        android:layout_height="75dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="4dp"
-        android:layout_marginTop="4dp"
-        android:background="@color/cypress"
-        android:onClick="showFriendsList"
-        android:text="Friends"
-        android:textColor="#FFFFFF"
-        android:textSize="25sp"
-        android:textStyle="bold" />
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -44,8 +16,9 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentStart="true"
             android:layout_marginBottom="15dp"
-            android:layout_marginLeft="5dp"
-            android:background="@drawable/ic_action_right_arrow" />
+            android:layout_marginLeft="-20dp"
+            android:background="@drawable/ic_action_right_arrow"
+            android:onClick="showMenuButtons"/>
 
         <ImageButton
             android:id="@+id/bLeftArrow"
@@ -53,10 +26,23 @@
             android:layout_height="50dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentStart="true"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="15dp"
+            android:visibility="invisible"
+            android:onClick="hideMenuButtons"
+            android:background="@drawable/ic_action_left_arrow" />
+
+        <ImageButton
+            android:id="@+id/bShowFriendList"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="5dp"
+            android:layout_toEndOf="@+id/bGroupChat"
             android:visibility="invisible"
-            android:background="@drawable/ic_action_left_arrow" />
+            android:background="@mipmap/ic_action_group_chat2"
+            android:onClick="showChatActivity" />
 
         <ImageButton
             android:id="@+id/bGroupChat"
@@ -66,8 +52,9 @@
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="5dp"
             android:layout_toEndOf="@+id/bLeftArrow"
-            android:background="@mipmap/ic_action_group_chat2" />
-
+            android:visibility="invisible"
+            android:background="@mipmap/ic_action_chat"
+            android:onClick="showFriendsList" />
 
 
 
