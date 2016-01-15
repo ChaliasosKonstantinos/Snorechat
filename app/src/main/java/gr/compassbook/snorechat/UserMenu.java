@@ -31,6 +31,9 @@ public class UserMenu extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.action_search:
+                showUserList();
+                return true;
             case R.id.action_settings:
                 showUserSettings();
                 return true;
@@ -78,7 +81,7 @@ public class UserMenu extends AppCompatActivity {
 
 
     //Show User List
-    public void showUserList(View view) {
+    private void showUserList() {
         startActivity(new Intent(this, UserList.class));
     }
 

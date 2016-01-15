@@ -34,18 +34,18 @@
         android:textSize="25sp"
         android:onClick="showFriendsList" />
 
-    <Button
-        android:layout_width="250dp"
-        android:layout_height="75dp"
-        android:text="Users"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold"
-        android:background="@color/cypress"
-        android:id="@+id/bUsers"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="4dp"
-        android:textSize="25sp"
-        android:onClick="showUserList" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageButton"
+        android:layout_alignParentBottom="true"
+
+        android:background="@drawable/ic_action_group_chat"/>
+
+    </RelativeLayout>
 
 </LinearLayout>

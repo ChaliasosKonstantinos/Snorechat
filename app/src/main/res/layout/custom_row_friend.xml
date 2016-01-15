@@ -9,11 +9,10 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:text="New Button"
-        android:backgroundTint="@color/transparent"
+        android:background="@color/transparent"
         android:textColor="#000000"
         android:id="@+id/bFriend"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
+        android:textStyle="italic"
         android:drawableRight="@drawable/ic_image_panorama_fisheye"
         android:focusable="false"/>
 </LinearLayout>
