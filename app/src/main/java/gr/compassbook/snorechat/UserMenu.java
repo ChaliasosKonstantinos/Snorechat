@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import java.util.List;
@@ -15,11 +16,17 @@ public class UserMenu extends AppCompatActivity {
 
     private UserLocalStore userDatabase;
     private SharedPreferences userData;
+    private ImageButton bLeftArrow, bRightArrow, bFriends, bGroupChat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_menu);
+
+        bLeftArrow = (ImageButton) findViewById(R.id.bLeftArrow);
+        bRightArrow = (ImageButton) findViewById(R.id.bRightArrow);
+        bFriends = (ImageButton) findViewById(R.id.bShowFriendList);
+        bGroupChat = (ImageButton) findViewById(R.id.bGroupChat);
     }
 
     @Override
@@ -62,6 +69,23 @@ public class UserMenu extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+    }
+
+    public void showMenuButtons(View view) {
+        //RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) bRightArrow.getLayoutParams();
+        //params.setMargins(15, 0, 0, 15);
+        bRightArrow.setVisibility(View.INVISIBLE);
+        bLeftArrow.setVisibility(View.VISIBLE);
+        bFriends.setVisibility(View.VISIBLE);
+        bGroupChat.setVisibility(View.VISIBLE);
+
+    }
+
+    public void hideMenuButtons(View view) {
+        bRightArrow.setVisibility(View.VISIBLE);
+        bLeftArrow.setVisibility(View.INVISIBLE);
+        bFriends.setVisibility(View.INVISIBLE);
+        bGroupChat.setVisibility(View.INVISIBLE);
     }
 
     //Show User Settings
