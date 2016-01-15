@@ -39,12 +39,11 @@
         android:layout_height="wrap_content">
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:id="@+id/imageButton"
         android:layout_alignParentBottom="true"
-
-        android:background="@drawable/ic_action_group_chat"/>
+        />
 
     </RelativeLayout>
 
