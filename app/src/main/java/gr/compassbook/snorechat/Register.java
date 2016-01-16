@@ -57,7 +57,7 @@ public class Register extends AppCompatActivity {
                 showAlertDialog("Email already exist!", "OK");
                 break;
             default:
-                showAlertDialog("Server is busy. Try again in a moment!", "OK");
+                showAlertDialog("No internet connection!", "OK");
                 break;
         }
     }

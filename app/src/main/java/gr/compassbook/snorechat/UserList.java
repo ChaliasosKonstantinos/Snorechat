@@ -17,7 +17,6 @@ public class UserList extends AppCompatActivity {
 
     private EditText etSearch;
     private ListView userListView;
-    private ListAdapter myAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +27,7 @@ public class UserList extends AppCompatActivity {
 
 }
 
+    //Fetches Data and Shows the list
     private void showUserList() {
 
         ServerRequests serverRequest = new ServerRequests(this);
@@ -43,13 +43,15 @@ public class UserList extends AppCompatActivity {
         });
     }
 
+    //Creates the UserList
     private void createUserList(final List<String> returnedList) {
 
-        myAdapter = new CustomUserAdapter(this, returnedList);
+        ListAdapter myAdapter = new CustomUserAdapter(this, returnedList);
         userListView = (ListView) findViewById(R.id.userListView);
         userListView.setAdapter(myAdapter);
         userListView.setItemsCanFocus(true);
 
+        //Search user's from the populated List
         etSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
