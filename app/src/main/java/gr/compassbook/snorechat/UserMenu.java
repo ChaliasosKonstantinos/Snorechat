@@ -71,22 +71,22 @@ public class UserMenu extends AppCompatActivity {
     public void onBackPressed() {
     }
 
+    //Show Menu Buttons
     public void showMenuButtons(View view) {
-        //RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) bRightArrow.getLayoutParams();
-        //params.setMargins(15, 0, 0, 15);
         bRightArrow.setVisibility(View.INVISIBLE);
         bLeftArrow.setVisibility(View.VISIBLE);
         bFriends.setVisibility(View.VISIBLE);
         bGroupChat.setVisibility(View.VISIBLE);
-
     }
 
+    //Hide Menu Buttons
     public void hideMenuButtons(View view) {
         bRightArrow.setVisibility(View.VISIBLE);
         bLeftArrow.setVisibility(View.INVISIBLE);
         bFriends.setVisibility(View.INVISIBLE);
         bGroupChat.setVisibility(View.INVISIBLE);
     }
+
 
     //Show User Settings
     private void showUserSettings() {

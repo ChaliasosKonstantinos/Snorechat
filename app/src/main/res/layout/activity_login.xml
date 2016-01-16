@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tvUserName"
-        android:text="Username" />
+        android:text="@string/username" />
 
     <EditText
         android:id="@+id/etUsername"
@@ -22,7 +22,7 @@
         android:id="@+id/tvPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Password" />
+        android:text="@string/password" />
 
     <EditText
         android:id="@+id/etPassword"
@@ -33,7 +33,7 @@
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Remember me"
+        android:text="@string/remember_me"
         android:layout_marginBottom="10dp"
         android:id="@+id/cbRememberMe"
         android:buttonTint="@color/cypress"
@@ -41,7 +41,7 @@
 
     <Button
         android:id="@+id/bLogin"
-        android:text="Login"
+        android:text="@string/login"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
         android:background="@color/cypress"

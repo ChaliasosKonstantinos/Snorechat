@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#5eab1f</color>
     <color name="colorPrimaryDark">#589442</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#589442</color>
     <color name="cypress">#589442</color>
     <color name="transparent">#0000</color>
     <color name="hint">#BDBDBD</color>

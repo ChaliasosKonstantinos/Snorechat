@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 
+import java.util.List;
 
 
 /**
@@ -17,7 +18,7 @@ class CustomUserAdapter extends ArrayAdapter<String>{
 
     private Context context2;
 
-    public CustomUserAdapter(Context context, String[] usernames) {
+    public CustomUserAdapter(Context context, List<String> usernames) {
         super(context, R.layout.custom_row_user, usernames);
         this.context2 = context;
     }

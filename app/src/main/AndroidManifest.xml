@@ -23,7 +23,7 @@
         <activity android:name=".Register" android:parentActivityName=".Main" android:label="Register"/>
         <activity android:name=".UserMenu" android:label="Menu"/>
         <activity android:name=".UserSettings" android:parentActivityName=".UserMenu" android:label="Settings"/>
-        <activity android:name=".ChatActivity" android:parentActivityName=".UserMenu" android:label="Chat"/>
+        <activity android:name=".ChatActivity" android:parentActivityName=".UserMenu" android:windowSoftInputMode="adjustPan" android:label="Chat" />
         <activity android:name=".UserList" android:parentActivityName=".UserMenu" android:label="Users"/>
         <activity android:name=".PrivateChat" android:windowSoftInputMode="adjustPan" android:parentActivityName=".UserMenu" android:label="Chat"/>
         <activity android:name=".UserDetails" android:parentActivityName=".UserList" android:label="Details"/>

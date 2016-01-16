@@ -1,63 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <ImageButton
+        android:id="@+id/bRightArrow"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="-20dp"
+        android:background="@drawable/ic_action_right_arrow"
+        android:contentDescription="@string/content_description"
+        android:onClick="showMenuButtons" />
 
-        <ImageButton
-            android:id="@+id/bRightArrow"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="15dp"
-            android:layout_marginLeft="-20dp"
-            android:background="@drawable/ic_action_right_arrow"
-            android:onClick="showMenuButtons"/>
+    <ImageButton
+        android:id="@+id/bLeftArrow"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:background="@drawable/ic_action_left_arrow"
+        android:contentDescription="@string/content_description"
+        android:onClick="hideMenuButtons"
+        android:visibility="invisible" />
 
-        <ImageButton
-            android:id="@+id/bLeftArrow"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="15dp"
-            android:layout_marginLeft="15dp"
-            android:visibility="invisible"
-            android:onClick="hideMenuButtons"
-            android:background="@drawable/ic_action_left_arrow" />
+    <ImageButton
+        android:id="@+id/bShowFriendList"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_toEndOf="@+id/bGroupChat"
+        android:background="@mipmap/ic_action_group_chat2"
+        android:contentDescription="@string/content_description"
+        android:onClick="showChatActivity"
+        android:visibility="invisible" />
 
-        <ImageButton
-            android:id="@+id/bShowFriendList"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_toEndOf="@+id/bGroupChat"
-            android:visibility="invisible"
-            android:background="@mipmap/ic_action_group_chat2"
-            android:onClick="showChatActivity" />
+    <ImageButton
+        android:id="@+id/bGroupChat"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_toEndOf="@+id/bLeftArrow"
+        android:background="@mipmap/ic_action_chat"
+        android:contentDescription="@string/content_description"
+        android:onClick="showFriendsList"
+        android:visibility="invisible" />
 
-        <ImageButton
-            android:id="@+id/bGroupChat"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_toEndOf="@+id/bLeftArrow"
-            android:visibility="invisible"
-            android:background="@mipmap/ic_action_chat"
-            android:onClick="showFriendsList" />
-
-
-
-    </RelativeLayout>
-
-</LinearLayout>
+</RelativeLayout>

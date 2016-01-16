@@ -9,20 +9,13 @@
     android:id="@+id/userRegisterLinear"
     tools:context="gr.compassbook.snorechat.Register">
 
-    <TextView
-        android:id="@+id/txtUserRegistration"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="User Registration"
-        android:textAlignment="center"
-        android:textSize="20dp" />
 
     <TextView
         android:id="@+id/txtUsername"
         android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Username" />
+        android:text="@string/username" />
 
     <EditText
         android:id="@+id/etRegUsername"
@@ -34,7 +27,7 @@
         android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Last Name" />
+        android:text="@string/last_name" />
 
     <EditText
         android:id="@+id/etLastName"
@@ -46,7 +39,7 @@
         android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="First Name" />
+        android:text="@string/first_name" />
 
     <EditText
         android:id="@+id/etFirstName"
@@ -58,7 +51,7 @@
         android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Password" />
+        android:text="@string/password" />
 
     <EditText
         android:id="@+id/etRegPassword"
@@ -71,7 +64,7 @@
         android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Email" />
+        android:text="@string/email" />
 
     <EditText
         android:id="@+id/etRegEmail"
@@ -83,7 +76,7 @@
 
     <Button
         android:id="@+id/bRegister"
-        android:text="Register"
+        android:text="@string/register"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
         android:background="@color/cypress"
