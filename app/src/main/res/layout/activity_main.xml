@@ -12,7 +12,8 @@
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:id="@+id/imageView"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:contentDescription="@string/content_description"/>
 
     <Space
         android:layout_width="20dp"
@@ -21,7 +22,7 @@
 
 
     <Button
-        android:text="Login"
+        android:text="@string/login"
         android:id="@+id/bShowLogin"
         android:layout_width="150dp"
         android:layout_height="70dp"
@@ -40,7 +41,7 @@
     <Button
         android:layout_width="150dp"
         android:layout_height="70dp"
-        android:text="Register"
+        android:text="@string/register"
         android:id="@+id/bShowRegister"
         android:textSize="22sp"
         android:background="@color/cypress"
@@ -57,7 +58,7 @@
     <Button
         android:layout_width="150dp"
         android:layout_height="70dp"
-        android:text="@string/about_us_text"
+        android:text="@string/about_us"
         android:textStyle="bold"
         android:textColor="#FFFFFF"
         android:id="@+id/bAbout"

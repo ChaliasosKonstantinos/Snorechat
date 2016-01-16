@@ -1,5 +1,6 @@
 package gr.compassbook.snorechat;
 
+
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -10,16 +11,12 @@ import android.widget.Button;
 
 import java.util.List;
 
-
-/**
- * Created by Konstantinos on 8/1/2016.
- */
-class CustomUserAdapter extends ArrayAdapter<String>{
+public class CustomInboxAdapter extends ArrayAdapter<String> {
 
     private Context context2;
 
-    public CustomUserAdapter(Context context, List<String> usernames) {
-        super(context, R.layout.custom_row_user, usernames);
+    public CustomInboxAdapter(Context context, List<String> inbox) {
+        super(context, R.layout.custom_row_user, inbox);
         this.context2 = context;
     }
 
@@ -32,9 +29,9 @@ class CustomUserAdapter extends ArrayAdapter<String>{
 
 
         Button bUser;
-        String singleUser = getItem(position);
+        String singleInbox = getItem(position);
         bUser = (Button) customView.findViewById(R.id.bUserList);
-        bUser.setText(singleUser);
+        bUser.setText(singleInbox);
 
         final View finalCustomView = customView;
         bUser.setOnClickListener(new View.OnClickListener() {
@@ -46,7 +43,7 @@ class CustomUserAdapter extends ArrayAdapter<String>{
                 UserLocalStore userDatabase;
                 userDatabase = new UserLocalStore(getContext());
                 userDatabase.setReceiver(bUser.getText().toString());
-                Intent intent = new Intent(context2, UserDetails.class);
+                Intent intent = new Intent(context2, PrivateChat.class);
                 context2.startActivity(intent);
 
 

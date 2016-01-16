@@ -6,7 +6,6 @@
 
     <Button
         android:id="@+id/bChatBubble2"
-        android:text="Button"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="5dp"
         android:textColor="#000000"

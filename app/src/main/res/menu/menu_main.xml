@@ -3,23 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item android:id="@+id/action_search"
-        android:title="Search"
+        android:title="@string/search"
         android:icon="@drawable/ic_action_search"
         android:orderInCategory="1"
         app:showAsAction="ifRoom" />
 
     <item android:id="@+id/action_settings"
-        android:title="Settings"
+        android:title="@string/settings"
         android:orderInCategory="1"
         app:showAsAction="never" />
 
     <item android:id="@+id/action_about"
-        android:title="About Us"
+        android:title="@string/about_us"
         android:orderInCategory="2"
         app:showAsAction="never" />
 
     <item android:id="@+id/action_sign_out"
-        android:title="Sign Out"
+        android:title="@string/sign_out"
         android:orderInCategory="3"
         app:showAsAction="never" />
 

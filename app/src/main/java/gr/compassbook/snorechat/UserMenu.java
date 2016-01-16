@@ -7,9 +7,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
 
+import java.util.Collections;
 import java.util.List;
 
 public class UserMenu extends AppCompatActivity {
@@ -17,16 +21,18 @@ public class UserMenu extends AppCompatActivity {
     private UserLocalStore userDatabase;
     private SharedPreferences userData;
     private ImageButton bLeftArrow, bRightArrow, bFriends, bGroupChat;
+    private ListView inboxListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_menu);
-
         bLeftArrow = (ImageButton) findViewById(R.id.bLeftArrow);
         bRightArrow = (ImageButton) findViewById(R.id.bRightArrow);
         bFriends = (ImageButton) findViewById(R.id.bShowFriendList);
         bGroupChat = (ImageButton) findViewById(R.id.bGroupChat);
+        userData = getSharedPreferences("userDetails", 0);
+        fetchInbox();
     }
 
     @Override
@@ -48,7 +54,6 @@ public class UserMenu extends AppCompatActivity {
                 showAboutUs();
                 return true;
             case R.id.action_sign_out:
-                userData = getSharedPreferences("userDetails", 0);
                 ServerRequests serverRequest = new ServerRequests(this);
                 serverRequest.updateUserDataInBackground(userData.getString("username", ""), "isonline", "0", new GetUserCallback() {
                     @Override
@@ -71,22 +76,25 @@ public class UserMenu extends AppCompatActivity {
     public void onBackPressed() {
     }
 
+    //------------------------------------OnClick-------------------------------------------------//
+
+
+    //Show Menu Buttons
     public void showMenuButtons(View view) {
-        //RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) bRightArrow.getLayoutParams();
-        //params.setMargins(15, 0, 0, 15);
         bRightArrow.setVisibility(View.INVISIBLE);
         bLeftArrow.setVisibility(View.VISIBLE);
         bFriends.setVisibility(View.VISIBLE);
         bGroupChat.setVisibility(View.VISIBLE);
-
     }
 
+    //Hide Menu Buttons
     public void hideMenuButtons(View view) {
         bRightArrow.setVisibility(View.VISIBLE);
         bLeftArrow.setVisibility(View.INVISIBLE);
         bFriends.setVisibility(View.INVISIBLE);
         bGroupChat.setVisibility(View.INVISIBLE);
     }
+
 
     //Show User Settings
     private void showUserSettings() {
@@ -98,7 +106,7 @@ public class UserMenu extends AppCompatActivity {
         startActivity(new Intent(this, About.class));
     }
 
-    //Show Chat Activity
+    //Show Group Chat Activity
     public void showChatActivity(View view) {
         startActivity(new Intent(this, ChatActivity.class));
     }
@@ -114,6 +122,25 @@ public class UserMenu extends AppCompatActivity {
         startActivity(new Intent(this, FriendList.class));
     }
 
+    private void showInbox(List<String> inbox) {
+
+        for(int i=0; i < inbox.size(); i++) {
+            inbox.set(i, inbox.get(i).toUpperCase());
+        }
+        Collections.sort(inbox);
+        ListAdapter myAdapter = new CustomInboxAdapter(this, inbox);
+        inboxListView = (ListView) findViewById(R.id.lvInbox);
+        inboxListView.setAdapter(myAdapter);
+        inboxListView.setItemsCanFocus(true);
+
+        inboxListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+        });
+    }
+
     //Log User out
     private void logUserOut() {
         userDatabase = new UserLocalStore(this);
@@ -122,6 +149,26 @@ public class UserMenu extends AppCompatActivity {
         Toast.makeText(UserMenu.this, "Logout Successful", Toast.LENGTH_LONG).show();
         startActivity(new Intent(this, Main.class));
 
+    }
+
+
+
+    //-------------------------------------Helpers------------------------------------------------//
+
+
+    private void fetchInbox() {
+        ServerRequests serverRequest = new ServerRequests(this);
+        serverRequest.fetchInboxInBackground(userData.getString("username", ""), new GetUserCallback() {
+            @Override
+            public void done(User returnedUser) {
+
+            }
+
+            @Override
+            public void done2(List<String> returnedList) {
+                showInbox(returnedList);
+            }
+        });
     }
 
 

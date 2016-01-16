@@ -3,21 +3,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:orientation="vertical"
     tools:context="gr.compassbook.snorechat.UserDetails">
 
 
     <TextView
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Username"
         android:layout_gravity="center_horizontal"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/textView3" />
+        android:text="@string/username"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <View
         android:layout_width="match_parent"
@@ -27,84 +27,89 @@
 
 
     <TextView
+        android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Last Name"
         android:layout_marginTop="10dp"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/textView11" />
+        android:text="@string/last_name"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
+        android:id="@+id/tvLastName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=""
         android:layout_marginTop="10dp"
-        android:id="@+id/tvLastName" />
+        android:text="" />
 
     <View
         android:layout_width="100dp"
-        android:layout_gravity="center_horizontal"
         android:layout_height="2dp"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
         android:background="#ecececec" />
 
     <TextView
+        android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="First Name"
         android:layout_marginTop="10dp"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/textView8" />
+        android:text="@string/first_name"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
+        android:id="@+id/tvFirstName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=""
         android:layout_marginTop="10dp"
-        android:id="@+id/tvFirstName" />
+        android:text="" />
 
     <View
         android:layout_width="100dp"
-        android:layout_gravity="center_horizontal"
         android:layout_height="2dp"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
         android:background="#ecececec" />
 
     <TextView
+        android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Email"
         android:layout_marginTop="10dp"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/textView10" />
+        android:text="@string/email"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
+        android:id="@+id/tvEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=""
         android:layout_marginTop="10dp"
-        android:id="@+id/tvEmail" />
+        android:text="" />
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_marginTop="20dp"
-        android:layout_height="match_parent">
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_action_mail"
-        android:backgroundTint="@color/cypress"
-        android:id="@+id/imgbSendMessage"
-        android:onClick="showPrivateChat" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp">
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:src="@drawable/ic_action_user_add"
-        android:backgroundTint="@color/cypress"
-        android:id="@+id/imgbAddFriend"
-        android:onClick="addFriend" />
+        <ImageButton
+            android:id="@+id/imgbSendMessage"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="80dp"
+            android:scaleX="-1"
+            android:background="@mipmap/ic_action_send_message"
+            android:contentDescription="@string/content_description"
+            android:onClick="showPrivateChat"
+             />
+
+        <ImageButton
+            android:id="@+id/imgbAddFriend"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginEnd="80dp"
+            android:layout_alignParentEnd="true"
+            android:contentDescription="@string/content_description"
+            android:onClick="addFriend"
+            android:background="@mipmap/ic_action_add_friend" />
 
     </RelativeLayout>
 

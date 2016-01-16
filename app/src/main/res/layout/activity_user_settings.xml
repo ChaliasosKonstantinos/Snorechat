@@ -17,26 +17,12 @@
 
 
         <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="10dp"
-            android:text="Settings"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="#ec000000" />
-
-        <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
-            android:text="Password Change"
+            android:text="@string/password_change"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
 
@@ -45,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Your password" />
+            android:text="@string/your_password" />
 
         <TextView
             android:id="@+id/textView4"
@@ -66,7 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="New Password"
+            android:hint="@string/new_password"
             android:inputType="textPassword"
             android:textColorHint="@color/hint" />
 
@@ -76,7 +62,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Confirm Password"
+            android:hint="@string/confirm_password"
             android:inputType="textPassword"
             android:textColorHint="@color/hint" />
 
@@ -88,7 +74,7 @@
             android:layout_marginBottom="10dp"
             android:background="@color/cypress"
             android:onClick="changePassword"
-            android:text="Save"
+            android:text="@string/save"
             android:textColor="#FFFFFF"
             android:textStyle="normal" />
 
@@ -103,7 +89,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
-            android:text="Email Change"
+            android:text="@string/email_change"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
 
@@ -112,7 +98,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Your email" />
+            android:text="@string/your_email" />
 
         <TextView
             android:id="@+id/textView6"
@@ -134,7 +120,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="New Email"
+            android:inputType="textEmailAddress"
+            android:hint="@string/new_email"
             android:textColorHint="@color/hint" />
 
 
@@ -144,7 +131,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:ems="10"
-            android:hint="Confirm email"
+            android:inputType="textEmailAddress"
+            android:hint="@string/confirm_email"
             android:textColorHint="@color/hint" />
 
         <Button
@@ -155,7 +143,7 @@
             android:layout_marginBottom="10dp"
             android:background="@color/cypress"
             android:onClick="changeEmail"
-            android:text="Save"
+            android:text="@string/save"
             android:textColor="#FFFFFF"
             android:textStyle="normal" />
 

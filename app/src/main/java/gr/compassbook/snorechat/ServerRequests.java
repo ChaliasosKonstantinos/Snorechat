@@ -39,6 +39,8 @@ public class ServerRequests {
         progressDialog.setMessage("Please wait...");
     }
 
+    // ---------------------------------------------------------------------------------------------------------------------//
+
     //Fetches User's data from the server
     public User fetchUserDataInBackground(User userData, GetUserCallback userCallback) {
         progressDialog.show();
@@ -128,6 +130,8 @@ public class ServerRequests {
         }
     }
 
+    // ---------------------------------------------------------------------------------------------------------------------//
+
     //Stores User's data on the server
     public User storeUserDataInBackground(User userData, GetServerCallback serverCallback) {
         progressDialog.show();
@@ -201,6 +205,8 @@ public class ServerRequests {
         }
     }
 
+    // ---------------------------------------------------------------------------------------------------------------------//
+
     //Updates User's data on the server
     public User updateUserDataInBackground(String username, String fieldToUpdate, String dataToUpdate, GetUserCallback userCallback) {
         progressDialog.show();
@@ -256,32 +262,7 @@ public class ServerRequests {
     }
 
 
-
-    //Resolve dataToSend
-    public  String getQueryData(HashMap<String,String> data) throws UnsupportedEncodingException {
-        StringBuilder result = new StringBuilder();
-        boolean first = true;
-
-
-        for(Map.Entry<String,String> entry:data.entrySet()) {
-            if (first) {
-                result.append("?");
-                result.append(URLEncoder.encode(entry.getKey(), "UTF-8"));
-                result.append("=");
-                result.append(URLEncoder.encode(entry.getValue(), "UTF-8"));
-                first = false;
-            } else {
-                result.append("&");
-                result.append(URLEncoder.encode(entry.getKey(), "UTF-8"));
-                result.append("=");
-                result.append(URLEncoder.encode(entry.getValue(), "UTF-8"));
-            }
-        }
-
-        return result.toString();
-    }
-
-    // ---------------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------------------------------//
 
     public List fetchAllUsersInBackground(GetUserCallback userCallback) {
         progressDialog.show();
@@ -361,7 +342,7 @@ public class ServerRequests {
         }
     }
 
-    // ---------------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------------------------------//
 
     //Sends a private message on the server
     public List sendPrivateMessageInBackground(PrivateMessage messageToSend, GetUserCallback userCallback) {
@@ -414,7 +395,7 @@ public class ServerRequests {
         }
     }
 
-    // ---------------------------------------------------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------------------------------------------------//
 
     public List fetchPrivateConvInBackground(PrivateMessage convDetails, GetUserCallback userCallback) {
         new FetchPrivateConvAsyncTask(convDetails, userCallback).execute();
@@ -501,7 +482,7 @@ public class ServerRequests {
         }
     }
 
-    //----------------------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------------------//
 
     //Fetches User's data from the server
     public User fetchSingleUserDataInBackground(String username, GetUserCallback userCallback) {
@@ -587,7 +568,7 @@ public class ServerRequests {
         }
     }
 
-    //----------------------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------------------//
 
     public List fetchFriendsInBackground(String username, GetUserCallback userCallback) {
         progressDialog.show();
@@ -669,7 +650,7 @@ public class ServerRequests {
         }
     }
 
-    //----------------------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------------------//
 
     public List addFriendInBackground(String username, String friendName, GetUserCallback userCallback) {
         progressDialog.show();
@@ -733,4 +714,113 @@ public class ServerRequests {
             super.onPostExecute(aVoid);
         }
     }
+
+    //----------------------------------------------------------------------------------------------------------------------//
+
+    public List fetchInboxInBackground(String username, GetUserCallback userCallback) {
+        progressDialog.show();
+        new FetchInboxAsyncTask(username, userCallback).execute();
+        return null;
+    }
+
+    public class FetchInboxAsyncTask extends AsyncTask<String, Void, List<String>> {
+
+        String username;
+        GetUserCallback userCallback;
+
+        //FetchAllUsersAsyncTask constructor
+        public FetchInboxAsyncTask(String username, GetUserCallback userCallback) {
+            this.username = username;
+            this.userCallback = userCallback;
+        }
+
+
+        @Override
+        protected List<String> doInBackground(String... params) {
+            List<String> inbox = new ArrayList<>();
+
+            try {
+
+                URL url = new URL(SERVER_ADDRESS + "fetchInbox.php" + "?username=" + username);
+                urlConnection = (HttpURLConnection) url.openConnection();
+                urlConnection.setReadTimeout(10000);
+                urlConnection.setConnectTimeout(15000);
+                urlConnection.setRequestMethod("GET");
+                urlConnection.setDoInput(true);
+                //urlConnection.setDoOutput(true);
+
+                urlConnection.connect();
+
+                InputStream is = urlConnection.getInputStream();
+                reader = new BufferedReader(new InputStreamReader(is));
+
+                StringBuffer buffer = new StringBuffer();
+
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    buffer.append(line);
+                }
+
+                String result = buffer.toString();
+                JSONArray jArray = new JSONArray(result);
+                JSONObject jObject;
+
+                for (int i=0; i<jArray.length(); i++) {
+                    jObject = jArray.getJSONObject(i);
+                    inbox.add(jObject.getString("inbox"));
+
+                }
+
+
+            } catch (JSONException | IOException e) {
+                e.printStackTrace();
+            } finally {
+                if (urlConnection != null) {
+                    urlConnection.disconnect();
+                }
+                try {
+                    if (reader != null) {
+                        reader.close();
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            return inbox;
+        }
+
+        @Override
+        protected void onPostExecute(List<String> friends) {
+            progressDialog.dismiss();
+            userCallback.done2(friends);
+            super.onPostExecute(friends);
+        }
+    }
+
+    // ---------------------------------------------------------------------------------------------------------------------//
+
+    //Resolve dataToSend
+    public  String getQueryData(HashMap<String,String> data) throws UnsupportedEncodingException {
+        StringBuilder result = new StringBuilder();
+        boolean first = true;
+
+
+        for(Map.Entry<String,String> entry:data.entrySet()) {
+            if (first) {
+                result.append("?");
+                result.append(URLEncoder.encode(entry.getKey(), "UTF-8"));
+                result.append("=");
+                result.append(URLEncoder.encode(entry.getValue(), "UTF-8"));
+                first = false;
+            } else {
+                result.append("&");
+                result.append(URLEncoder.encode(entry.getKey(), "UTF-8"));
+                result.append("=");
+                result.append(URLEncoder.encode(entry.getValue(), "UTF-8"));
+            }
+        }
+
+        return result.toString();
+    }
+
 }
