@@ -55,8 +55,20 @@ public class PrivateChat extends AppCompatActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        startRepeatingTask();
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
+        stopRepeatingTask();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
         stopRepeatingTask();
     }
 

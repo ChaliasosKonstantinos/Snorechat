@@ -10,8 +10,8 @@ import android.text.method.ScrollingMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,7 +21,7 @@ import java.util.List;
 
 public class ChatActivity extends AppCompatActivity {
     private EditText message;
-    private Button Send;
+    private ImageButton Send;
     private String SaveMessage;
     private TextView ShowMessage;
     private List<String> mList = new ArrayList<>();
@@ -36,7 +36,7 @@ public class ChatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
         message = (EditText) findViewById(R.id.MessageTextField);
-        Send = (Button) findViewById(R.id.bSendWS);
+        Send = (ImageButton) findViewById(R.id.bSendWS);
         ShowMessage = (TextView) findViewById(R.id.messagesList);
         ShowMessage.setMovementMethod(new ScrollingMovementMethod());
 
@@ -47,6 +47,18 @@ public class ChatActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        stopRepeatingTask();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        startRepeatingTask();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
         stopRepeatingTask();
     }
 
@@ -123,9 +135,8 @@ public class ChatActivity extends AppCompatActivity {
 
         @Override
         protected Void doInBackground(String... params) {
-            userData = getSharedPreferences("userDetails",0);
+            userData = getSharedPreferences("userDetails", 0);
             username = userData.getString("username", "");
-            System.out.println(username);
             ChatActivityWs.invokeChatWS(username, SaveMessage, "chatOperation");
             return null;
         }
@@ -152,7 +163,6 @@ public class ChatActivity extends AppCompatActivity {
                 if (indexOfUsername != -1) {
                     username = newMessage.substring(0, indexOfUsername);
                     message = newMessage.substring(indexOfUsername+1);
-                    System.out.println(message);
                     ShowMessage.setText(ShowMessage.getText().toString() + "\n" + username + ":" + "\n" + " "+message);
                 }
 
