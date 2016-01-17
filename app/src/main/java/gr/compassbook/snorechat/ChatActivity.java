@@ -1,15 +1,19 @@
 package gr.compassbook.snorechat;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.text.method.ScrollingMovementMethod;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +25,8 @@ public class ChatActivity extends AppCompatActivity {
     private String SaveMessage;
     private TextView ShowMessage;
     private List<String> mList = new ArrayList<>();
-    private  SharedPreferences userData;
+    private SharedPreferences userData;
+    private UserLocalStore userDatabase;
 
     private int mInterval = 2000;
     private Handler mHandler;
@@ -43,6 +48,40 @@ public class ChatActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         stopRepeatingTask();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.generic_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                showUserSettings();
+                return true;
+            case R.id.action_about:
+                showAboutUs();
+                return true;
+            case R.id.action_sign_out:
+                ServerRequests serverRequest = new ServerRequests(this);
+                serverRequest.updateUserDataInBackground(userData.getString("username", ""), "isonline", "0", new GetUserCallback() {
+                    @Override
+                    public void done(User returnedUser) {
+                        logUserOut();
+                    }
+
+                    @Override
+                    public void done2(List<String> returnedList) {
+
+                    }
+                });
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     //------------------------------------OnClick-------------------------------------------------//
@@ -113,6 +152,26 @@ public class ChatActivity extends AppCompatActivity {
 
             }
         }
+
+    }
+
+    //Show User Settings
+    private void showUserSettings() {
+        startActivity(new Intent(this, UserSettings.class));
+    }
+
+    //Show About Us
+    private void showAboutUs() {
+        startActivity(new Intent(this, About.class));
+    }
+
+    //Log User out
+    private void logUserOut() {
+        userDatabase = new UserLocalStore(this);
+        userDatabase.setUserLoggedIn(false);
+        userDatabase.clearUserData();
+        Toast.makeText(ChatActivity.this, "Logout Successful", Toast.LENGTH_LONG).show();
+        startActivity(new Intent(this, Main.class));
 
     }
 

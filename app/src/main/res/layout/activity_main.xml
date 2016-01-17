@@ -26,17 +26,21 @@
         android:id="@+id/bShowLogin"
         android:layout_width="150dp"
         android:layout_height="70dp"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold"
-        android:background="@color/cypress"
+        android:textColor="@color/black"
+        android:textStyle="italic"
+        android:background="@color/transparent"
         android:onClick="showLogin"
         android:textSize="22sp"
         android:textAlignment="center"
         android:layout_gravity="center" />
 
-    <Space
-        android:layout_width="20dp"
-        android:layout_height="20dp" />
+    <View
+        android:layout_width="100dp"
+        android:layout_height="2dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="center_horizontal"
+        android:background="#ecececec" />
 
     <Button
         android:layout_width="150dp"
@@ -44,25 +48,29 @@
         android:text="@string/register"
         android:id="@+id/bShowRegister"
         android:textSize="22sp"
-        android:background="@color/cypress"
-        android:textColor="#FFFFFF"
+        android:background="@color/transparent"
+        android:textColor="@color/black"
         android:textAlignment="center"
-        android:textStyle="bold"
+        android:textStyle="italic"
         android:onClick="showRegister"
         android:layout_gravity="center" />
 
-    <Space
-        android:layout_width="20dp"
-        android:layout_height="20dp" />
+    <View
+        android:layout_width="100dp"
+        android:layout_height="2dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="center_horizontal"
+        android:background="#ecececec" />
 
     <Button
         android:layout_width="150dp"
         android:layout_height="70dp"
         android:text="@string/about_us"
-        android:textStyle="bold"
-        android:textColor="#FFFFFF"
+        android:textStyle="italic"
+        android:textColor="@color/black"
         android:id="@+id/bAbout"
-        android:background="@color/cypress"
+        android:background="@color/transparent"
         android:onClick="showAbout"
         android:textSize="22sp"
         android:textAlignment="center"

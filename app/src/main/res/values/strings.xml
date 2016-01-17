@@ -30,4 +30,6 @@
     <string name="new_password">New Password</string>
     <string name="your_password">Your password</string>
     <string name="password_change">Password Change</string>
+    <string name="about_us_text">\nΗ εφαρμογή αυτή αναπτύχθηκε στο τμήμα Μηχανικών Πληροφορικής του ΤΕΙ Σερρών στα πλαίσια του εργαστηρίου Τεχνολογίας Λογισμικού από τους σπουδαστές Κοκάι Κατερίνα, Πρέλλιος Θέμης, Τσιμέττας Μιχάλης και Χαλιάσος Κωνσταντίνος υπό την επίβλεψη του καθηγητή Λάντζου Θεόδωρου.</string>
+    <string name="appname">FarmChat</string>
 </resources>
