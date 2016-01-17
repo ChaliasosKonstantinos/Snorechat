@@ -7,4 +7,6 @@
     <color name="white">#ffffff</color>
     <color name="transparent">#0000</color>
     <color name="hint">#bdbdbd</color>
+    <color name="black">#000000</color>
+    <color name="frame_background">#cccccc</color>
 </resources>

@@ -1,7 +1,6 @@
 package gr.compassbook.snorechat;
 
 import android.test.ActivityInstrumentationTestCase2;
-import android.test.ActivityTestCase;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -32,7 +31,7 @@ public class RegisterTest extends ActivityInstrumentationTestCase2<Register> {
         userRegister = getActivity();
         register = (Button) userRegister.findViewById(R.id.bRegister);
 
-        uRegistrationTxt = (TextView) userRegister.findViewById(R.id.txtUserRegistration);
+        //uRegistrationTxt = (TextView) userRegister.findViewById(R.id.txtUserRegistration);
         usernameTxt = (TextView) userRegister.findViewById(R.id.txtUsername);
         lNameTxt = (TextView) userRegister.findViewById(R.id.txtLastName);
         fNameTxt = (TextView) userRegister.findViewById(R.id.txtFirstName);

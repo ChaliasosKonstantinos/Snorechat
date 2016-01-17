@@ -1,95 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    >
 
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/about_us"
-        android:textSize="50sp"
-        android:textStyle="bold"
-        android:layout_marginTop="10dp"
-        android:id="@+id/tAbout"
-        android:layout_gravity="center_horizontal"
-        android:textColor="#0d2723" />
-
-    <View
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:background="#0d2723" />
+        android:layout_height="match_parent"
+        android:contentDescription="@string/content_description"
+        android:scaleType="centerCrop"
+        android:src="@drawable/farmchat_background2"
+        android:id="@+id/ivAboutBackground"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
 
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="SnoreChat \n - \n Yet Another Chat Application"
+        android:padding="3dp"
+        android:text="@string/appname"
         android:textAlignment="center"
         android:id="@+id/tAbout6"
         android:textStyle="bold"
-        android:textSize="25sp"
+        android:textSize="45sp"
         android:layout_gravity="center_horizontal"
-        android:textColor="#d92718" />
-
-    <View
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:background="#0d2723" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="#ecececec" />
+        android:textColor="@color/white"
+        android:background="#b9eeeeee" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Kokai Katerina"
-        android:textSize="25sp"
-        android:textStyle="bold|italic"
-        android:layout_marginTop="30dp"
+        android:text="@string/about_us_text"
+        android:textSize="20sp"
         android:id="@+id/tAbout2"
+        android:background="#b9eeeeee"
         android:layout_gravity="center_horizontal"
-        android:textColor="#0d2723" />
+        android:textAlignment="center"
+        android:textColor="#000000" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Prellios Themis"
-        android:textSize="25sp"
-        android:textStyle="bold|italic"
-        android:layout_marginTop="10dp"
-        android:id="@+id/tAbout3"
-        android:layout_gravity="center_horizontal"
-        android:textColor="#0d2723" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tsimettas Michalis"
-        android:textSize="25sp"
-        android:textStyle="bold|italic"
-        android:layout_marginTop="10dp"
-        android:id="@+id/tAbout4"
-        android:layout_gravity="center_horizontal"
-        android:textColor="#0d2723" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Chaliasos Konstantinos"
-        android:textSize="25sp"
-        android:layout_marginTop="10dp"
-        android:id="@+id/tAbout5"
-        android:layout_gravity="center_horizontal"
-        android:textColor="#0d2723"
-        android:textStyle="bold|italic" />
+    </LinearLayout>
 
 
-</LinearLayout>
+</FrameLayout>
