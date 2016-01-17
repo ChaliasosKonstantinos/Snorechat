@@ -20,6 +20,7 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="18sp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
             android:text="@string/password_change"
@@ -31,6 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:textSize="16sp"
             android:text="@string/your_password" />
 
         <TextView
@@ -39,13 +41,14 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
+            android:textSize="16sp"
             android:text="" />
 
         <View
             android:layout_width="100dp"
             android:layout_height="2dp"
             android:layout_gravity="center_horizontal"
-            android:background="#ecececec" />
+            android:background="@color/hint" />
 
         <EditText
             android:id="@+id/etNewPassword"
@@ -76,12 +79,12 @@
             android:onClick="changePassword"
             android:text="@string/save"
             android:textColor="#FFFFFF"
-            android:textStyle="normal" />
+            android:textStyle="italic" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:background="#ec000000" />
+            android:background="#be000000" />
 
         <TextView
             android:id="@+id/textView5"
@@ -90,6 +93,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
             android:text="@string/email_change"
+            android:textSize="18sp"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
 
@@ -98,6 +102,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:textSize="16sp"
             android:text="@string/your_email" />
 
         <TextView
@@ -106,13 +111,14 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
+            android:textSize="16sp"
             android:text="" />
 
         <View
             android:layout_width="100dp"
             android:layout_height="2dp"
             android:layout_gravity="center_horizontal"
-            android:background="#ecececec" />
+            android:background="@color/hint" />
 
 
         <EditText
@@ -145,7 +151,7 @@
             android:onClick="changeEmail"
             android:text="@string/save"
             android:textColor="#FFFFFF"
-            android:textStyle="normal" />
+            android:textStyle="italic" />
 
     </LinearLayout>
 

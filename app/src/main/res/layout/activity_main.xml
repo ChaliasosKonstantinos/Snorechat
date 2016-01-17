@@ -1,30 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:orientation="vertical" android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:orientation="vertical" android:layout_height="match_parent"
     tools:context="gr.compassbook.snorechat.Main"
     android:weightSum="1">
 
     <ImageView
-        android:layout_width="200dp"
+        android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:id="@+id/imageView"
-        android:layout_gravity="center_horizontal"
-        android:contentDescription="@string/content_description"/>
-
-    <Space
-        android:layout_width="20dp"
-        android:layout_height="20dp" />
-
-
-
+        android:contentDescription="@string/content_description"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/splash"/>
     <Button
         android:text="@string/login"
         android:id="@+id/bShowLogin"
         android:layout_width="150dp"
+        android:layout_marginTop="15dp"
         android:layout_height="70dp"
         android:textColor="@color/black"
         android:textStyle="italic"
@@ -40,7 +31,7 @@
         android:layout_marginBottom="5dp"
         android:layout_marginTop="5dp"
         android:layout_gravity="center_horizontal"
-        android:background="#ecececec" />
+        android:background="@color/hint" />
 
     <Button
         android:layout_width="150dp"
@@ -61,7 +52,7 @@
         android:layout_marginBottom="5dp"
         android:layout_marginTop="5dp"
         android:layout_gravity="center_horizontal"
-        android:background="#ecececec" />
+        android:background="@color/hint" />
 
     <Button
         android:layout_width="150dp"

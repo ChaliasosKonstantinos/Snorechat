@@ -19,7 +19,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="20dp"
-        android:background="#ecececec" />
+        android:background="@color/transparent" />
 
     <EditText
         android:layout_width="match_parent"
@@ -28,11 +28,6 @@
         android:ems="10"
         android:hint="@string/message"
         android:id="@+id/MessageTextField" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="#ecececec" />
 
     <RelativeLayout
         android:layout_width="match_parent"
