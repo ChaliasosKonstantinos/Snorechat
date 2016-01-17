@@ -79,7 +79,7 @@
         android:text="@string/register"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
-        android:background="@color/cypress"
+        android:background="@color/light_brown"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="registerUser" />

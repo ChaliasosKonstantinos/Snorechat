@@ -14,7 +14,7 @@
         android:paddingStart="5dp"
         android:textColor="@color/white"
         android:textColorHint="@color/hint"
-        android:background="@color/cypress"
+        android:background="@color/light_brown"
         android:hint="@string/search" />
 
     <ListView

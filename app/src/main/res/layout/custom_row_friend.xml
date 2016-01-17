@@ -12,6 +12,6 @@
         android:textColor="#000000"
         android:id="@+id/bFriend"
         android:textStyle="italic"
-        android:drawableRight="@drawable/ic_image_panorama_fisheye"
+        android:drawableRight="@drawable/ic_offline_button"
         android:focusable="false"/>
 </LinearLayout>
