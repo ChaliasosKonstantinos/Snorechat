@@ -10,9 +10,7 @@ import android.widget.Button;
 
 import java.util.List;
 
-/**
- * Created by Konstantinos on 13/1/2016.
- */
+
 public class CustomFriendAdapter extends ArrayAdapter<User> {
 
     private Context context2;
@@ -34,7 +32,7 @@ public class CustomFriendAdapter extends ArrayAdapter<User> {
         bFriend.setText(singleFriend.getUsername());
 
         if (singleFriend.getIsOnline() == 1) {
-            bFriend.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_image_brightness_1, 0);
+            bFriend.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_online_button, 0);
         }
 
         final View finalCustomView = customView;

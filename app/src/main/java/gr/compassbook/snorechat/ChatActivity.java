@@ -143,12 +143,20 @@ public class ChatActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            String newMessage ;
+            String newMessage, username, message;
 
             ShowMessage.setText("");
             for(int i=0 ; i<mList.size();i++){
                 newMessage = mList.get(i);
-                ShowMessage.setText(ShowMessage.getText().toString() + "\n" + newMessage);
+                int indexOfUsername = newMessage.indexOf(":");
+                if (indexOfUsername != -1) {
+                    username = newMessage.substring(0, indexOfUsername);
+                    message = newMessage.substring(indexOfUsername+1);
+                    System.out.println(message);
+                    ShowMessage.setText(ShowMessage.getText().toString() + "\n" + username + ":" + "\n" + " "+message);
+                }
+
+
 
             }
         }
