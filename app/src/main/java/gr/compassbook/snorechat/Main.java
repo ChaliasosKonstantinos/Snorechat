@@ -16,9 +16,6 @@ public class Main extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        imageView = (ImageView) findViewById(R.id.imageView);
-        imageView.setImageResource(R.drawable.ic_splash_snorechat);
     }
 
     //Check if User is already Logged In
