@@ -1,71 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:orientation="vertical" android:layout_height="match_parent"
-    tools:context="gr.compassbook.snorechat.Main"
-    android:weightSum="1">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1"
+    tools:context="gr.compassbook.snorechat.Main">
 
     <ImageView
+        android:id="@+id/imgSplash"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:contentDescription="@string/content_description"
         android:layout_marginTop="10dp"
-        android:src="@drawable/splash"/>
+        android:contentDescription="@string/content_description"
+        android:src="@drawable/splash" />
     <Button
-        android:text="@string/login"
         android:id="@+id/bShowLogin"
         android:layout_width="150dp"
-        android:layout_marginTop="15dp"
         android:layout_height="70dp"
-        android:textColor="@color/black"
-        android:textStyle="italic"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
         android:background="@color/transparent"
         android:onClick="showLogin"
-        android:textSize="22sp"
+        android:text="@string/login"
         android:textAlignment="center"
-        android:layout_gravity="center" />
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:textStyle="italic" />
 
     <View
         android:layout_width="100dp"
         android:layout_height="2dp"
+        android:layout_gravity="center_horizontal"
         android:layout_marginBottom="5dp"
         android:layout_marginTop="5dp"
-        android:layout_gravity="center_horizontal"
         android:background="@color/hint" />
 
     <Button
-        android:layout_width="150dp"
-        android:layout_height="70dp"
-        android:text="@string/register"
         android:id="@+id/bShowRegister"
-        android:textSize="22sp"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center"
         android:background="@color/transparent"
-        android:textColor="@color/black"
-        android:textAlignment="center"
-        android:textStyle="italic"
         android:onClick="showRegister"
-        android:layout_gravity="center" />
+        android:text="@string/register"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:textStyle="italic" />
 
     <View
         android:layout_width="100dp"
         android:layout_height="2dp"
+        android:layout_gravity="center_horizontal"
         android:layout_marginBottom="5dp"
         android:layout_marginTop="5dp"
-        android:layout_gravity="center_horizontal"
         android:background="@color/hint" />
 
     <Button
+        android:id="@+id/bAbout"
         android:layout_width="150dp"
         android:layout_height="70dp"
-        android:text="@string/about_us"
-        android:textStyle="italic"
-        android:textColor="@color/black"
-        android:id="@+id/bAbout"
+        android:layout_gravity="center"
         android:background="@color/transparent"
         android:onClick="showAbout"
-        android:textSize="22sp"
+        android:text="@string/about_us"
         android:textAlignment="center"
-        android:layout_gravity="center" />
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:textStyle="italic" />
 
 
 </LinearLayout>

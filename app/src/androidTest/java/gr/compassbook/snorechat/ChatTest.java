@@ -1,8 +1,8 @@
 package gr.compassbook.snorechat;
 
 import android.test.ActivityInstrumentationTestCase2;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 /**
@@ -11,7 +11,8 @@ import android.widget.TextView;
 public class ChatTest extends ActivityInstrumentationTestCase2<ChatActivity> {
     ChatActivity TChatActivity;
     EditText TMessage;
-    Button TSendButton;
+    ImageButton TSendImageButton;
+    ImageButton TClearImageButton;
     TextView TViewMessage;
 
     public ChatTest(Class<ChatActivity> activityClass) {
@@ -26,7 +27,8 @@ public class ChatTest extends ActivityInstrumentationTestCase2<ChatActivity> {
     protected void setUp() throws Exception {
         super.setUp();
         TChatActivity = getActivity();
-        TSendButton = (Button) TChatActivity.findViewById(R.id.bSendWS);
+        TSendImageButton = (ImageButton) TChatActivity.findViewById(R.id.bSendWS);
+        TClearImageButton = (ImageButton) TChatActivity.findViewById(R.id.bClearMessages);
 
         TMessage = (EditText) TChatActivity.findViewById(R.id.MessageTextField);
 
@@ -40,9 +42,10 @@ public class ChatTest extends ActivityInstrumentationTestCase2<ChatActivity> {
         assertNotNull("Test If the Activity was Created", TChatActivity);
     }
 
-    //Check if Register Button was Created
-    public final void testButtons() {
-        assertNotNull(TSendButton);
+    //Check if ImageButtons was Created
+    public final void testImageButtons() {
+        assertNotNull(TSendImageButton);
+        assertNotNull(TClearImageButton);
     }
 
     //Check if TextViews were Created
