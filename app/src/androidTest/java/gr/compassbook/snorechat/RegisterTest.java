@@ -31,7 +31,6 @@ public class RegisterTest extends ActivityInstrumentationTestCase2<Register> {
         userRegister = getActivity();
         register = (Button) userRegister.findViewById(R.id.bRegister);
 
-        //uRegistrationTxt = (TextView) userRegister.findViewById(R.id.txtUserRegistration);
         usernameTxt = (TextView) userRegister.findViewById(R.id.txtUsername);
         lNameTxt = (TextView) userRegister.findViewById(R.id.txtLastName);
         fNameTxt = (TextView) userRegister.findViewById(R.id.txtFirstName);
@@ -64,7 +63,6 @@ public class RegisterTest extends ActivityInstrumentationTestCase2<Register> {
 
     //Check if TextViews were Created
     public final void testTextView(){
-        assertNotNull(uRegistrationTxt);
         assertNotNull(usernameTxt);
         assertNotNull(lNameTxt);
         assertNotNull(fNameTxt);

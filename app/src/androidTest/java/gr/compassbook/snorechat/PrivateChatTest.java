@@ -2,14 +2,14 @@ package gr.compassbook.snorechat;
 
 import android.test.ActivityInstrumentationTestCase2;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.ListView;
 
 /**
  * Created by Themis on 14/1/2016.
  */
 public class PrivateChatTest extends ActivityInstrumentationTestCase2<PrivateChat> {
     EditText TetMessage;
-    TextView TtChat;
+    ListView TlvPrivetchat;
     PrivateChat TPrivateChatTest;
 
     public PrivateChatTest(Class<PrivateChat> activityClass) {
@@ -27,7 +27,7 @@ public class PrivateChatTest extends ActivityInstrumentationTestCase2<PrivateCha
 
         TetMessage = (EditText) TPrivateChatTest.findViewById(R.id.etMessage);
 
-        TtChat = (TextView) TPrivateChatTest.findViewById(R.id.tChat);
+        TlvPrivetchat = (ListView) TPrivateChatTest.findViewById(R.id.lvPrivateChat);
 
         setActivityInitialTouchMode(true);
     }
@@ -39,7 +39,7 @@ public class PrivateChatTest extends ActivityInstrumentationTestCase2<PrivateCha
 
     //Check if TextViews were Created
     public final void testTextView() {
-        assertNotNull(TtChat);
+        assertNotNull(TlvPrivetchat);
     }
 
     //Check if EditText were Created
