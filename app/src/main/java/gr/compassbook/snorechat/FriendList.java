@@ -82,7 +82,7 @@ public class FriendList extends AppCompatActivity {
     private void createFriendList(List<String> returnedList) {
         List<User> friends = new ArrayList<>();
 
-        //Check's if user have registered friends
+        //Check's if user have registered friends and populates the empty returnedList
         if (returnedList.isEmpty()) {
             User user = new User();
             user.setUsername("You don't have any friends yet!");
