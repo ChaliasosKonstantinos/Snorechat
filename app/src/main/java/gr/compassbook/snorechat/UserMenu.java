@@ -128,6 +128,9 @@ public class UserMenu extends AppCompatActivity {
             inbox.set(i, inbox.get(i).toUpperCase());
         }
         Collections.sort(inbox);
+        if (inbox.isEmpty()) {
+            inbox.add(0, "You don't have any messages");
+        }
         ListAdapter myAdapter = new CustomInboxAdapter(this, inbox);
         inboxListView = (ListView) findViewById(R.id.lvInbox);
         inboxListView.setAdapter(myAdapter);

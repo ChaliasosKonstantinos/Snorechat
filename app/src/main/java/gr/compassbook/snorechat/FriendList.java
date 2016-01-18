@@ -82,11 +82,18 @@ public class FriendList extends AppCompatActivity {
     private void createFriendList(List<String> returnedList) {
         List<User> friends = new ArrayList<>();
 
-        for (int i =0; i<returnedList.size(); i+=2) {
+        if (returnedList.isEmpty()) {
             User user = new User();
-            user.setUsername(returnedList.get(i));
-            user.setIsOnline(Integer.parseInt(returnedList.get(i+1)));
+            user.setUsername("You don't have any friends yet!");
+            user.setIsOnline(404);
             friends.add(user);
+        } else {
+            for (int i =0; i<returnedList.size(); i+=2) {
+                User user = new User();
+                user.setUsername(returnedList.get(i));
+                user.setIsOnline(Integer.parseInt(returnedList.get(i+1)));
+                friends.add(user);
+            }
         }
 
         ListAdapter myAdapter = new CustomFriendAdapter(this, friends);

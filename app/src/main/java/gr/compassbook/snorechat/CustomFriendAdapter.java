@@ -33,6 +33,8 @@ public class CustomFriendAdapter extends ArrayAdapter<User> {
 
         if (singleFriend.getIsOnline() == 1) {
             bFriend.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_online_button, 0);
+        } else if (singleFriend.getIsOnline() == 0) {
+            bFriend.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_offline_button, 0);
         }
 
         final View finalCustomView = customView;
