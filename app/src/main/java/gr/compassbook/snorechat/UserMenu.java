@@ -50,6 +50,9 @@ public class UserMenu extends AppCompatActivity {
             case R.id.action_settings:
                 showUserSettings();
                 return true;
+            case R.id.action_how_to:
+                showHowTo();
+                return true;
             case R.id.action_about:
                 showAboutUs();
                 return true;
@@ -74,6 +77,18 @@ public class UserMenu extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        new OnlineStatus(this, true);
+    }
+
+    @Override
+    protected void onUserLeaveHint() {
+        super.onUserLeaveHint();
+        new OnlineStatus(this, false);
     }
 
     //------------------------------------OnClick-------------------------------------------------//
@@ -142,6 +157,10 @@ public class UserMenu extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void showHowTo() {
+        startActivity(new Intent(this, HowTo.class));
     }
 
     //Log User out

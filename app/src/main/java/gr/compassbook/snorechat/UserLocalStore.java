@@ -3,9 +3,6 @@ package gr.compassbook.snorechat;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-/**
- * Created by Konstantinos
- */
 public class UserLocalStore {
 
     public static final String SP_NAME = "userDetails";

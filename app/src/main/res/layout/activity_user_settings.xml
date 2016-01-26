@@ -23,6 +23,7 @@
             android:textSize="18sp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
+            android:textColor="@color/black"
             android:text="@string/password_change"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
@@ -32,6 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:textColor="@color/black"
             android:textSize="16sp"
             android:text="@string/your_password" />
 
@@ -42,6 +44,7 @@
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
             android:textSize="16sp"
+            android:textColor="@color/black"
             android:text="" />
 
         <View
@@ -92,6 +95,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
+            android:textColor="@color/black"
             android:text="@string/email_change"
             android:textSize="18sp"
             android:textAppearance="?android:attr/textAppearanceSmall" />
@@ -102,6 +106,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:textColor="@color/black"
             android:textSize="16sp"
             android:text="@string/your_email" />
 
@@ -112,6 +117,7 @@
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
             android:textSize="16sp"
+            android:textColor="@color/black"
             android:text="" />
 
         <View

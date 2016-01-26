@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1"
-    android:paddingBottom="5dp">
+    android:orientation="vertical"
+    android:paddingBottom="5dp"
+    android:weightSum="1">
 
-    <TextView
-        android:layout_width="fill_parent"
+    <ListView
+        android:id="@+id/lvGroupChat"
+        android:layout_width="match_parent"
         android:layout_height="450dp"
-        android:id="@+id/messagesList"
-        android:layout_gravity="end"
-        android:textSize="20sp"
-        android:scrollbars="vertical" />
+        android:divider="@color/transparent"
+        android:focusable="true"
+        android:stackFromBottom="true"
+        android:transcriptMode="alwaysScroll" />
 
     <View
         android:layout_width="match_parent"
@@ -25,35 +26,35 @@
         android:layout_height="wrap_content">
 
         <EditText
+            android:id="@+id/MessageTextField"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
-            android:inputType="textMultiLine"
-            android:ems="10"
             android:layout_alignParentBottom="true"
+            android:ems="10"
             android:hint="@string/message"
-            android:id="@+id/MessageTextField" />
+            android:inputType="textMultiLine" />
 
         <ImageButton
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/ic_action_send"
             android:id="@+id/bSendWS"
-            android:background="@color/transparent"
-            android:onClick="SendMessageToTxt"
-            android:layout_toEndOf="@id/MessageTextField"
-            android:contentDescription="@string/content_description"
-            android:layout_alignParentBottom="true"/>
-
-        <ImageButton
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:id="@+id/bClearMessages"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@id/MessageTextField"
             android:background="@color/transparent"
-            android:src="@drawable/ic_action_clear"
-            android:onClick="ClearMessages"
             android:contentDescription="@string/content_description"
+            android:onClick="sendGroupMessage"
+            android:src="@drawable/ic_action_send" />
+
+        <ImageButton
+            android:id="@+id/bClearMessages"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
             android:layout_toEndOf="@+id/bSendWS"
-            android:layout_alignParentBottom="true"/>
+            android:background="@color/transparent"
+            android:contentDescription="@string/content_description"
+            android:onClick="ClearMessages"
+            android:src="@drawable/ic_action_clear" />
 
     </RelativeLayout>
 

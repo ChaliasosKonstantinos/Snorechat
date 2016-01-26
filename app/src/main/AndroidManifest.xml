@@ -18,16 +18,53 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Login" android:parentActivityName=".Main" android:label="Login"/>
-        <activity android:name=".About" android:label="About Us"/>
-        <activity android:name=".Register" android:parentActivityName=".Main" android:label="Register"/>
-        <activity android:name=".UserMenu" android:label="Inbox"/>
-        <activity android:name=".UserSettings" android:parentActivityName=".UserMenu" android:windowSoftInputMode="adjustPan" android:label="Settings"/>
-        <activity android:name=".ChatActivity" android:parentActivityName=".UserMenu" android:windowSoftInputMode="adjustPan" android:label="Chat" />
-        <activity android:name=".UserList" android:parentActivityName=".UserMenu" android:windowSoftInputMode="adjustPan" android:label="Users"/>
-        <activity android:name=".PrivateChat" android:windowSoftInputMode="adjustPan" android:parentActivityName=".UserMenu" android:label="Chat"/>
-        <activity android:name=".UserDetails" android:parentActivityName=".UserList" android:label="Details"/>
-        <activity android:name=".FriendList" android:label="Friends" android:parentActivityName=".UserMenu"/>
+        <activity
+            android:name=".Login"
+            android:label="Login"
+            android:parentActivityName=".Main" />
+        <activity
+            android:name=".About"
+            android:label="About Us" />
+        <activity
+            android:name=".Register"
+            android:label="Register"
+            android:parentActivityName=".Main" />
+        <activity
+            android:name=".UserMenu"
+            android:label="Inbox" />
+        <activity
+            android:name=".UserSettings"
+            android:label="Settings"
+            android:parentActivityName=".UserMenu"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ChatActivity"
+            android:label="Chat"
+            android:parentActivityName=".UserMenu"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".UserList"
+            android:label="Users"
+            android:parentActivityName=".UserMenu"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".PrivateChat"
+            android:label="Chat"
+            android:parentActivityName=".UserMenu"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".UserDetails"
+            android:label="Details"
+            android:parentActivityName=".UserList" />
+        <activity
+            android:name=".FriendList"
+            android:label="Friends"
+            android:parentActivityName=".UserMenu" />
+        <activity
+            android:name=".HowTo"
+            android:label="How To"
+            android:parentActivityName=".UserMenu"
+            />
     </application>
 
 </manifest>

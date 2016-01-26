@@ -30,6 +30,11 @@ public class Main extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        
+    }
+
     //Show Login Activity
     public void showLogin(View view) {
         Intent intent = new Intent(this, Login.class);

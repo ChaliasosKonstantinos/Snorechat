@@ -30,6 +30,15 @@
     <string name="new_password">New Password</string>
     <string name="your_password">Your password</string>
     <string name="password_change">Password Change</string>
-    <string name="about_us_text">\nΗ εφαρμογή αυτή αναπτύχθηκε στο τμήμα Μηχανικών Πληροφορικής του ΤΕΙ Σερρών στα πλαίσια του εργαστηρίου Τεχνολογίας Λογισμικού από τους σπουδαστές Κοκάι Κατερίνα, Πρέλλιος Θέμης, Τσιμέττας Μιχάλης και Χαλιάσος Κωνσταντίνος υπό την επίβλεψη του καθηγητή Λάντζου Θεόδωρου.</string>
+    <string name="about_us_text">\nΗ εφαρμογή αυτή αναπτύχθηκε στο τμήμα Μηχανικών Πληροφορικής του ΤΕΙ Σερρών στα πλαίσια του εργαστηρίου Τεχνολογίας Λογισμικού από τους σπουδαστές Κόκαϊ Κατερίνα, Πρέλλιος Θέμης, Τσιμέττας Μιχάλης και Χαλιάσος Κωνσταντίνος υπό την επίβλεψη του καθηγητή Λάντζου Θεόδωρου.</string>
     <string name="appname">FarmChat</string>
+    <string name="user_offline">User is offline</string>
+    <string name="user_online">User is Online</string>
+    <string name="add_friend">Add Friend</string>
+    <string name="send_message">Send Message</string>
+    <string name="search_howto">Search</string>
+    <string name="online_status"><u>Online Status</u></string>
+    <string name="generic_icons"><u>Generic Icons</u></string>
+    <string name="chat_icons"><u>Chat Icons</u></string>
+    <string name="how_to">How To</string>
 </resources>

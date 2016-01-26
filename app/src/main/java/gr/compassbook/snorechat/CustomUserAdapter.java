@@ -10,10 +10,6 @@ import android.widget.Button;
 
 import java.util.List;
 
-
-/**
- * Created by Konstantinos on 8/1/2016.
- */
 class CustomUserAdapter extends ArrayAdapter<String>{
 
     private Context context2;
