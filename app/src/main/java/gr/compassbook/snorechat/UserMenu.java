@@ -79,6 +79,18 @@ public class UserMenu extends AppCompatActivity {
     public void onBackPressed() {
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        new OnlineStatus(this, true);
+    }
+
+    @Override
+    protected void onUserLeaveHint() {
+        super.onUserLeaveHint();
+        new OnlineStatus(this, false);
+    }
+
     //------------------------------------OnClick-------------------------------------------------//
 
 

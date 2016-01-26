@@ -11,9 +11,6 @@ import android.widget.Button;
 import java.util.List;
 import java.util.Objects;
 
-/**
- * Created by Konstantinos on 15/1/2016.
- */
 public class CustomChatAdapter extends ArrayAdapter<PrivateMessage> {
 
     private SharedPreferences userData;

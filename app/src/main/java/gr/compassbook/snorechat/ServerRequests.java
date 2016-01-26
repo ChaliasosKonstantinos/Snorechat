@@ -21,14 +21,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by Konstantinos
- */
 public class ServerRequests {
 
-    ProgressDialog progressDialog;
-    public static HttpURLConnection urlConnection;
     public static final String SERVER_ADDRESS = "http://www.compassbook.gr/";
+    public static HttpURLConnection urlConnection;
+    ProgressDialog progressDialog;
     BufferedReader reader = null;
 
     //ServerRequests constructor
@@ -46,6 +43,110 @@ public class ServerRequests {
         progressDialog.show();
         new FetchUserDataAsyncTask(userData, userCallback).execute();
         return null;
+    }
+
+    //Stores User's data on the server
+    public User storeUserDataInBackground(User userData, GetServerCallback serverCallback) {
+        progressDialog.show();
+        new StoreUserDataAsyncTask(userData, serverCallback).execute();
+        return null;
+    }
+
+    // ---------------------------------------------------------------------------------------------------------------------//
+
+    //Updates User's data on the server
+    public User updateUserDataInBackground(String username, String fieldToUpdate, String dataToUpdate, GetUserCallback userCallback) {
+        progressDialog.show();
+        new UpdateUserDataAsyncTask(username, fieldToUpdate, dataToUpdate, userCallback).execute();
+        return null;
+    }
+
+    public List fetchAllUsersInBackground(GetUserCallback userCallback) {
+        progressDialog.show();
+        new FetchAllUsersAsyncTask(userCallback).execute();
+        return null;
+    }
+
+    // ---------------------------------------------------------------------------------------------------------------------//
+
+    //Sends a private message on the server
+    public List sendPrivateMessageInBackground(PrivateMessage messageToSend, GetUserCallback userCallback) {
+        new SendPrivateMessageAsyncTask(messageToSend, userCallback).execute();
+        return null;
+    }
+
+    public List fetchPrivateConvInBackground(PrivateMessage convDetails, GetUserCallback userCallback) {
+        new FetchPrivateConvAsyncTask(convDetails, userCallback).execute();
+        return null;
+    }
+
+
+    // ---------------------------------------------------------------------------------------------------------------------//
+
+    //Sends a private message on the server
+    public List sendGroupeMessageInBackground(Message messageToSend, GetUserCallback userCallback) {
+        new SendGroupMessageAsycTask(messageToSend, userCallback).execute();
+        return null;
+    }
+
+    public List fetchGroupConvInBackground(GetUserCallback userCallback) {
+        new FetchGroupConvAsyncTask(userCallback).execute();
+        return null;
+    }
+
+    // ---------------------------------------------------------------------------------------------------------------------//
+
+    //Fetches User's data from the server
+    public User fetchSingleUserDataInBackground(String username, GetUserCallback userCallback) {
+        progressDialog.show();
+        new fetchSingleUserDataAsyncTask(username, userCallback).execute();
+        return null;
+    }
+
+    public List fetchFriendsInBackground(String username, GetUserCallback userCallback) {
+        progressDialog.show();
+        new FetchFriendsAsyncTask(username, userCallback).execute();
+        return null;
+    }
+
+    // ---------------------------------------------------------------------------------------------------------------------//
+
+    public List addFriendInBackground(String username, String friendName, GetUserCallback userCallback) {
+        progressDialog.show();
+        new AddFriendAsyncTask(username, friendName, userCallback).execute();
+        return null;
+    }
+
+    public List fetchInboxInBackground(String username, GetUserCallback userCallback) {
+        progressDialog.show();
+        new FetchInboxAsyncTask(username, userCallback).execute();
+        return null;
+    }
+
+    // ---------------------------------------------------------------------------------------------------------------------//
+
+    //Resolve dataToSend
+    public String getQueryData(HashMap<String, String> data) throws UnsupportedEncodingException {
+        StringBuilder result = new StringBuilder();
+        boolean first = true;
+
+
+        for (Map.Entry<String, String> entry : data.entrySet()) {
+            if (first) {
+                result.append("?");
+                result.append(URLEncoder.encode(entry.getKey(), "UTF-8"));
+                result.append("=");
+                result.append(URLEncoder.encode(entry.getValue(), "UTF-8"));
+                first = false;
+            } else {
+                result.append("&");
+                result.append(URLEncoder.encode(entry.getKey(), "UTF-8"));
+                result.append("=");
+                result.append(URLEncoder.encode(entry.getValue(), "UTF-8"));
+            }
+        }
+
+        return result.toString();
     }
 
     //AsyncTask that get User's data from the server
@@ -132,13 +233,6 @@ public class ServerRequests {
 
     // ---------------------------------------------------------------------------------------------------------------------//
 
-    //Stores User's data on the server
-    public User storeUserDataInBackground(User userData, GetServerCallback serverCallback) {
-        progressDialog.show();
-        new StoreUserDataAsyncTask(userData, serverCallback).execute();
-        return null;
-    }
-
     public class StoreUserDataAsyncTask extends AsyncTask<User,Void, String> {
 
         User user;
@@ -205,15 +299,6 @@ public class ServerRequests {
         }
     }
 
-    // ---------------------------------------------------------------------------------------------------------------------//
-
-    //Updates User's data on the server
-    public User updateUserDataInBackground(String username, String fieldToUpdate, String dataToUpdate, GetUserCallback userCallback) {
-        progressDialog.show();
-        new UpdateUserDataAsyncTask(username, fieldToUpdate, dataToUpdate, userCallback).execute();
-        return null;
-    }
-
     public class UpdateUserDataAsyncTask extends AsyncTask<String, Void, Void> {
 
         String username, fieldToUpdate, dataToUpdate;
@@ -261,14 +346,7 @@ public class ServerRequests {
         }
     }
 
-
     // ---------------------------------------------------------------------------------------------------------------------//
-
-    public List fetchAllUsersInBackground(GetUserCallback userCallback) {
-        progressDialog.show();
-        new FetchAllUsersAsyncTask(userCallback).execute();
-        return null;
-    }
 
     public class FetchAllUsersAsyncTask extends AsyncTask<Void, Void, List<String>> {
 
@@ -342,14 +420,6 @@ public class ServerRequests {
         }
     }
 
-    // ---------------------------------------------------------------------------------------------------------------------//
-
-    //Sends a private message on the server
-    public List sendPrivateMessageInBackground(PrivateMessage messageToSend, GetUserCallback userCallback) {
-        new SendPrivateMessageAsyncTask(messageToSend, userCallback).execute();
-        return null;
-    }
-
     public class SendPrivateMessageAsyncTask extends AsyncTask<PrivateMessage,Void,Void> {
 
         PrivateMessage messageToSend;
@@ -395,12 +465,7 @@ public class ServerRequests {
         }
     }
 
-    // ---------------------------------------------------------------------------------------------------------------------//
-
-    public List fetchPrivateConvInBackground(PrivateMessage convDetails, GetUserCallback userCallback) {
-        new FetchPrivateConvAsyncTask(convDetails, userCallback).execute();
-        return null;
-    }
+    //----------------------------------------------------------------------------------------------------------------------//
 
     public class FetchPrivateConvAsyncTask extends AsyncTask<PrivateMessage, Void, List<String>> {
 
@@ -482,13 +547,124 @@ public class ServerRequests {
         }
     }
 
+    public class SendGroupMessageAsycTask extends AsyncTask<Message, Void, Void> {
+
+        Message messageToSend;
+        GetUserCallback userCallback;
+
+        //SendPrivateMessageAsyncTask constructor
+        public SendGroupMessageAsycTask(Message messageToSend, GetUserCallback userCallback) {
+            this.messageToSend = messageToSend;
+            this.userCallback = userCallback;
+        }
+
+
+        @Override
+        protected Void doInBackground(Message... params) {
+            HashMap<String, String> dataToSend = new HashMap<>();
+            dataToSend.put("username", messageToSend.getSender());
+            dataToSend.put("message", messageToSend.getMessage());
+
+
+            try {
+                URL url = new URL(SERVER_ADDRESS + "sendGroupMessage.php" + getQueryData(dataToSend));
+                urlConnection = (HttpURLConnection) url.openConnection();
+                urlConnection.setReadTimeout(10000);
+                urlConnection.setConnectTimeout(15000);
+                urlConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+                urlConnection.setRequestMethod("GET");
+                urlConnection.setDoOutput(true);
+                urlConnection.connect();
+                InputStream errors = (urlConnection.getErrorStream());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            userCallback.done(null);
+            super.onPostExecute(aVoid);
+        }
+    }
+
     //----------------------------------------------------------------------------------------------------------------------//
 
-    //Fetches User's data from the server
-    public User fetchSingleUserDataInBackground(String username, GetUserCallback userCallback) {
-        progressDialog.show();
-        new fetchSingleUserDataAsyncTask(username, userCallback).execute();
-        return null;
+    public class FetchGroupConvAsyncTask extends AsyncTask<Void, Void, List<String>> {
+
+        GetUserCallback userCallback;
+
+        //FetchAllUsersAsyncTask constructor
+        public FetchGroupConvAsyncTask(GetUserCallback userCallback) {
+            this.userCallback = userCallback;
+        }
+
+
+        @Override
+        protected List<String> doInBackground(Void... params) {
+
+            List<String> conv = new ArrayList<>();
+
+
+            try {
+
+                URL url = new URL(SERVER_ADDRESS + "fetchGroupConv.php");
+                urlConnection = (HttpURLConnection) url.openConnection();
+                urlConnection.setReadTimeout(10000);
+                urlConnection.setConnectTimeout(15000);
+                urlConnection.setRequestMethod("GET");
+                urlConnection.setDoInput(true);
+                //urlConnection.setDoOutput(true);
+
+                urlConnection.connect();
+
+                InputStream is = urlConnection.getInputStream();
+                reader = new BufferedReader(new InputStreamReader(is));
+
+                StringBuffer buffer = new StringBuffer();
+
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    buffer.append(line);
+                }
+
+                String result = buffer.toString();
+                JSONObject jObject = new JSONObject(result);
+                JSONArray jArray_sender = jObject.getJSONArray("sender");
+                JSONArray jArray_message = jObject.getJSONArray("messages");
+
+                for (int i = 0; i < jArray_sender.length(); i++) {
+                    conv.add(jArray_sender.getString(i));
+                    conv.add(jArray_message.getString(i));
+                }
+
+
+            } catch (JSONException | IOException e) {
+                e.printStackTrace();
+            } finally {
+                if (urlConnection != null) {
+                    urlConnection.disconnect();
+                }
+                try {
+                    if (reader != null) {
+                        reader.close();
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            return conv;
+        }
+
+
+        @Override
+        protected void onPostExecute(List<String> conv) {
+            userCallback.done2(conv);
+            super.onPostExecute(conv);
+        }
     }
 
     //AsyncTask that get User's data from the server
@@ -570,12 +746,6 @@ public class ServerRequests {
 
     //----------------------------------------------------------------------------------------------------------------------//
 
-    public List fetchFriendsInBackground(String username, GetUserCallback userCallback) {
-        progressDialog.show();
-        new FetchFriendsAsyncTask(username, userCallback).execute();
-        return null;
-    }
-
     public class FetchFriendsAsyncTask extends AsyncTask<String, Void, List<String>> {
 
         String username;
@@ -650,14 +820,6 @@ public class ServerRequests {
         }
     }
 
-    //----------------------------------------------------------------------------------------------------------------------//
-
-    public List addFriendInBackground(String username, String friendName, GetUserCallback userCallback) {
-        progressDialog.show();
-        new AddFriendAsyncTask(username, friendName, userCallback).execute();
-        return null;
-    }
-
     public class AddFriendAsyncTask extends AsyncTask<String, Void, Void> {
 
         String username, friendName;
@@ -715,13 +877,7 @@ public class ServerRequests {
         }
     }
 
-    //----------------------------------------------------------------------------------------------------------------------//
-
-    public List fetchInboxInBackground(String username, GetUserCallback userCallback) {
-        progressDialog.show();
-        new FetchInboxAsyncTask(username, userCallback).execute();
-        return null;
-    }
+    // ---------------------------------------------------------------------------------------------------------------------//
 
     public class FetchInboxAsyncTask extends AsyncTask<String, Void, List<String>> {
 
@@ -795,32 +951,6 @@ public class ServerRequests {
             userCallback.done2(friends);
             super.onPostExecute(friends);
         }
-    }
-
-    // ---------------------------------------------------------------------------------------------------------------------//
-
-    //Resolve dataToSend
-    public  String getQueryData(HashMap<String,String> data) throws UnsupportedEncodingException {
-        StringBuilder result = new StringBuilder();
-        boolean first = true;
-
-
-        for(Map.Entry<String,String> entry:data.entrySet()) {
-            if (first) {
-                result.append("?");
-                result.append(URLEncoder.encode(entry.getKey(), "UTF-8"));
-                result.append("=");
-                result.append(URLEncoder.encode(entry.getValue(), "UTF-8"));
-                first = false;
-            } else {
-                result.append("&");
-                result.append(URLEncoder.encode(entry.getKey(), "UTF-8"));
-                result.append("=");
-                result.append(URLEncoder.encode(entry.getValue(), "UTF-8"));
-            }
-        }
-
-        return result.toString();
     }
 
 }
