@@ -50,6 +50,9 @@ public class UserMenu extends AppCompatActivity {
             case R.id.action_settings:
                 showUserSettings();
                 return true;
+            case R.id.action_how_to:
+                showHowTo();
+                return true;
             case R.id.action_about:
                 showAboutUs();
                 return true;
@@ -142,6 +145,10 @@ public class UserMenu extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void showHowTo() {
+        startActivity(new Intent(this, HowTo.class));
     }
 
     //Log User out

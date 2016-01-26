@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="5dp"
+    android:orientation="vertical"
+    tools:context="gr.compassbook.snorechat.HowTo">
+
+    <TextView
+        android:id="@+id/howto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/online_status"
+        android:textStyle=""
+        android:layout_marginBottom="5dp"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:textColor="@color/black"
+        android:text="@string/user_online"
+        android:drawableLeft="@drawable/ic_online_button"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:textColor="@color/black"
+        android:textStyle="italic"
+        android:focusable="false"
+        android:text="@string/user_offline"
+        android:drawableLeft="@drawable/ic_offline_button"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@color/hint" />
+
+    <TextView
+        android:id="@+id/howto2"
+        android:layout_marginBottom="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/generic_icons"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:textColor="@color/black"
+        android:textStyle="italic"
+        android:focusable="false"
+        android:text="@string/search_howto"
+        android:drawableLeft="@drawable/ic_action_search"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@color/hint" />
+
+    <TextView
+        android:id="@+id/howto3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/chat_icons"
+        android:layout_marginBottom="5dp"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:textColor="@color/black"
+        android:textStyle="italic"
+        android:focusable="false"
+        android:text="@string/send_message"
+        android:drawableLeft="@mipmap/ic_action_send_message"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:textColor="@color/black"
+        android:text="@string/add_friend"
+        android:drawableLeft="@mipmap/ic_action_add_friend"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:textColor="@color/black"
+        android:text="@string/friends"
+        android:drawableLeft="@mipmap/ic_action_chat"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:textColor="@color/black"
+        android:textStyle="italic"
+        android:focusable="false"
+        android:text="@string/group_chat"
+        android:drawableLeft="@mipmap/ic_action_group_chat2"/>
+
+
+
+</LinearLayout>
