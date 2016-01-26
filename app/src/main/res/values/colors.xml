@@ -10,4 +10,6 @@
     <color name="black">#000000</color>
     <color name="frame_background">#cccccc</color>
     <color name="app_background">#e2dcd0</color>
+    <color name="light_blue">#81CFE0</color>
+    <color name="light_gray">#D2D7D3</color>
 </resources>

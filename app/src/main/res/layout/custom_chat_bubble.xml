@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="right">
+    android:gravity="right"
+    android:orientation="vertical">
 
     <Button
         android:id="@+id/bChatBubble"
-        android:layout_marginTop="8dp"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
         android:layout_marginRight="5dp"
-        android:textColor="@color/white"
-        android:textSize="13sp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/user_chat_bubble2"
         android:gravity="center_vertical|right"
         android:paddingLeft="6dp"
         android:paddingRight="6dp"
-        android:layout_width="220dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/user_chat_bubble2"
+        android:textColor="@color/black"
+        android:textSize="13sp"
         />
 
 </LinearLayout>
