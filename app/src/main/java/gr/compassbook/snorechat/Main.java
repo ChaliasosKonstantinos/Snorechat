@@ -18,7 +18,7 @@ public class Main extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    //Check if User is already Logged In
+    //Check if User is already Logged In...
     @Override
     protected void onStart() {
         super.onStart();
