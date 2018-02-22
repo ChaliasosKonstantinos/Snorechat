@@ -3,6 +3,8 @@ package gr.compassbook.snorechat;
 import android.test.ActivityInstrumentationTestCase2;
 import android.widget.ListView;
 
+import gr.compassbook.snorechat.friendsList.FriendList;
+
 /**
  * Created by Themis on 14/1/2016.
  */

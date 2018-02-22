@@ -4,6 +4,8 @@ import android.test.ActivityInstrumentationTestCase2;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import gr.compassbook.snorechat.chat.privateChat.PrivateChat;
+
 /**
  * Created by Themis on 14/1/2016.
  */

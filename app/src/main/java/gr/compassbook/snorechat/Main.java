@@ -7,6 +7,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 
+import gr.compassbook.snorechat.aboutUs.About;
+import gr.compassbook.snorechat.user.login.Login;
+import gr.compassbook.snorechat.user.menu.UserMenu;
+import gr.compassbook.snorechat.user.register.Register;
+
 public class Main extends AppCompatActivity {
 
     private SharedPreferences userData;

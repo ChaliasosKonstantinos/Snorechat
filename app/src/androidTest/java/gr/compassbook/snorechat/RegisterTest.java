@@ -6,6 +6,8 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import gr.compassbook.snorechat.user.register.Register;
+
 /**
  * Created by Katerina on 1/14/16.
  */

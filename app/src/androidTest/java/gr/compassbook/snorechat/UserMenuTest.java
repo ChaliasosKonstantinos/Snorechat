@@ -4,6 +4,8 @@ import android.test.ActivityInstrumentationTestCase2;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
+import gr.compassbook.snorechat.user.menu.UserMenu;
+
 /**
  * Created by Themis on 14/1/2016.
  */

@@ -7,7 +7,7 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:orientation="vertical"
     android:id="@+id/userRegisterLinear"
-    tools:context="gr.compassbook.snorechat.Register">
+    tools:context="gr.compassbook.snorechat.user.register.Register">
 
 
     <TextView

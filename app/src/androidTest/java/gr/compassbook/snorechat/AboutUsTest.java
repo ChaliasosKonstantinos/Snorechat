@@ -4,6 +4,8 @@ import android.test.ActivityInstrumentationTestCase2;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import gr.compassbook.snorechat.aboutUs.About;
+
 /**
  * Created by Themis on 14/1/2016.
  */

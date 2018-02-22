@@ -19,51 +19,51 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Login"
+            android:name=".user.login.Login"
             android:label="Login"
             android:parentActivityName=".Main" />
         <activity
-            android:name=".About"
+            android:name=".aboutUs.About"
             android:label="About Us" />
         <activity
-            android:name=".Register"
+            android:name=".user.register.Register"
             android:label="Register"
             android:parentActivityName=".Main" />
         <activity
-            android:name=".UserMenu"
+            android:name=".user.menu.UserMenu"
             android:label="Inbox" />
         <activity
-            android:name=".UserSettings"
+            android:name=".user.settings.UserSettings"
             android:label="Settings"
-            android:parentActivityName=".UserMenu"
+            android:parentActivityName=".user.menu.UserMenu"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".ChatActivity"
+            android:name=".chat.groupChat.ChatActivity"
             android:label="Chat"
-            android:parentActivityName=".UserMenu"
+            android:parentActivityName=".user.menu.UserMenu"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".UserList"
+            android:name=".user.search.UserList"
             android:label="Users"
-            android:parentActivityName=".UserMenu"
+            android:parentActivityName=".user.menu.UserMenu"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".PrivateChat"
+            android:name=".chat.privateChat.PrivateChat"
             android:label="Chat"
-            android:parentActivityName=".UserMenu"
+            android:parentActivityName=".user.menu.UserMenu"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".UserDetails"
+            android:name=".user.search.UserDetails"
             android:label="Details"
-            android:parentActivityName=".UserList" />
+            android:parentActivityName=".user.search.UserList" />
         <activity
-            android:name=".FriendList"
+            android:name=".friendsList.FriendList"
             android:label="Friends"
-            android:parentActivityName=".UserMenu" />
+            android:parentActivityName=".user.menu.UserMenu" />
         <activity
-            android:name=".HowTo"
+            android:name=".howTo.HowTo"
             android:label="How To"
-            android:parentActivityName=".UserMenu"
+            android:parentActivityName=".user.menu.UserMenu"
             />
     </application>
 

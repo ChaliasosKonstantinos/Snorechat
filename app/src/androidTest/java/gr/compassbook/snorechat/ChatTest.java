@@ -5,6 +5,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import gr.compassbook.snorechat.chat.groupChat.ChatActivity;
+
 /**
  * Created by Themis on 14/1/2016.
  */

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:layout_marginTop="5dp"
     android:orientation="vertical"
-    tools:context="gr.compassbook.snorechat.HowTo">
+    tools:context="gr.compassbook.snorechat.howTo.HowTo">
 
     <TextView
         android:id="@+id/howto"
